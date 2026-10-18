@@ -1,0 +1,47 @@
+{
+  "clinvar": {
+    "release_or_file_date": "",
+    "download_url": "",
+    "local_filename": "clinvar_grch38.vcf.gz",
+    "sha256": ""
+  },
+  "ensembl_vep": {
+    "release": "116",
+    "assembly": "GRCh38",
+    "cache_version": "116",
+    "execution_mode": "local_or_rest",
+    "command_or_endpoint": "",
+    "output_sha256": ""
+  },
+  "uniprot": {
+    "release": "",
+    "retrieval_start_utc": "",
+    "retrieval_end_utc": "",
+    "cache_sha256_or_manifest": ""
+  },
+  "interpro": {
+    "release": "",
+    "retrieval_start_utc": "",
+    "retrieval_end_utc": "",
+    "cache_sha256_or_manifest": ""
+  },
+  "gnomad_population": {
+    "release": "",
+    "exomes_file_or_endpoint": "",
+    "genomes_file_or_endpoint": "",
+    "sha256_values": []
+  },
+  "gnomad_constraint": {
+    "release": "",
+    "download_url": "",
+    "local_filename": "",
+    "sha256": ""
+  },
+  "dbnsfp": {
+    "release": "",
+    "download_or_license_location": "",
+    "local_filename": "",
+    "sha256": ""
+  }
+}
+

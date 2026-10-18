@@ -1,0 +1,72 @@
+{
+  "project": {
+    "name": "rare_missense_snv_evidence_dataset_pilot",
+    "genome_build": "GRCh38",
+    "random_seed": 20261018
+  },
+  "clinvar": {
+    "source_url": "https://ftp.ncbi.nlm.nih.gov/pub/clinvar/vcf_GRCh38/clinvar.vcf.gz",
+    "minimum_review_stars": 1,
+    "accepted_significance": {
+      "Benign": 0,
+      "Likely_benign": 0,
+      "Benign/Likely_benign": 0,
+      "Pathogenic": 1,
+      "Likely_pathogenic": 1,
+      "Pathogenic/Likely_pathogenic": 1
+    }
+  },
+  "sampling": {
+    "candidate_benign": 100,
+    "candidate_pathogenic": 100,
+    "final_per_class": 50
+  },
+  "rarity": {
+    "maximum_global_af": 0.01,
+    "include_not_reported_after_successful_lookup": true,
+    "exclude_lookup_failures": true
+  },
+  "vep": {
+    "release": "116",
+    "assembly": "GRCh38",
+    "mode": "rest",
+    "executable": "vep",
+    "cache_dir": "",
+    "forks": 2,
+    "rest_batch_size": 100,
+    "rest_workers": 1,
+    "rest_max_retries": 6
+  },
+  "uniprot": {
+    "release": "record_the_release_returned_by_the_api",
+    "workers": 2,
+    "max_retries": 5,
+    "allow_trembl_fallback": false
+  },
+  "interpro": {
+    "release": "record_the_release_returned_by_the_api",
+    "workers": 1,
+    "max_retries": 5
+  },
+  "dbnsfp": {
+    "expected_release": "set_after_downloading",
+    "conservation_fields": [
+      "GERP++_RS",
+      "phyloP100way_vertebrate",
+      "phastCons100way_vertebrate"
+    ],
+    "optional_predictor_fields": [
+      "SIFT_score",
+      "Polyphen2_HDIV_score",
+      "REVEL_score",
+      "CADD_phred",
+      "AlphaMissense_score"
+    ]
+  },
+  "splits": {
+    "train_fraction": 0.70,
+    "validation_fraction": 0.15,
+    "test_fraction": 0.15
+  }
+}
+
