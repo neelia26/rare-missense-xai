@@ -63,7 +63,7 @@ def fetch_page(url: str, retries: int) -> tuple[dict[str, Any] | None, str, str]
             if error.code not in {429, 500, 502, 503, 504}:
                 break
             time.sleep(min(60.0, 2**attempt + random.random()))
-        except (urllib.error.URLError, TimeoutError) as error:
+        except (urllib.error.URLError, TimeoutError, json.JSONDecodeError) as error:
             last_error = str(error)
             time.sleep(min(60.0, 2**attempt + random.random()))
     return None, "", last_error
@@ -158,12 +158,24 @@ def main() -> None:
             and row.get("uniprot_selected_accession")
         }
     )
+    if not accessions:
+        sys.exit(
+            "No rows with uniprot_validation_status == 'MATCH' in "
+            f"{input_path}; fix stage 07 before running stage 08."
+        )
     records: dict[str, dict[str, Any]] = {}
     pending: list[str] = []
     for accession in accessions:
         checkpoint = cache_dir / f"{safe_filename(accession)}.json"
+        cached: dict[str, Any] | None = None
         if checkpoint.exists():
-            records[accession] = json.loads(checkpoint.read_text(encoding="utf-8"))
+            try:
+                cached = json.loads(checkpoint.read_text(encoding="utf-8"))
+            except json.JSONDecodeError:
+                cached = None
+        # Only successful lookups are reused; ERROR records are retried.
+        if cached and cached.get("status") == "FOUND":
+            records[accession] = cached
         else:
             pending.append(accession)
     with ThreadPoolExecutor(max_workers=int(settings["workers"])) as executor:
@@ -175,7 +187,8 @@ def main() -> None:
             accession = futures[future]
             record = future.result()
             records[accession] = record
-            write_json(cache_dir / f"{safe_filename(accession)}.json", record)
+            if record.get("status") == "FOUND":
+                write_json(cache_dir / f"{safe_filename(accession)}.json", record)
             print(f"InterPro {complete}/{len(pending)} completed", flush=True)
     enriched = []
     for row in rows:

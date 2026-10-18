@@ -13,3 +13,14 @@ logs/*
 !audits/.gitkeep
 !logs/.gitkeep
 
+# gnomAD remote index cache
+/data/cache/gnomad/indexes/
+/gnomad*.vcf.bgz.tbi
+/gnomad*.vcf.bgz.csi
+/gnomad*.part
+
+# Downloaded gnomAD raw inputs
+/data/raw/gnomad/*.tsv
+/data/raw/gnomad/*.tsv.gz
+
+.DS_Store

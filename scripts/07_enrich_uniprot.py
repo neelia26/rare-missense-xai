@@ -50,19 +50,55 @@ ADDED_COLUMNS = [
     "uniprot_overlapping_feature_descriptions",
 ]
 
+# Only these outcomes are stable enough to cache. Transient failures (ERROR) and
+# empty/stub bodies (EMPTY_RECORD) are retried on the next run.
+CACHEABLE_STATUSES = {"FOUND", "NOT_FOUND"}
+
 
 def safe_filename(accession: str) -> str:
     return re.sub(r"[^A-Za-z0-9_.-]", "_", accession)
 
 
+def bare_accession(value: str) -> str:
+    """Strip a trailing version suffix (e.g. P01130.272 -> P01130).
+
+    VEP's SWISSPROT/TREMBL fields append the entry version. UniProt's REST API treats
+    the dotted form as a version lookup and returns a stub with no sequence.
+    """
+    return re.sub(r"\.\d+$", "", value.strip())
+
+
 def select_accession(row: dict[str, str], allow_trembl: bool) -> tuple[str, str]:
     swissprot = split_multi_value(row.get("uniprot_swissprot_accessions"))
     if swissprot:
-        return swissprot[0], "SWISSPROT"
+        return bare_accession(swissprot[0]), "SWISSPROT"
     trembl = split_multi_value(row.get("uniprot_trembl_accessions"))
     if allow_trembl and trembl:
-        return trembl[0], "TREMBL_FALLBACK"
+        return bare_accession(trembl[0]), "TREMBL_FALLBACK"
     return "", "NO_ELIGIBLE_ACCESSION"
+
+
+def retry_delay(error: urllib.error.HTTPError, attempt: int) -> float:
+    try:
+        retry_after = float(error.headers.get("Retry-After", 0) or 0)
+    except (TypeError, ValueError):
+        retry_after = 0.0
+    if retry_after > 0:
+        return min(60.0, retry_after)
+    return min(60.0, 2**attempt + random.random())
+
+
+def is_usable_record(record: dict[str, Any] | None) -> bool:
+    """True for a record that is safe to reuse from cache."""
+    if not record:
+        return False
+    status = record.get("status")
+    if status == "NOT_FOUND":
+        return True
+    if status != "FOUND":
+        return False
+    payload = record.get("payload") or {}
+    return bool(payload.get("primaryAccession")) and bool((payload.get("sequence") or {}).get("value"))
 
 
 def fetch_record(accession: str, retries: int) -> dict[str, Any]:
@@ -75,22 +111,20 @@ def fetch_record(accession: str, retries: int) -> dict[str, Any]:
         )
         try:
             with urllib.request.urlopen(request, timeout=120) as response:
-                return {
-                    "status": "FOUND",
-                    "release": response.headers.get("x-uniprot-release", ""),
-                    "payload": json.load(response),
-                }
+                release = response.headers.get("x-uniprot-release", "")
+                payload = json.load(response)
+            sequence = (payload.get("sequence") or {}).get("value")
+            if not payload.get("primaryAccession") or not sequence:
+                return {"status": "EMPTY_RECORD", "release": release, "payload": {}}
+            return {"status": "FOUND", "release": release, "payload": payload}
         except urllib.error.HTTPError as error:
             if error.code == 404:
                 return {"status": "NOT_FOUND", "release": "", "payload": {}}
             last_error = f"HTTP {error.code}: {error.reason}"
             if error.code not in {429, 500, 502, 503, 504}:
                 break
-            delay = float(error.headers.get("Retry-After", 0) or 0) or min(
-                60.0, 2**attempt + random.random()
-            )
-            time.sleep(delay)
-        except (urllib.error.URLError, TimeoutError) as error:
+            time.sleep(retry_delay(error, attempt))
+        except (urllib.error.URLError, TimeoutError, json.JSONDecodeError) as error:
             last_error = str(error)
             time.sleep(min(60.0, 2**attempt + random.random()))
     return {"status": "ERROR", "release": "", "error": last_error, "payload": {}}
@@ -220,8 +254,14 @@ def main() -> None:
     pending: list[str] = []
     for accession in unique_accessions:
         checkpoint = cache_dir / f"{safe_filename(accession)}.json"
+        cached: dict[str, Any] | None = None
         if checkpoint.exists():
-            records[accession] = json.loads(checkpoint.read_text(encoding="utf-8"))
+            try:
+                cached = json.loads(checkpoint.read_text(encoding="utf-8"))
+            except json.JSONDecodeError:
+                cached = None
+        if is_usable_record(cached):
+            records[accession] = cached
         else:
             pending.append(accession)
     with ThreadPoolExecutor(max_workers=int(settings["workers"])) as executor:
@@ -233,7 +273,8 @@ def main() -> None:
             accession = futures[future]
             record = future.result()
             records[accession] = record
-            write_json(cache_dir / f"{safe_filename(accession)}.json", record)
+            if record.get("status") in CACHEABLE_STATUSES:
+                write_json(cache_dir / f"{safe_filename(accession)}.json", record)
             print(f"UniProt {complete}/{len(pending)} completed", flush=True)
 
     enriched = []
@@ -242,7 +283,12 @@ def main() -> None:
         combined.update(enrich_row(row, accession, source, records.get(accession)))
         enriched.append(combined)
     fieldnames = list(rows[0]) + [column for column in ADDED_COLUMNS if column not in rows[0]]
-    write_csv(output_path, enriched, fieldnames)
+
+    # If nothing validated, write the table next to the real output under a .FAILED name
+    # so it can be inspected without the stage looking DONE in `run_pipeline.py status`.
+    has_match = any(row["uniprot_validation_status"] == "MATCH" for row in enriched)
+    written_path = output_path if has_match else output_path.with_name(output_path.stem + ".FAILED.csv")
+    write_csv(written_path, enriched, fieldnames)
     audit = {
         **audit_basic_rows(enriched),
         "unique_accessions": len(unique_accessions),
@@ -254,15 +300,19 @@ def main() -> None:
     }
     audit_path = PROJECT_ROOT / "audits/07_uniprot_audit.json"
     write_json(audit_path, audit)
+    print(json.dumps(audit, indent=2))
+    if not has_match:
+        sys.exit(
+            "No MATCH rows after UniProt validation. Inspect "
+            f"{audit_path} and {written_path}; stage not marked complete."
+        )
     append_stage_manifest(
         "07_enrich_uniprot",
         [input_path],
         [output_path, audit_path],
         {"allow_trembl_fallback": settings["allow_trembl_fallback"]},
     )
-    print(json.dumps(audit, indent=2))
 
 
 if __name__ == "__main__":
     main()
-
