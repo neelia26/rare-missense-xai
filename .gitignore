@@ -24,3 +24,4 @@ logs/*
 /data/raw/gnomad/*.tsv.gz
 
 .DS_Store
+current_pipeline_code*.zip

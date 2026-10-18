@@ -49,7 +49,7 @@ Use `config/pilot_config.json` first. It selects 100 candidate variants per clas
 
 Use `config/pipeline_config.json` for the governed full run. It selects an oversampled candidate pool of 50,000 benign-class and 25,000 pathogenic-class records before enrichment, then attempts to select 20,000 validated records per class at the end. These values are configuration choices, not hidden assumptions.
 
-Do not mix pilot and full outputs in one directory. After completing the pilot, archive or remove the pilot `data/`, `audits/` and `logs/` outputs before starting the full run.
+Do not treat pilot outputs as full-run outputs. Archive the successful pilot before starting the full rebuild. The `run-full` command uses a configuration-bound state file, so it does not mistake existing pilot files for completed full stages.
 
 ## 3. Freeze one ClinVar release
 
@@ -107,18 +107,20 @@ python run_pipeline.py run 05 -- \
 
 REST results are saved in resumable batch checkpoints.
 
-### Full local VEP run
+### Full checkpointed REST run
 
-Install the Ensembl VEP release and matching GRCh38 cache specified in the configuration. Confirm the command before execution:
+The governed full configuration uses Ensembl REST in batches of no more than 200 variants. Stage 05 first queries the official metadata endpoint and stops if the live Ensembl release differs from the expected release in the configuration. Each response is cached under a request-derived hash containing the variants, endpoint, options, assembly and verified release. Therefore, a pilot checkpoint cannot be silently reused for a different full-run batch.
+
+Inspect the REST settings without making a request:
 
 ```bash
 python run_pipeline.py run 05 -- \
-  --mode local \
+  --mode rest \
   --config config/pipeline_config.json \
   --dry-run
 ```
 
-Then run the same command without `--dry-run`. The command-line tool is the recommended route for the full cohort because it is intended for large-volume annotation. If VEP is run in Docker or on another computer, copy its JSON-lines output back and register it:
+Stage 05 is normally invoked by `run-full`. Local or externally generated VEP JSONL remains available as a contingency and can be registered explicitly:
 
 ```bash
 python run_pipeline.py run 05 -- \
@@ -159,16 +161,20 @@ Stage 08 queries InterPro once per validated protein and records whether the var
 
 ## 7. Optionally add direct gnomAD counts
 
-VEP supplies frequencies but not a complete set of AC, AN and homozygote counts. If you have local, indexed gnomAD site VCFs, run:
+VEP supplies the population frequencies used by the default full workflow. Direct AC, AN and homozygote counts are an optional experimental enrichment because repeated remote indexed-VCF queries can be slow or unstable at full scale. They are disabled by default and are not part of the core model table.
+
+To test the configured remote sources manually:
 
 ```bash
+BASE="https://storage.googleapis.com/gcp-public-data--gnomad/release/4.1/vcf"
 python run_pipeline.py run 08b -- \
-  --exomes-vcf /absolute/path/to/gnomad.exomes.sites.vcf.bgz \
-  --genomes-vcf /absolute/path/to/gnomad.genomes.sites.vcf.bgz \
-  --source-release "gnomAD v4.x"
+  --exomes-vcf "$BASE/exomes/gnomad.exomes.v4.1.sites.{chrom}.vcf.bgz" \
+  --genomes-vcf "$BASE/genomes/gnomad.genomes.v4.1.sites.{chrom}.vcf.bgz" \
+  --source-release "gnomAD v4.1" \
+  --smoke-test 10
 ```
 
-This stage is optional. Absence from a sites VCF is stored as `NOT_REPORTED`, not AF=0. A lookup error has a separate state.
+Set `gnomad.direct_counts_enabled` to `true` only after a reviewed full-scale access plan. Absence from a sites VCF is stored as `NOT_REPORTED`, not AF=0. A lookup error has a separate state.
 
 ## 8. Merge gnomAD gene constraint
 
@@ -188,17 +194,23 @@ If Stage 08b was used, add:
 
 The script matches the reconciled Ensembl transcript first. It falls back to a gene only when the source table has exactly one row for that gene; ambiguous gene matches are retained as missing and audited.
 
-## 9. Add dbNSFP conservation values
+## 9. Add dbNSFP conservation values through MyVariant.info
 
-Prepare a licensed/local dbNSFP variant file as bgzip plus tabix. Then run:
+No local dbNSFP archive is required. First run a separate ten-row smoke test:
 
 ```bash
 python run_pipeline.py run 10 -- \
-  --dbnsfp-file /absolute/path/to/dbNSFP_variant.tsv.gz \
-  --source-release "dbNSFP x.y"
+  --config config/pilot_config.json \
+  --smoke-test 10
 ```
 
-The core output receives GERP, PhyloP and PhastCons values. SIFT, PolyPhen-2, REVEL, CADD and AlphaMissense values, when available, go to `10_optional_predictor_scores.csv`. They are never silently inserted into the core feature set.
+Then run the complete stage through the chosen configuration:
+
+```bash
+python run_pipeline.py run 10 -- --config config/pipeline_config.json
+```
+
+Stage 10 records the MyVariant build and API-reported dbNSFP release, verifies every returned coordinate and allele, and uses content-addressed raw-response caches. GERP, PhyloP and PhastCons enter the core evidence table. SIFT, PolyPhen-2, REVEL, CADD and AlphaMissense remain in `10_optional_predictor_scores.csv` and are never silently inserted into the core feature set.
 
 ## 10. Calculate amino-acid descriptors
 
@@ -261,6 +273,33 @@ A structural `PASS` is not permission to ignore warnings. Large label-specific m
 python -m unittest discover -s tests -v
 ```
 
+## 15. Run the governed full rebuild automatically
+
+The full run requires the frozen ClinVar file and its provenance JSON, plus the configured gnomAD constraint table. First print and validate the complete plan:
+
+```bash
+python run_pipeline.py run-full \
+  --config config/pipeline_config.json \
+  --dry-run
+```
+
+Start the full rebuild:
+
+```bash
+python run_pipeline.py run-full \
+  --config config/pipeline_config.json
+```
+
+If the network, terminal or computer interrupts the run, resume it with:
+
+```bash
+python run_pipeline.py run-full \
+  --config config/pipeline_config.json \
+  --resume
+```
+
+Completed stages are skipped only when the state file was created from the same configuration and the recorded output SHA-256 still matches. API stages also retain their own content-addressed caches. The command constructs and audits the dataset; it does not train a model.
+
 ## Files that should not be committed to a public Git repository
 
 - full ClinVar, gnomAD or dbNSFP source files;
@@ -277,5 +316,6 @@ Commit the scripts, configuration, source URLs, release identifiers, checksums, 
 - UniProt REST: <https://rest.uniprot.org/>
 - InterPro API: <https://www.ebi.ac.uk/interpro/api/>
 - gnomAD downloads: <https://gnomad.broadinstitute.org/downloads>
+- MyVariant.info API: <https://docs.myvariant.info/>
 - dbNSFP: <https://www.dbnsfp.org/>
 

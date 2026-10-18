@@ -65,9 +65,9 @@ def main() -> None:
         "python_dependencies_ready": all(packages[name]["available"] for name in packages),
         "local_vep_ready": command_version(config["vep"]["executable"], ["--help"])["available"],
         "notes": [
-            "Local Ensembl VEP is recommended for the full cohort.",
-            "The REST mode is intended for a small pilot or when local VEP is unavailable.",
-            "pysam is required only for a bgzip/tabix dbNSFP file.",
+            "The configured full workflow uses checkpointed Ensembl VEP REST requests.",
+            "Stage 05 verifies the live Ensembl release before accepting annotations.",
+            "pysam is required for optional direct lookups in indexed gnomAD VCFs.",
         ],
     }
     destination = PROJECT_ROOT / "audits/00_environment_report.json"

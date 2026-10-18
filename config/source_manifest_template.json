@@ -8,9 +8,10 @@
   "ensembl_vep": {
     "release": "116",
     "assembly": "GRCh38",
-    "cache_version": "116",
-    "execution_mode": "local_or_rest",
-    "command_or_endpoint": "",
+    "execution_mode": "rest",
+    "metadata_endpoint": "https://rest.ensembl.org/info/software",
+    "annotation_endpoint": "https://rest.ensembl.org/vep/homo_sapiens/region",
+    "verified_api_release": "",
     "output_sha256": ""
   },
   "uniprot": {
@@ -38,10 +39,12 @@
     "sha256": ""
   },
   "dbnsfp": {
-    "release": "",
-    "download_or_license_location": "",
-    "local_filename": "",
-    "sha256": ""
+    "access_service": "MyVariant.info",
+    "expected_release": "4.8a",
+    "api_endpoint": "https://myvariant.info/v1/variant",
+    "metadata_endpoint": "https://myvariant.info/v1/metadata",
+    "myvariant_build_version": "",
+    "response_cache_manifest": ""
   }
 }
 

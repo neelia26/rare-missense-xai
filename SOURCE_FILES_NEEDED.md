@@ -6,23 +6,24 @@
    - Prefer an archived monthly release.
    - If you do not already have one, Stage 01 can download and freeze the current monthly file.
 
-2. **Ensembl VEP release and matching GRCh38 cache**
-   - Needed for the full local run.
-   - A small pilot can use the REST route instead.
+2. **Ensembl VEP REST access**
+   - The full workflow uses checkpointed REST batches and verifies the live Ensembl release against the configured expected release.
+   - A local release-matched VEP cache is optional as a contingency, not a requirement.
 
 3. **gnomAD gene-constraint table**
    - Must contain a gene, Ensembl transcript, missense constraint and LOEUF-equivalent column.
    - Record its version and checksum.
 
-4. **dbNSFP variant table plus tabix index**
-   - Must contain GRCh38 coordinate/ref/alt fields and the selected conservation columns.
-   - Record the exact dbNSFP release and redistribution terms.
+4. **MyVariant.info API access for dbNSFP annotations**
+   - Stage 10 retrieves only the required GRCh38 records, so no local dbNSFP archive or tabix index is required.
+   - The pipeline verifies returned coordinates and alleles, records the MyVariant build and API-reported dbNSFP release, and preserves content-addressed response caches.
+   - Review the dbNSFP licence before redistributing any derived dataset.
 
 ## Optional but useful
 
 5. **Indexed gnomAD exome/genome site VCFs**
-   - Used only if direct AC, AN and homozygote counts are wanted.
-   - They are large; frequencies from pinned VEP can be used without them.
+   - Used only if direct AC, AN and homozygote counts are enabled as a separate enrichment.
+   - The default full workflow leaves this disabled and uses release-verified VEP population frequencies.
 
 6. **Existing UniProt or InterPro caches**
    - Reusable only after checking that the accession, retrieval date/release and response format are recorded.

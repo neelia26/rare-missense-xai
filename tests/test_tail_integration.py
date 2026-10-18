@@ -16,6 +16,35 @@ ROOT = Path(__file__).resolve().parents[1]
 
 
 class TailIntegrationTest(unittest.TestCase):
+    def test_full_run_dry_run_builds_complete_plan(self):
+        with tempfile.TemporaryDirectory() as temporary:
+            temporary_path = Path(temporary)
+            constraint = temporary_path / "constraint.tsv"
+            constraint.write_text("gene\ttranscript\tmis.z_score\tlof.oe_ci.upper\n", encoding="utf-8")
+            config = json.loads(
+                (ROOT / "config/pipeline_config.json").read_text(encoding="utf-8")
+            )
+            config["gnomad"]["constraint_file"] = str(constraint)
+            config_path = temporary_path / "pipeline_config.json"
+            config_path.write_text(json.dumps(config), encoding="utf-8")
+            result = subprocess.run(
+                [
+                    sys.executable,
+                    "run_pipeline.py",
+                    "run-full",
+                    "--config",
+                    str(config_path),
+                    "--dry-run",
+                ],
+                cwd=ROOT,
+                check=True,
+                capture_output=True,
+                text=True,
+            )
+            self.assertIn("Governed full-run plan", result.stdout)
+            self.assertIn("Dry run only", result.stdout)
+            self.assertNotIn("08b_enrich_gnomad_counts.py", result.stdout)
+
     def test_build_split_and_audit(self):
         with tempfile.TemporaryDirectory() as temporary:
             clone = Path(temporary) / "pipeline"

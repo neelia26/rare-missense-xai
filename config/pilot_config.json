@@ -30,12 +30,16 @@
     "release": "116",
     "assembly": "GRCh38",
     "mode": "rest",
-    "executable": "vep",
-    "cache_dir": "",
-    "forks": 2,
+    "rest_endpoint": "https://rest.ensembl.org/vep/homo_sapiens/region",
+    "rest_metadata_endpoint": "https://rest.ensembl.org/info/software",
+    "rest_checkpoint_dir": "data/raw/vep/rest_checkpoints",
     "rest_batch_size": 100,
     "rest_workers": 1,
-    "rest_max_retries": 6
+    "rest_max_retries": 6,
+    "user_agent": "rare-missense-evidence-pipeline/1.2",
+    "executable": "vep",
+    "cache_dir": "",
+    "forks": 2
   },
   "uniprot": {
     "release": "record_the_release_returned_by_the_api",
@@ -48,8 +52,25 @@
     "workers": 1,
     "max_retries": 5
   },
+  "gnomad": {
+    "source_release": "gnomAD v4.1",
+    "direct_counts_enabled": false,
+    "exomes_vcf_template": "https://storage.googleapis.com/gcp-public-data--gnomad/release/4.1/vcf/exomes/gnomad.exomes.v4.1.sites.{chrom}.vcf.bgz",
+    "genomes_vcf_template": "https://storage.googleapis.com/gcp-public-data--gnomad/release/4.1/vcf/genomes/gnomad.genomes.v4.1.sites.{chrom}.vcf.bgz",
+    "constraint_file": "data/raw/gnomad/gnomad.v4.1.constraint_metrics.tsv"
+  },
   "dbnsfp": {
-    "expected_release": "set_after_downloading",
+    "access_service": "MyVariant.info",
+    "api_endpoint": "https://myvariant.info/v1/variant",
+    "metadata_endpoint": "https://myvariant.info/v1/metadata",
+    "assembly": "hg38",
+    "expected_release": "4.8a",
+    "batch_size": 100,
+    "max_retries": 6,
+    "request_pause_seconds": 1.0,
+    "cache_dir": "data/raw/myvariant/dbnsfp",
+    "email": "",
+    "user_agent": "rare-missense-evidence-pipeline/1.2",
     "conservation_fields": [
       "GERP++_RS",
       "phyloP100way_vertebrate",
@@ -69,4 +90,3 @@
     "test_fraction": 0.15
   }
 }
-
