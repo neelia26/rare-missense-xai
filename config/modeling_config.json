@@ -1,0 +1,42 @@
+{
+  "frozen_source": {
+    "path": "data/processed/final_dataset_full.csv",
+    "sha256": "50d8ac02ededae696d6867c7e713351d33058d01bad4fab3633055157525494f"
+  },
+  "cohort": {
+    "exclude_alternate_gene_reconciliations": true,
+    "expected_source_rows": 40000,
+    "expected_excluded_rows": 448,
+    "expected_modeling_rows": 39552
+  },
+  "protein_context": {
+    "normalize_semicolon_lists_to_binary_token_indicators": true,
+    "exclude_uniprot_tokens_from_primary_models": [
+      "Natural variant",
+      "Mutagenesis",
+      "Sequence conflict",
+      "Alternative sequence"
+    ],
+    "interpro_lookup_failure_encoding": "missing",
+    "interpro_successful_zero_overlap_encoding": 0
+  },
+  "population_evidence": {
+    "add_missingness_indicator": false,
+    "preserve_unavailable_as_missing": true,
+    "fit_imputation_and_scaling_on": "training_genes_only",
+    "require_no_population_ablation": true,
+    "explanation_for_missing_value": "unavailable"
+  },
+  "splits": {
+    "train_fraction": 0.7,
+    "validation_fraction": 0.15,
+    "test_fraction": 0.15,
+    "minimum_validation_genes": 1100,
+    "minimum_test_genes": 1100,
+    "variant_fraction_tolerance": 0.01,
+    "pathogenic_proportion_target": 0.5,
+    "pathogenic_proportion_tolerance": 0.02,
+    "search_attempts": 2000,
+    "random_seed": 20261018
+  }
+}

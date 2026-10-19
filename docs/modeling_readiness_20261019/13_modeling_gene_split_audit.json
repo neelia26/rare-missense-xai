@@ -1,0 +1,61 @@
+{
+  "gene_counts": {
+    "test": 1115,
+    "train": 5206,
+    "validation": 1115
+  },
+  "gene_overlap": {
+    "train_test": [],
+    "train_validation": [],
+    "validation_test": []
+  },
+  "gene_overlap_pass": true,
+  "minimum_evaluation_genes": 1100,
+  "minimum_evaluation_genes_pass": true,
+  "random_seed": 20261018,
+  "search_attempts": 2000,
+  "selection_rule": "Deterministic multi-start allocation fixes the requested gene proportions, then selects the allocation that best matches variant and class targets while keeping every reconciled gene in exactly one partition.",
+  "split_metrics": {
+    "test": {
+      "gene_count": 1115,
+      "pathogenic_proportion": 0.501906,
+      "pathogenic_proportion_delta_from_overall": 0.001482,
+      "variant_count": 6035,
+      "variant_fraction": 0.152584
+    },
+    "train": {
+      "gene_count": 5206,
+      "pathogenic_proportion": 0.504418,
+      "pathogenic_proportion_delta_from_overall": 0.00103,
+      "variant_count": 27727,
+      "variant_fraction": 0.701026
+    },
+    "validation": {
+      "gene_count": 1115,
+      "pathogenic_proportion": 0.5,
+      "pathogenic_proportion_delta_from_overall": 0.003388,
+      "variant_count": 5790,
+      "variant_fraction": 0.14639
+    }
+  },
+  "target_fractions": {
+    "test": 0.15,
+    "train": 0.7,
+    "validation": 0.15
+  },
+  "usage_rule": "Fit preprocessing and models on train genes, choose/tune on validation genes, and use test genes once for the final locked evaluation.",
+  "variant_counts": {
+    "test": {
+      "0": 3006,
+      "1": 3029
+    },
+    "train": {
+      "0": 13741,
+      "1": 13986
+    },
+    "validation": {
+      "0": 2895,
+      "1": 2895
+    }
+  }
+}
