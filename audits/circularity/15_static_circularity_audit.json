@@ -98,7 +98,7 @@
     "uniprot_feature_natural_variant",
     "uniprot_feature_sequence_conflict"
   ],
-  "redundancy_candidate_count": 1,
+  "redundancy_candidate_count": 2,
   "required_modelling_controls": [
     "no-population versus population-inclusive",
     "without gene-constraint evidence",

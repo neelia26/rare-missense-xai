@@ -23,11 +23,12 @@ This confirms that population availability could act as a label shortcut. The no
 
 ## Redundancy candidates
 
-One training-only primary numeric pair met the absolute Pearson or Spearman threshold of 0.85:
+Two training-only numeric pairs met the absolute Pearson or Spearman threshold of 0.85. The population pair is recorded as a sensitivity-condition result and does not affect readiness of the primary no-population condition:
 
 | Field A | Field B | Paired observations | Pearson | Spearman | Trigger |
 |---|---|---:|---:|---:|---|
 | `aa_hydropathy_delta` | `aa_polarity_delta` | 27,727 | -0.8651 | -0.8287 | Pearson |
+| `gnomad_global_af` | `gnomad_max_population_af` | 16,567 | 0.69885 | 0.87635 | Spearman |
 
 These are candidates for grouped interpretation and ablation, not automatic deletion. No binary/categorical pair reached corrected Cramér's V of 0.80.
 

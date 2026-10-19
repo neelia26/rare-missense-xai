@@ -14,11 +14,11 @@ Blank, `.`, `NA`, `NaN`, `None` and `null` are treated as missing. Per-feature t
 
 ## Numeric overlap
 
-Pearson and Spearman correlations use pairwise complete training observations. The paired count is reported. Constant, all-missing and insufficient pairs are marked invalid. An absolute coefficient of at least 0.85 is a redundancy candidate.
+Pearson and Spearman correlations use pairwise complete training observations. Primary correlations use the 49-feature no-population table. The two population fields are also correlated separately and labelled as a population-inclusive sensitivity result so their redundancy is documented before that experiment. The paired count is reported. Constant, all-missing and insufficient pairs are marked invalid. An absolute coefficient of at least 0.85 is a redundancy candidate.
 
 ## Binary and categorical overlap
 
-Corrected Cramér's V is computed from pairwise complete training observations. Every binary feature has positive and negative counts and prevalence reported. Rare levels are flagged when a level has fewer than 20 observations or less than 1% prevalence; contingency tables are flagged as sparse when any observed level combination has fewer than five observations. These flags use level/cell counts rather than the total paired count. Constant, all-missing and insufficient comparisons are explicitly identified. A corrected value of at least 0.80 is a redundancy candidate. Sparse features are not automatically removed, but their associations require cautious interpretation.
+Corrected Cramér's V is computed from pairwise complete training observations. Every binary feature has positive and negative counts and prevalence reported. A binary minority level is flagged when its exact count is below 20 or its unrounded proportion is below 1%; contingency tables are flagged as sparse when any observed level combination has fewer than five observations. These flags use level/cell counts rather than the total paired count. Constant, all-missing and insufficient comparisons are explicitly identified. A corrected value of at least 0.80 is a redundancy candidate. Sparse features are not automatically removed, but their associations require cautious interpretation.
 
 ## Mixed numeric–categorical overlap
 

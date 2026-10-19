@@ -170,7 +170,7 @@ def safe_correlation(left: np.ndarray, right: np.ndarray) -> tuple[float | None,
 
 
 def numeric_correlations(
-    training: list[dict[str, str]], features: list[str]
+    training: list[dict[str, str]], features: list[str], analysis_condition: str = "primary_no_population"
 ) -> list[dict[str, Any]]:
     output: list[dict[str, Any]] = []
     for index, left_name in enumerate(features):
@@ -204,6 +204,7 @@ def numeric_correlations(
                     "spearman_status": spearman_status,
                     "redundancy_candidate": int(redundancy),
                     "analysis_partition": "train",
+                    "analysis_condition": analysis_condition,
                 }
             )
     return output
@@ -309,7 +310,13 @@ def binary_prevalence(
                 "positive_prevalence": "" if not valid else round(positive / valid, 8),
                 "negative_prevalence": "" if not valid else round(negative / valid, 8),
                 "unexpected_nonbinary_count": len(values) - valid,
-                "rare_level_flag": int(valid > 0 and min(positive, negative) < max(20, int(0.01 * valid))),
+                "rare_level_flag": int(
+                    valid > 0
+                    and (
+                        min(positive, negative) < 20
+                        or min(positive, negative) / valid < 0.01
+                    )
+                ),
                 "analysis_partition": "train",
             }
         )
@@ -496,6 +503,11 @@ def audit(args: argparse.Namespace) -> dict[str, Any]:
     categorical = sorted(row["field"] for row in primary_rows if row["data_type"] in {"binary", "categorical"})
     missing = missingness_rows(training, primary) + missingness_rows(training_population, sorted(POPULATION))
     numeric_rows = numeric_correlations(training, numeric)
+    numeric_rows += numeric_correlations(
+        training_population,
+        sorted(POPULATION),
+        analysis_condition="population_inclusive_sensitivity",
+    )
     categorical_rows = categorical_associations(training, categorical)
     binary_rows = binary_prevalence(training, sorted(row["field"] for row in primary_rows if row["data_type"] == "binary"))
     mixed_rows = mixed_associations(training, numeric, categorical)
@@ -563,6 +575,7 @@ def audit(args: argparse.Namespace) -> dict[str, Any]:
     redundancy_fields = [
         "association_type", "field_a", "field_b", "paired_observations", "pearson",
         "spearman", "corrected_cramers_v", "status", "redundancy_candidate", "analysis_partition",
+        "analysis_condition",
     ]
     normalized_redundancy = []
     for row in redundancy:

@@ -137,6 +137,26 @@ class CircularityAuditTests(unittest.TestCase):
         self.assertEqual(result["positive_prevalence"], 0.01)
         self.assertEqual(result["rare_level_flag"], 1)
 
+    def test_binary_rare_level_uses_exact_unrounded_proportion(self):
+        rows = [{"x": "1"} for _ in range(100)] + [{"x": "0"} for _ in range(9901)]
+        result = self.audit.binary_prevalence(rows, ["x"])[0]
+        self.assertEqual(result["positive_count"], 100)
+        self.assertLess(100 / 10001, 0.01)
+        self.assertEqual(result["rare_level_flag"], 1)
+
+    def test_population_pair_is_labelled_as_sensitivity_redundancy(self):
+        rows = [
+            {"gnomad_global_af": str(value), "gnomad_max_population_af": str(value * 2)}
+            for value in range(1, 5)
+        ]
+        result = self.audit.numeric_correlations(
+            rows,
+            sorted(self.audit.POPULATION),
+            analysis_condition="population_inclusive_sensitivity",
+        )[0]
+        self.assertEqual(result["analysis_condition"], "population_inclusive_sensitivity")
+        self.assertEqual(result["redundancy_candidate"], 1)
+
     def test_sparse_contingency_uses_cell_counts(self):
         rows = ([{"a": "0", "b": "0"}] * 100 + [{"a": "0", "b": "1"}] * 100
                 + [{"a": "1", "b": "0"}] * 100 + [{"a": "1", "b": "1"}])
