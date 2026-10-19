@@ -1,6 +1,6 @@
 field,evidence_group,data_type,primary_model_feature,no_population_ablation_feature,interpretation
-gnomad_global_af,population,numeric,1,0,population frequency; unavailable values stay blank and receive no missingness indicator
-gnomad_max_population_af,population,numeric,1,0,population frequency; unavailable values stay blank and receive no missingness indicator
+gnomad_global_af,population,numeric,0,0,sensitivity-only population frequency; unavailable values stay blank and receive no missingness indicator
+gnomad_max_population_af,population,numeric,0,0,sensitivity-only population frequency; unavailable values stay blank and receive no missingness indicator
 conservation_gerp_rs,conservation,numeric,1,1,conservation evidence
 conservation_phylop100way,conservation,numeric,1,1,conservation evidence
 conservation_phastcons100way,conservation,numeric,1,1,conservation evidence

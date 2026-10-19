@@ -82,12 +82,16 @@ def structural_rows(rows_iterable: Iterable[dict[str, str]], schema: tuple[str, 
     keys: set[str] = set()
     genes: set[str] = set()
     blank_keys = 0
+    blank_genes = 0
+    duplicate_keys = 0
     rows = 0
     for row in rows_iterable:
         rows += 1
-        key = row.get("variant_key", "")
-        gene = row.get("reconciled_gene_symbol", "")
+        key = (row.get("variant_key") or "").strip()
+        gene = (row.get("reconciled_gene_symbol") or "").strip()
         blank_keys += int(not key)
+        blank_genes += int(not gene)
+        duplicate_keys += int(key in keys)
         keys.add(key)
         genes.add(gene)
     return {
@@ -95,6 +99,8 @@ def structural_rows(rows_iterable: Iterable[dict[str, str]], schema: tuple[str, 
         "keys": keys,
         "genes": genes,
         "blank_keys": blank_keys,
+        "blank_genes": blank_genes,
+        "duplicate_keys": duplicate_keys,
         "schema": schema,
     }
 
@@ -249,6 +255,24 @@ def categorical_associations(
                 (row.get(left) for row in training),
                 (row.get(right) for row in training),
             )
+            pairs = [
+                (str(row.get(left, "")).strip(), str(row.get(right, "")).strip())
+                for row in training
+                if not is_missing(row.get(left)) and not is_missing(row.get(right))
+            ]
+            left_counts = Counter(a for a, _ in pairs)
+            right_counts = Counter(b for _, b in pairs)
+            cell_counts = Counter(pairs)
+            level_counts = list(left_counts.values()) + list(right_counts.values())
+            minimum_level_count = min(level_counts, default=0)
+            minimum_cell_count = min(
+                (cell_counts[(a, b)] for a in left_counts for b in right_counts),
+                default=0,
+            )
+            rare_level = bool(level_counts) and any(
+                count < 20 or count / paired < 0.01 for count in level_counts
+            )
+            sparse_table = bool(cell_counts) and minimum_cell_count < 5
             output.append(
                 {
                     "field_a": left,
@@ -256,8 +280,89 @@ def categorical_associations(
                     "paired_observations": paired,
                     "corrected_cramers_v": "" if value is None else round(value, 8),
                     "status": status,
-                    "extremely_sparse": int(paired < max(100, int(0.01 * len(training)))),
+                    "minimum_level_count": minimum_level_count,
+                    "rare_level_flag": int(rare_level),
+                    "minimum_observed_cell_count": minimum_cell_count,
+                    "sparse_contingency_flag": int(sparse_table),
                     "redundancy_candidate": int(value is not None and value >= 0.80),
+                    "analysis_partition": "train",
+                }
+            )
+    return output
+
+
+def binary_prevalence(
+    training: list[dict[str, str]], features: list[str]
+) -> list[dict[str, Any]]:
+    output = []
+    for feature in features:
+        values = [str(row.get(feature, "")).strip() for row in training if not is_missing(row.get(feature))]
+        positive = sum(value == "1" for value in values)
+        negative = sum(value == "0" for value in values)
+        valid = positive + negative
+        output.append(
+            {
+                "field": feature,
+                "nonmissing_binary_count": valid,
+                "positive_count": positive,
+                "negative_count": negative,
+                "positive_prevalence": "" if not valid else round(positive / valid, 8),
+                "negative_prevalence": "" if not valid else round(negative / valid, 8),
+                "unexpected_nonbinary_count": len(values) - valid,
+                "rare_level_flag": int(valid > 0 and min(positive, negative) < max(20, int(0.01 * valid))),
+                "analysis_partition": "train",
+            }
+        )
+    return output
+
+
+def correlation_ratio(values: list[float], groups: list[str]) -> tuple[float | None, str]:
+    if len(values) < 3:
+        return None, "INSUFFICIENT_PAIRED_OBSERVATIONS"
+    levels = sorted(set(groups))
+    if len(levels) < 2:
+        return None, "CONSTANT_CATEGORY"
+    array = np.asarray(values, dtype=float)
+    denominator = float(np.sum((array - np.mean(array)) ** 2))
+    if denominator == 0:
+        return None, "CONSTANT_NUMERIC_INPUT"
+    mean = float(np.mean(array))
+    group_array = np.asarray(groups)
+    numerator = sum(
+        len(level_values) * (float(np.mean(level_values)) - mean) ** 2
+        for level in levels
+        if len(level_values := array[group_array == level])
+    )
+    return math.sqrt(numerator / denominator), "VALID"
+
+
+def mixed_associations(
+    training: list[dict[str, str]], numeric: list[str], categorical: list[str]
+) -> list[dict[str, Any]]:
+    output = []
+    for numeric_field in numeric:
+        for categorical_field in categorical:
+            pairs = [
+                (number, str(row.get(categorical_field, "")).strip())
+                for row in training
+                if (number := parse_number(row.get(numeric_field))) is not None
+                and not is_missing(row.get(categorical_field))
+            ]
+            values = [pair[0] for pair in pairs]
+            groups = [pair[1] for pair in pairs]
+            eta, status = correlation_ratio(values, groups)
+            counts = Counter(groups)
+            minimum_level_count = min(counts.values(), default=0)
+            output.append(
+                {
+                    "numeric_field": numeric_field,
+                    "categorical_field": categorical_field,
+                    "paired_observations": len(pairs),
+                    "category_levels": len(counts),
+                    "minimum_level_count": minimum_level_count,
+                    "rare_level_flag": int(bool(counts) and any(count < 20 or count / len(pairs) < 0.01 for count in counts.values())),
+                    "correlation_ratio_eta": "" if eta is None else round(eta, 8),
+                    "status": status,
                     "analysis_partition": "train",
                 }
             )
@@ -314,8 +419,8 @@ def audit(args: argparse.Namespace) -> dict[str, Any]:
 
     primary_rows = [row for row in registry if row["primary_model_feature"] == "1"]
     primary = sorted(row["field"] for row in primary_rows)
-    if set(primary) != set(core[0]) - METADATA:
-        failures.append("Primary feature registry does not exactly correspond to core predictors")
+    if set(primary) != set(no_population[0]) - METADATA or len(primary) != 49:
+        failures.append("Primary feature registry does not exactly correspond to the 49 no-population predictors")
     if METADATA & set(primary):
         failures.append("Metadata or target is registered as a predictor")
     if PROHIBITED_UNIPROT & set(primary) or PROHIBITED_UNIPROT & set(core[0]):
@@ -333,6 +438,11 @@ def audit(args: argparse.Namespace) -> dict[str, Any]:
     )
     if lineage_primary != primary:
         failures.append("Evidence-lineage primary features differ from the modelling registry")
+    sensitivity = sorted(row["field"] for row in lineage if row["approved_sensitivity"] == "1")
+    if set(primary) & set(sensitivity):
+        failures.append("Primary and sensitivity-only feature sets overlap")
+    if not POPULATION <= set(sensitivity) or POPULATION & set(primary):
+        failures.append("Population fields are not governed exclusively as sensitivity-only")
     optional_fields = sorted(
         field for field in structural_split(split_dir / "train_optional_predictors.csv")["schema"]
         if field.startswith("predictor_")
@@ -344,10 +454,19 @@ def audit(args: argparse.Namespace) -> dict[str, Any]:
         elif lineage_fields[field]["approved_primary"] == "1":
             failures.append(f"Optional predictor incorrectly approved as primary: {field}")
 
-    split_structures = {
-        split: structural_split(split_dir / f"{split}_full.csv")
-        for split in ("train", "validation", "test")
-    }
+    split_names = ("train", "validation", "test")
+    split_structures = {split: structural_split(split_dir / f"{split}_full.csv") for split in split_names}
+    for suffix in ("full", "core", "core_no_population", "optional_predictors"):
+        structures = {split: structural_split(split_dir / f"{split}_{suffix}.csv") for split in split_names}
+        if len({structure["schema"] for structure in structures.values()}) != 1:
+            failures.append(f"Train/validation/test schemas differ for {suffix}")
+        for split, structure in structures.items():
+            if structure["blank_keys"]:
+                failures.append(f"{split}_{suffix} contains blank variant keys")
+            if structure["blank_genes"]:
+                failures.append(f"{split}_{suffix} contains blank reconciled genes")
+            if structure["duplicate_keys"]:
+                failures.append(f"{split}_{suffix} contains duplicate variant keys")
     assignment_counts = assignment_summary(assignments)
     for split, expected in EXPECTED_SPLITS.items():
         structure = split_structures[split]
@@ -366,14 +485,20 @@ def audit(args: argparse.Namespace) -> dict[str, Any]:
     }
     if any(overlaps.values()):
         failures.append("Gene or variant overlap exists between locked partitions")
+    split_union = set().union(*(split_structures[split]["keys"] for split in split_names))
+    if split_union != full_keys:
+        failures.append("Union of split variant keys does not exactly equal the modelling cohort")
 
     # This is the only table used for label-dependent analysis.
-    training = read_csv(split_dir / "train_core.csv")
+    training = read_csv(split_dir / "train_core_no_population.csv")
+    training_population = read_csv(split_dir / "train_core.csv")
     numeric = sorted(row["field"] for row in primary_rows if row["data_type"] == "numeric")
     categorical = sorted(row["field"] for row in primary_rows if row["data_type"] in {"binary", "categorical"})
-    missing = missingness_rows(training, primary)
+    missing = missingness_rows(training, primary) + missingness_rows(training_population, sorted(POPULATION))
     numeric_rows = numeric_correlations(training, numeric)
     categorical_rows = categorical_associations(training, categorical)
+    binary_rows = binary_prevalence(training, sorted(row["field"] for row in primary_rows if row["data_type"] == "binary"))
+    mixed_rows = mixed_associations(training, numeric, categorical)
 
     population_missing = {
         row["field"]: row for row in missing if row["field"] in POPULATION
@@ -433,6 +558,8 @@ def audit(args: argparse.Namespace) -> dict[str, Any]:
     write_csv_atomic(output_dir / "15_missingness_by_class.csv", missing, list(missing[0]))
     write_csv_atomic(output_dir / "15_numeric_correlations.csv", numeric_rows, list(numeric_rows[0]))
     write_csv_atomic(output_dir / "15_categorical_associations.csv", categorical_rows, list(categorical_rows[0]))
+    write_csv_atomic(output_dir / "15_binary_feature_prevalence.csv", binary_rows, list(binary_rows[0]))
+    write_csv_atomic(output_dir / "15_mixed_associations.csv", mixed_rows, list(mixed_rows[0]))
     redundancy_fields = [
         "association_type", "field_a", "field_b", "paired_observations", "pearson",
         "spearman", "corrected_cramers_v", "status", "redundancy_candidate", "analysis_partition",
@@ -452,7 +579,7 @@ def audit(args: argparse.Namespace) -> dict[str, Any]:
         "unresolved_items": unresolved,
         "required_modelling_controls": MANDATORY_ABLATIONS,
         "analysis_partition_for_label_dependent_results": "train",
-        "test_partition_policy": "Structural integrity only; test labels were not read for association analyses",
+        "test_partition_policy": "Test labels are not used for feature associations, feature selection or methodological decisions. Aggregate test class counts are read only from the pre-existing gene-assignment summary to verify the locked assignment.",
         "frozen_source_sha256": sha256_file(frozen_path),
         "cohort": {"frozen_rows": len(frozen), "modelling_rows": len(full)},
         "locked_splits": {
@@ -461,7 +588,7 @@ def audit(args: argparse.Namespace) -> dict[str, Any]:
         },
         "partition_overlap": {key: len(value) for key, value in overlaps.items()},
         "approved_primary_features": primary,
-        "sensitivity_only_features": sorted(row["field"] for row in lineage if row["approved_sensitivity"] == "1"),
+        "sensitivity_only_features": sensitivity,
         "prohibited_features": sorted(row["field"] for row in lineage if row["prohibited"] == "1"),
         "class_associated_missingness_fields": [row["field"] for row in missing_flags],
         "redundancy_candidate_count": len(redundancy),

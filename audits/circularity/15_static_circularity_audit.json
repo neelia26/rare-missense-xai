@@ -13,9 +13,7 @@
     "conservation_gerp_rs",
     "conservation_phastcons100way",
     "conservation_phylop100way",
-    "gnomad_global_af",
     "gnomad_loeuf",
-    "gnomad_max_population_af",
     "gnomad_missense_z",
     "interpro_type_active_site",
     "interpro_type_binding_site",
@@ -100,7 +98,7 @@
     "uniprot_feature_natural_variant",
     "uniprot_feature_sequence_conflict"
   ],
-  "redundancy_candidate_count": 2,
+  "redundancy_candidate_count": 1,
   "required_modelling_controls": [
     "no-population versus population-inclusive",
     "without gene-constraint evidence",
@@ -119,7 +117,7 @@
     "predictor_sift_score"
   ],
   "structural_status": "PASS",
-  "test_partition_policy": "Structural integrity only; test labels were not read for association analyses",
+  "test_partition_policy": "Test labels are not used for feature associations, feature selection or methodological decisions. Aggregate test class counts are read only from the pre-existing gene-assignment summary to verify the locked assignment.",
   "unresolved_items": [
     "predictor_alphamissense_score",
     "predictor_cadd_phred",

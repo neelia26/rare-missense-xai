@@ -1,3 +1,2 @@
 association_type,field_a,field_b,paired_observations,pearson,spearman,corrected_cramers_v,status,redundancy_candidate,analysis_partition
 numeric,aa_hydropathy_delta,aa_polarity_delta,27727,-0.86505166,-0.8286825,,,1,train
-numeric,gnomad_global_af,gnomad_max_population_af,16567,0.6988499,0.8763543,,,1,train

@@ -6,7 +6,7 @@
 - **Scientific clearance:** CONDITIONAL
 - **Critical failures:** none
 - **Label-dependent analysis partition:** training only
-- **Test use:** structural integrity checks only; test labels were not read for feature association or methodological decisions
+- **Test use:** test labels were not used for feature associations, feature selection or methodological decisions; aggregate test class counts were accessed only from the pre-existing assignment summary to verify the locked assignment
 
 The frozen 40,000-variant source checksum, the 39,552-row modelling cohort, locked split sizes, schemas, unique keys and zero gene/variant overlap were verified. The audit did not train a model and did not alter any dataset or split assignment.
 
@@ -23,18 +23,19 @@ This confirms that population availability could act as a label shortcut. The no
 
 ## Redundancy candidates
 
-Two training-only numeric pairs met the absolute Pearson or Spearman threshold of 0.85:
+One training-only primary numeric pair met the absolute Pearson or Spearman threshold of 0.85:
 
 | Field A | Field B | Paired observations | Pearson | Spearman | Trigger |
 |---|---|---:|---:|---:|---|
 | `aa_hydropathy_delta` | `aa_polarity_delta` | 27,727 | -0.8651 | -0.8287 | Pearson |
-| `gnomad_global_af` | `gnomad_max_population_af` | 16,567 | 0.6988 | 0.8764 | Spearman |
 
 These are candidates for grouped interpretation and ablation, not automatic deletion. No binary/categorical pair reached corrected Cramér's V of 0.80.
 
 ## Governance outcome
 
-The evidence-lineage registry records 60 governed fields. The decision output contains 49 approved-primary features, seven sensitivity-only fields and four prohibited UniProt fields. The sensitivity-only set comprises the two population-frequency fields and five optional computational predictors. The prohibited set comprises Natural variant, Mutagenesis, Sequence conflict and Alternative sequence indicators.
+The evidence-lineage registry records 60 governed fields. The decision output contains 49 approved-primary features, seven sensitivity-only fields and four prohibited UniProt fields. The 49 approved-primary predictors exactly match `modeling_ready_core_no_population.csv`. The sensitivity-only set comprises the two population-frequency fields and five optional computational predictors; it does not overlap the primary set. The population-inclusive core table is retained only as a sensitivity condition. The prohibited set comprises Natural variant, Mutagenesis, Sequence conflict and Alternative sequence indicators.
+
+Binary-feature prevalence and positive/negative counts are reported in `15_binary_feature_prevalence.csv`. Rare levels and sparse contingency tables are determined from level and cell counts, not merely total paired observations. Mixed numeric–categorical associations are reported using training-only correlation ratio eta in `15_mixed_associations.csv`. Sparse flags require cautious interpretation and do not trigger automatic feature removal.
 
 The following optional predictor questions remain unresolved pending literature review:
 
