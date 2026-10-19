@@ -1,0 +1,113 @@
+{
+  "acceptance_thresholds": {
+    "class_proportion_tolerance": 0.02,
+    "minimum_evaluation_genes": 1100,
+    "variant_fraction_tolerance": 0.01
+  },
+  "alternate_gene_rows_excluded": 448,
+  "critical_failures": [],
+  "derived_dataset": {
+    "blank_keys": 0,
+    "class_counts": {
+      "0": 19642,
+      "1": 19910
+    },
+    "columns": 139,
+    "duplicate_key_rows": 0,
+    "rows": 39552,
+    "unique_keys": 39552
+  },
+  "files": {
+    "core": {
+      "path": "<MODELING_ROOT>/data/processed/modeling_ready_core.csv",
+      "sha256": "c4c2d35e4b26987c0b0c73769e939bbab6fc589bc786d243e5848ea89a26a038",
+      "size_bytes": 7805328
+    },
+    "excluded": {
+      "path": "<MODELING_ROOT>/data/processed/excluded_alternate_gene_variants.csv",
+      "sha256": "3693003cf0bbd2c9d500808ee4ef70e58b5c69a6e7cf7d326800b1112c55d919",
+      "size_bytes": 33287
+    },
+    "full": {
+      "path": "<MODELING_ROOT>/data/processed/modeling_ready_full.csv",
+      "sha256": "797fcb5958e697a21d8752463b66680cf699cd1ebea971f4e35224c647346799",
+      "size_bytes": 81078605
+    },
+    "no_population": {
+      "path": "<MODELING_ROOT>/data/processed/modeling_ready_core_no_population.csv",
+      "sha256": "733f38b3b0bf35c4f104e38b4612d33c7d50ec172731c673f810465b6463c849",
+      "size_bytes": 7318794
+    },
+    "registry": {
+      "path": "<MODELING_ROOT>/data/processed/modeling_feature_registry.csv",
+      "sha256": "2c14bd474f22472c798503c4f2d9f06ca0197d619a035c0cb9e6d06bdf0c22d8",
+      "size_bytes": 6032
+    }
+  },
+  "frozen_source": {
+    "path": "<MODELING_ROOT>/data/processed/final_dataset_full.csv",
+    "sha256": "50d8ac02ededae696d6867c7e713351d33058d01bad4fab3633055157525494f",
+    "size_bytes": 79086449
+  },
+  "gene_overlap": {
+    "train_test": [],
+    "train_validation": [],
+    "validation_test": []
+  },
+  "modelling_readiness": "READY for baseline modelling only if status is PASS and the population-handling warning is enforced through the documented preprocessing and ablation protocol.",
+  "population_handling": "No availability indicator is supplied. Fit any imputation/scaling on training genes only; unavailable evidence must contribute neutrally and be reported as unavailable. A separate no-population core table is supplied for mandatory ablation.",
+  "population_missing_fraction_by_class": {
+    "0": 0.12508909479686386,
+    "1": 0.6699648417880462
+  },
+  "protein_context": {
+    "interpro_lookup_failures": 23,
+    "interpro_successful_zero_overlap": 5683,
+    "prohibited_uniprot_tokens_excluded": [
+      "uniprot_feature_alternative_sequence",
+      "uniprot_feature_mutagenesis",
+      "uniprot_feature_natural_variant",
+      "uniprot_feature_sequence_conflict"
+    ],
+    "raw_context_fields_excluded_from_core": [
+      "interpro_overlap_types",
+      "uniprot_overlapping_feature_types"
+    ]
+  },
+  "splits": {
+    "test": {
+      "class_counts": {
+        "0": 3006,
+        "1": 3029
+      },
+      "genes": 1115,
+      "pathogenic_proportion": 0.5019055509527754,
+      "variant_fraction": 0.15258394012944984,
+      "variants": 6035
+    },
+    "train": {
+      "class_counts": {
+        "0": 13741,
+        "1": 13986
+      },
+      "genes": 5206,
+      "pathogenic_proportion": 0.5044180762433729,
+      "variant_fraction": 0.7010264967637541,
+      "variants": 27727
+    },
+    "validation": {
+      "class_counts": {
+        "0": 2895,
+        "1": 2895
+      },
+      "genes": 1115,
+      "pathogenic_proportion": 0.5,
+      "variant_fraction": 0.14638956310679613,
+      "variants": 5790
+    }
+  },
+  "status": "PASS",
+  "warnings": [
+    "Population missingness remains class-associated; enforce train-only neutral imputation without an availability indicator and report the no-population ablation."
+  ]
+}

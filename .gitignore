@@ -4,6 +4,9 @@ __pycache__/
 data/raw/*
 data/interim/*
 data/processed/*
+!data/processed/modeling_feature_registry.csv
+!data/processed/excluded_alternate_gene_variants.csv
+!data/processed/modeling_split_gene_assignments.csv
 audits/*.json
 audits/*.md
 logs/*
