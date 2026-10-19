@@ -1,0 +1,95 @@
+{
+  "alternate_gene_rows_excluded": 448,
+  "derived": {
+    "blank_keys": 0,
+    "class_counts": {
+      "0": 19642,
+      "1": 19910
+    },
+    "columns": 139,
+    "duplicate_key_rows": 0,
+    "rows": 39552,
+    "unique_keys": 39552
+  },
+  "excluded_class_counts": {
+    "0": 358,
+    "1": 90
+  },
+  "frozen_source_sha256": "50d8ac02ededae696d6867c7e713351d33058d01bad4fab3633055157525494f",
+  "interpro": {
+    "failure_encoding": "blank token indicators; successful zero-overlap is encoded as zeros",
+    "lookup_failures": 23,
+    "normalized_tokens": [
+      "active_site",
+      "binding_site",
+      "conserved_site",
+      "domain",
+      "family",
+      "homologous_superfamily",
+      "ptm",
+      "repeat"
+    ],
+    "successful_lookup_zero_overlap": 5683
+  },
+  "outputs": [
+    "<MODELING_ROOT>/data/processed/modeling_ready_full.csv",
+    "<MODELING_ROOT>/data/processed/modeling_ready_core.csv",
+    "<MODELING_ROOT>/data/processed/modeling_ready_core_no_population.csv",
+    "<MODELING_ROOT>/data/processed/modeling_feature_registry.csv",
+    "<MODELING_ROOT>/data/processed/excluded_alternate_gene_variants.csv"
+  ],
+  "population_evidence_policy": {
+    "missingness_indicators_in_primary_table": false,
+    "model_requirement": "Fit imputation and scaling on training genes only. Treat imputed population values as neutral and report the evidence as unavailable. Evaluate the supplied no-population ablation.",
+    "unavailable_values": "preserved as blank"
+  },
+  "source": {
+    "blank_keys": 0,
+    "class_counts": {
+      "0": 20000,
+      "1": 20000
+    },
+    "columns": 104,
+    "duplicate_key_rows": 0,
+    "rows": 40000,
+    "unique_keys": 40000
+  },
+  "status": "PASS",
+  "uniprot": {
+    "excluded_leakage_risk_tokens": [
+      "Alternative sequence",
+      "Mutagenesis",
+      "Natural variant",
+      "Sequence conflict"
+    ],
+    "included_normalized_tokens": [
+      "Active site",
+      "Beta strand",
+      "Binding site",
+      "Chain",
+      "Coiled coil",
+      "Compositional bias",
+      "Cross-link",
+      "DNA binding",
+      "Disulfide bond",
+      "Domain",
+      "Glycosylation",
+      "Helix",
+      "Intramembrane",
+      "Lipidation",
+      "Modified residue",
+      "Motif",
+      "Peptide",
+      "Propeptide",
+      "Region",
+      "Repeat",
+      "Signal",
+      "Site",
+      "Topological domain",
+      "Transit peptide",
+      "Transmembrane",
+      "Turn",
+      "Zinc finger"
+    ]
+  }
+}
