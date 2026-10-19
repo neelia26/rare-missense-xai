@@ -1,0 +1,24 @@
+{
+  "blank_keys": 0,
+  "class_counts": {
+    "0": 50000,
+    "1": 25000
+  },
+  "columns": 81,
+  "duplicate_key_rows": 0,
+  "match_status_counts": {
+    "AMBIGUOUS_GENE": 1929,
+    "MATCHED": 67572,
+    "NOT_FOUND": 5499
+  },
+  "rows": 75000,
+  "rule": "Match the reconciled Ensembl transcript first; use gene fallback only when the source has one row for that gene.",
+  "source_columns": {
+    "gene": "gene",
+    "loeuf": "lof.oe_ci.upper",
+    "missense_z": "mis.z_score",
+    "transcript": "transcript"
+  },
+  "source_release": "gnomAD v4.1",
+  "unique_keys": 75000
+}

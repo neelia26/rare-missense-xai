@@ -1,0 +1,21 @@
+{
+  "blank_keys": 0,
+  "candidate_targets": {
+    "benign": 50000,
+    "pathogenic": 25000
+  },
+  "class_counts": {
+    "0": 50000,
+    "1": 25000
+  },
+  "columns": 20,
+  "duplicate_key_rows": 0,
+  "eligible_class_counts": {
+    "0": 147254,
+    "1": 61929
+  },
+  "purpose": "Oversample before rarity, transcript and protein validation so that the final balanced cohort can be selected only after biological checks.",
+  "random_seed": 20261018,
+  "rows": 75000,
+  "unique_keys": 75000
+}

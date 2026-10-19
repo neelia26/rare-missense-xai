@@ -1,0 +1,35 @@
+{
+  "gene_counts": {
+    "test": 25,
+    "train": 7544,
+    "validation": 68
+  },
+  "gene_overlap": {
+    "train_test": [],
+    "train_validation": [],
+    "validation_test": []
+  },
+  "gene_overlap_pass": true,
+  "random_seed": 20261018,
+  "selection_rule": "The deterministic greedy assignment balances class and total counts while keeping every reconciled gene in exactly one partition.",
+  "target_fractions": {
+    "test": 0.15,
+    "train": 0.7,
+    "validation": 0.15
+  },
+  "usage_rule": "Fit preprocessing and models on train genes, choose/tune on validation genes, and use test genes once for the final locked evaluation.",
+  "variant_counts": {
+    "test": {
+      "0": 1127,
+      "1": 3738
+    },
+    "train": {
+      "0": 16796,
+      "1": 12432
+    },
+    "validation": {
+      "0": 2077,
+      "1": 3830
+    }
+  }
+}

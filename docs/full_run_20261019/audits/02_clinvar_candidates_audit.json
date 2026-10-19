@@ -1,0 +1,29 @@
+{
+  "blank_keys": 0,
+  "class_counts": {
+    "0": 147254,
+    "1": 61929
+  },
+  "clinvar_file_date": "2026-10-11",
+  "columns": 20,
+  "duplicate_key_rows": 0,
+  "exclusion_counts": {
+    "duplicate_label_conflict": 0,
+    "ineligible_or_nonbinary_label": 2352208,
+    "invalid_allele": 1306,
+    "not_biallelic_snv": 327842,
+    "not_clinvar_missense": 1687621,
+    "review_status_below_minimum": 16604
+  },
+  "minimum_review_stars": 1,
+  "rows": 209183,
+  "selection_rules": [
+    "GRCh38 biallelic single-nucleotide substitutions",
+    "ClinVar molecular consequence contains missense_variant",
+    "unambiguous benign/likely-benign or pathogenic/likely-pathogenic aggregate label",
+    "ClinVar review status has at least 1 star(s)",
+    "one deterministic record per genomic variant key"
+  ],
+  "source_vcf_records_scanned": 4594764,
+  "unique_keys": 209183
+}

@@ -1,0 +1,239 @@
+{
+  "all_missing_features": [],
+  "class_associated_missingness_fields": [
+    "gnomad_global_af",
+    "gnomad_max_population_af",
+    "interpro_overlap_types"
+  ],
+  "constant_features": [],
+  "critical_failures": [],
+  "dataset": {
+    "blank_keys": 0,
+    "class_counts": {
+      "0": 20000,
+      "1": 20000
+    },
+    "columns": 104,
+    "duplicate_key_rows": 0,
+    "rows": 40000,
+    "unique_keys": 40000
+  },
+  "default_model_features": [
+    "gnomad_global_af",
+    "gnomad_max_population_af",
+    "conservation_gerp_rs",
+    "conservation_phylop100way",
+    "conservation_phastcons100way",
+    "gnomad_missense_z",
+    "gnomad_loeuf",
+    "aa_grantham_score",
+    "aa_composition_delta",
+    "aa_polarity_delta",
+    "aa_volume_delta",
+    "aa_hydropathy_delta",
+    "aa_charge_delta",
+    "aa_charge_changed",
+    "aa_polarity_class_changed",
+    "aa_relative_protein_position",
+    "interpro_overlap_count",
+    "interpro_overlap_types",
+    "uniprot_overlapping_feature_types"
+  ],
+  "files": {
+    "core": {
+      "path": "<PROJECT_ROOT>/data/processed/model_table_core.csv",
+      "sha256": "1f55e9b4647afc620b7af071d4ff6d6d79bd3365b107c49090387771e1e72da7",
+      "size_bytes": 7438166
+    },
+    "full": {
+      "path": "<PROJECT_ROOT>/data/processed/final_dataset_full.csv",
+      "sha256": "50d8ac02ededae696d6867c7e713351d33058d01bad4fab3633055157525494f",
+      "size_bytes": 79086449
+    },
+    "registry": {
+      "path": "<PROJECT_ROOT>/data/processed/evidence_feature_registry.csv",
+      "sha256": "2b552c76f214e81e57bf88ec4c38705397f2a9f27e516d932c5e6d0b4b4c0263",
+      "size_bytes": 1998
+    }
+  },
+  "governance_decision": "A PASS confirms structural readiness, not scientific validity. Any warning must be resolved or tested through controlled feature/missingness experiments before modelling.",
+  "missingness_by_class": [
+    {
+      "absolute_class_gap": 0.5439,
+      "benign_missing_fraction": 0.1247,
+      "field": "gnomad_global_af",
+      "overall_missing_fraction": 0.39665,
+      "pathogenic_missing_fraction": 0.6686,
+      "shortcut_warning": true
+    },
+    {
+      "absolute_class_gap": 0.5439,
+      "benign_missing_fraction": 0.1247,
+      "field": "gnomad_max_population_af",
+      "overall_missing_fraction": 0.39665,
+      "pathogenic_missing_fraction": 0.6686,
+      "shortcut_warning": true
+    },
+    {
+      "absolute_class_gap": 0.0025,
+      "benign_missing_fraction": 0.0029,
+      "field": "conservation_gerp_rs",
+      "overall_missing_fraction": 0.00165,
+      "pathogenic_missing_fraction": 0.0004,
+      "shortcut_warning": false
+    },
+    {
+      "absolute_class_gap": 0.0001,
+      "benign_missing_fraction": 0.0001,
+      "field": "conservation_phylop100way",
+      "overall_missing_fraction": 5e-05,
+      "pathogenic_missing_fraction": 0.0,
+      "shortcut_warning": false
+    },
+    {
+      "absolute_class_gap": 0.0001,
+      "benign_missing_fraction": 0.0001,
+      "field": "conservation_phastcons100way",
+      "overall_missing_fraction": 5e-05,
+      "pathogenic_missing_fraction": 0.0,
+      "shortcut_warning": false
+    },
+    {
+      "absolute_class_gap": 0.0411,
+      "benign_missing_fraction": 0.065,
+      "field": "gnomad_missense_z",
+      "overall_missing_fraction": 0.08555,
+      "pathogenic_missing_fraction": 0.1061,
+      "shortcut_warning": false
+    },
+    {
+      "absolute_class_gap": 0.03575,
+      "benign_missing_fraction": 0.07065,
+      "field": "gnomad_loeuf",
+      "overall_missing_fraction": 0.088525,
+      "pathogenic_missing_fraction": 0.1064,
+      "shortcut_warning": false
+    },
+    {
+      "absolute_class_gap": 0.0,
+      "benign_missing_fraction": 0.0,
+      "field": "aa_grantham_score",
+      "overall_missing_fraction": 0.0,
+      "pathogenic_missing_fraction": 0.0,
+      "shortcut_warning": false
+    },
+    {
+      "absolute_class_gap": 0.0,
+      "benign_missing_fraction": 0.0,
+      "field": "aa_composition_delta",
+      "overall_missing_fraction": 0.0,
+      "pathogenic_missing_fraction": 0.0,
+      "shortcut_warning": false
+    },
+    {
+      "absolute_class_gap": 0.0,
+      "benign_missing_fraction": 0.0,
+      "field": "aa_polarity_delta",
+      "overall_missing_fraction": 0.0,
+      "pathogenic_missing_fraction": 0.0,
+      "shortcut_warning": false
+    },
+    {
+      "absolute_class_gap": 0.0,
+      "benign_missing_fraction": 0.0,
+      "field": "aa_volume_delta",
+      "overall_missing_fraction": 0.0,
+      "pathogenic_missing_fraction": 0.0,
+      "shortcut_warning": false
+    },
+    {
+      "absolute_class_gap": 0.0,
+      "benign_missing_fraction": 0.0,
+      "field": "aa_hydropathy_delta",
+      "overall_missing_fraction": 0.0,
+      "pathogenic_missing_fraction": 0.0,
+      "shortcut_warning": false
+    },
+    {
+      "absolute_class_gap": 0.0,
+      "benign_missing_fraction": 0.0,
+      "field": "aa_charge_delta",
+      "overall_missing_fraction": 0.0,
+      "pathogenic_missing_fraction": 0.0,
+      "shortcut_warning": false
+    },
+    {
+      "absolute_class_gap": 0.0,
+      "benign_missing_fraction": 0.0,
+      "field": "aa_charge_changed",
+      "overall_missing_fraction": 0.0,
+      "pathogenic_missing_fraction": 0.0,
+      "shortcut_warning": false
+    },
+    {
+      "absolute_class_gap": 0.0,
+      "benign_missing_fraction": 0.0,
+      "field": "aa_polarity_class_changed",
+      "overall_missing_fraction": 0.0,
+      "pathogenic_missing_fraction": 0.0,
+      "shortcut_warning": false
+    },
+    {
+      "absolute_class_gap": 0.0,
+      "benign_missing_fraction": 0.0,
+      "field": "aa_relative_protein_position",
+      "overall_missing_fraction": 0.0,
+      "pathogenic_missing_fraction": 0.0,
+      "shortcut_warning": false
+    },
+    {
+      "absolute_class_gap": 0.00155,
+      "benign_missing_fraction": 0.00155,
+      "field": "interpro_overlap_count",
+      "overall_missing_fraction": 0.000775,
+      "pathogenic_missing_fraction": 0.0,
+      "shortcut_warning": false
+    },
+    {
+      "absolute_class_gap": 0.1682,
+      "benign_missing_fraction": 0.2291,
+      "field": "interpro_overlap_types",
+      "overall_missing_fraction": 0.145,
+      "pathogenic_missing_fraction": 0.0609,
+      "shortcut_warning": true
+    },
+    {
+      "absolute_class_gap": 0.00025,
+      "benign_missing_fraction": 0.001,
+      "field": "uniprot_overlapping_feature_types",
+      "overall_missing_fraction": 0.000875,
+      "pathogenic_missing_fraction": 0.00075,
+      "shortcut_warning": false
+    }
+  ],
+  "numeric_range_violations": {
+    "aa_relative_protein_position": 0,
+    "gnomad_global_af": 0,
+    "gnomad_max_population_af": 0,
+    "interpro_overlap_count": 0
+  },
+  "split_gene_counts": {
+    "test": 25,
+    "train": 7544,
+    "validation": 68
+  },
+  "split_gene_overlap": {
+    "train_test": [],
+    "train_validation": [],
+    "validation_test": []
+  },
+  "split_sizes": {
+    "test": 4865,
+    "train": 29228,
+    "validation": 5907
+  },
+  "status": "PASS",
+  "warnings": [
+    "Class-associated missingness (absolute gap >= 0.10) requires controlled missingness experiments: gnomad_global_af, gnomad_max_population_af, interpro_overlap_types"
+  ]
+}

@@ -1,0 +1,41 @@
+{
+  "completed_at_utc": "2026-10-18T21:13:16.312633+00:00",
+  "executing_script": {
+    "path": "<PROJECT_ROOT>/scripts/06_parse_vep.py",
+    "sha256": "da1ae5bd84fdecb901f648af98e5daec592dd06ae0afef7bf649a06808f01863",
+    "size_bytes": 13496
+  },
+  "inputs": [
+    {
+      "path": "<PROJECT_ROOT>/data/interim/03_candidate_pool.csv",
+      "sha256": "54678b61f47938337806a22e364909e7cd26872710c7c182f3dbaa7ce8ea75c2",
+      "size_bytes": 20918375
+    },
+    {
+      "path": "<PROJECT_ROOT>/data/raw/vep/05_vep.jsonl",
+      "sha256": "09de0c87e63f216e765791063d57629b019bd7190f3811d92fd1b120241fbe4e",
+      "size_bytes": 1367811581
+    }
+  ],
+  "notes": [],
+  "outputs": [
+    {
+      "path": "<PROJECT_ROOT>/data/interim/06_vep_reconciled.csv",
+      "sha256": "a69bc822c5fb586a9ff08e9cc185b741ed4c96915cb8f9235611b9abb36fc923",
+      "size_bytes": 93223011
+    },
+    {
+      "path": "<PROJECT_ROOT>/audits/06_vep_reconciliation_audit.json",
+      "sha256": "5e87f694cf35d3e2287eaa979f063edc64071ffe912e6697e8520181ece9fdfd",
+      "size_bytes": 710
+    }
+  ],
+  "parameters": {
+    "rarity_threshold": 0.01,
+    "vep_release": "116"
+  },
+  "pipeline_version": "1.0.0",
+  "platform": "macOS-26.6.2-arm64-arm-64bit-Mach-O",
+  "python_version": "3.14.3",
+  "stage": "06_parse_vep"
+}

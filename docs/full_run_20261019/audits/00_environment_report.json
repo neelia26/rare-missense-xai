@@ -1,0 +1,48 @@
+{
+  "checked_at_utc": "2026-10-18T15:54:00.529407+00:00",
+  "commands": {
+    "docker": {
+      "available": true,
+      "path": "/usr/local/bin/docker",
+      "version": "Docker version 28.2.2, build e6534b4"
+    },
+    "git": {
+      "available": true,
+      "path": "/usr/bin/git",
+      "version": "git version 2.50.1 (Apple Git-155)"
+    },
+    "vep": {
+      "available": false,
+      "path": "",
+      "version": ""
+    }
+  },
+  "local_vep_ready": false,
+  "notes": [
+    "The configured full workflow uses checkpointed Ensembl VEP REST requests.",
+    "Stage 05 verifies the live Ensembl release before accepting annotations.",
+    "pysam is required for optional direct lookups in indexed gnomAD VCFs."
+  ],
+  "packages": {
+    "numpy": {
+      "available": true,
+      "version": "2.5.4"
+    },
+    "pandas": {
+      "available": true,
+      "version": "2.3.3"
+    },
+    "pysam": {
+      "available": true,
+      "version": "0.24.1"
+    },
+    "sklearn": {
+      "available": true,
+      "version": "1.9.1"
+    }
+  },
+  "platform": "macOS-26.6.2-arm64-arm-64bit-Mach-O",
+  "project_root": "<PROJECT_ROOT>",
+  "python": "3.14.3 (main, Feb  3 2026, 15:32:20) [Clang 17.0.0 (clang-1700.6.3.2)]",
+  "python_dependencies_ready": true
+}

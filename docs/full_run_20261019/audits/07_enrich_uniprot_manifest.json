@@ -1,0 +1,35 @@
+{
+  "completed_at_utc": "2026-10-19T05:14:17.778551+00:00",
+  "executing_script": {
+    "path": "<PROJECT_ROOT>/scripts/07_enrich_uniprot.py",
+    "sha256": "8598ba5956c59f83d082f3967e1766b49142c47bfa65bb70e2faa472d7720d48",
+    "size_bytes": 12531
+  },
+  "inputs": [
+    {
+      "path": "<PROJECT_ROOT>/data/interim/06_vep_reconciled.csv",
+      "sha256": "a69bc822c5fb586a9ff08e9cc185b741ed4c96915cb8f9235611b9abb36fc923",
+      "size_bytes": 93223011
+    }
+  ],
+  "notes": [],
+  "outputs": [
+    {
+      "path": "<PROJECT_ROOT>/data/interim/07_uniprot_validated.csv",
+      "sha256": "370f4fd317b6967faf210682ab34c8632f075eb0c971fd5b77c6ba6bf3c60620",
+      "size_bytes": 107161140
+    },
+    {
+      "path": "<PROJECT_ROOT>/audits/07_uniprot_audit.json",
+      "sha256": "3e0c04a6ed1158a92844a948e7cc0e3ef02375156907f3cfee4d27b5133af06c",
+      "size_bytes": 680
+    }
+  ],
+  "parameters": {
+    "allow_trembl_fallback": false
+  },
+  "pipeline_version": "1.0.0",
+  "platform": "macOS-26.6.2-arm64-arm-64bit-Mach-O",
+  "python_version": "3.14.3",
+  "stage": "07_enrich_uniprot"
+}

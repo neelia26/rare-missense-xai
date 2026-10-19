@@ -1,0 +1,57 @@
+{
+  "completed_at_utc": "2026-10-19T08:44:02.046003+00:00",
+  "executing_script": {
+    "path": "<PROJECT_ROOT>/scripts/12_build_final_dataset.py",
+    "sha256": "7059bedd3a88f3d5378e221bca2c74d6e3b3e3bed98c7e997669e7ab5acd4222",
+    "size_bytes": 9792
+  },
+  "inputs": [
+    {
+      "path": "<PROJECT_ROOT>/data/interim/11_amino_acid_features.csv",
+      "sha256": "8b9ae847cf2d151af1cdbe497d5ed1c208c63985ebd4e88775f9d303a438429f",
+      "size_bytes": 139898499
+    },
+    {
+      "path": "<PROJECT_ROOT>/data/interim/10_optional_predictor_scores.csv",
+      "sha256": "087aa9b54c7096dd09b4121db11f5bc8326d0c8648979e6bd96d8617bfa16935",
+      "size_bytes": 7162147
+    }
+  ],
+  "notes": [],
+  "outputs": [
+    {
+      "path": "<PROJECT_ROOT>/data/processed/final_dataset_full.csv",
+      "sha256": "50d8ac02ededae696d6867c7e713351d33058d01bad4fab3633055157525494f",
+      "size_bytes": 79086449
+    },
+    {
+      "path": "<PROJECT_ROOT>/data/processed/model_table_core.csv",
+      "sha256": "1f55e9b4647afc620b7af071d4ff6d6d79bd3365b107c49090387771e1e72da7",
+      "size_bytes": 7438166
+    },
+    {
+      "path": "<PROJECT_ROOT>/data/processed/evidence_feature_registry.csv",
+      "sha256": "2b552c76f214e81e57bf88ec4c38705397f2a9f27e516d932c5e6d0b4b4c0263",
+      "size_bytes": 1998
+    },
+    {
+      "path": "<PROJECT_ROOT>/audits/12_final_build_audit.json",
+      "sha256": "7f10dbc07d314c2a6caca510c7941f64f0948bfea034bbe0d1fe4681fdac54e8",
+      "size_bytes": 1624
+    },
+    {
+      "path": "<PROJECT_ROOT>/data/processed/model_table_with_optional_predictors.csv",
+      "sha256": "efe21efc571749de1460a831d02a486b48b33c64ba09f2bda7ad9c3ffdc6683d",
+      "size_bytes": 8473573
+    }
+  ],
+  "parameters": {
+    "allow_smaller": false,
+    "seed": 20261018,
+    "target_per_class": 20000
+  },
+  "pipeline_version": "1.0.0",
+  "platform": "macOS-26.6.2-arm64-arm-64bit-Mach-O",
+  "python_version": "3.14.3",
+  "stage": "12_build_final_dataset"
+}

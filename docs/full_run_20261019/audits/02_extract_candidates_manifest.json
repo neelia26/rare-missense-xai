@@ -1,0 +1,43 @@
+{
+  "completed_at_utc": "2026-10-18T15:54:22.497885+00:00",
+  "executing_script": {
+    "path": "<PROJECT_ROOT>/scripts/02_extract_candidates.py",
+    "sha256": "76502e75fce7e9a7a21d57a4a0d808835bf32f8d2c496ad3a43cd26fcc9c15d6",
+    "size_bytes": 7685
+  },
+  "inputs": [
+    {
+      "path": "<PROJECT_ROOT>/data/raw/clinvar_grch38.vcf.gz",
+      "sha256": "05d9481dd7217cc4df15803362d4a4c9eae5875b27b1750867d6bfd2643b3d10",
+      "size_bytes": 200437060
+    }
+  ],
+  "notes": [],
+  "outputs": [
+    {
+      "path": "<PROJECT_ROOT>/data/interim/02_clinvar_candidates.csv",
+      "sha256": "df2d6e2b94fe0f6897709eb4c3b1827809806e19fb96f413fd3347ebf26bebae",
+      "size_bytes": 58023305
+    },
+    {
+      "path": "<PROJECT_ROOT>/audits/02_clinvar_candidates_audit.json",
+      "sha256": "d99803503acf4d8b2ae6729b424e450ef6e4bfddfe043f8456b4423a48318f63",
+      "size_bytes": 864
+    }
+  ],
+  "parameters": {
+    "accepted_significance": {
+      "Benign": 0,
+      "Benign/Likely_benign": 0,
+      "Likely_benign": 0,
+      "Likely_pathogenic": 1,
+      "Pathogenic": 1,
+      "Pathogenic/Likely_pathogenic": 1
+    },
+    "minimum_review_stars": 1
+  },
+  "pipeline_version": "1.0.0",
+  "platform": "macOS-26.6.2-arm64-arm-64bit-Mach-O",
+  "python_version": "3.14.3",
+  "stage": "02_extract_candidates"
+}

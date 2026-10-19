@@ -1,0 +1,27 @@
+{
+  "blank_keys": 0,
+  "class_counts": {
+    "0": 50000,
+    "1": 25000
+  },
+  "columns": 52,
+  "duplicate_key_rows": 0,
+  "not_reported_policy": "Kept distinct from AF=0. Eligibility is decided later from configuration; lookup failures remain different from successfully queried but unreported variants.",
+  "population_lookup_counts": {
+    "FOUND": 53154,
+    "NOT_REPORTED": 21846
+  },
+  "rarity_status_counts": {
+    "NOT_RARE": 9867,
+    "NOT_REPORTED": 21846,
+    "RARE": 43287
+  },
+  "rarity_threshold": 0.01,
+  "rows": 75000,
+  "transcript_status_counts": {
+    "NO_GENE_MATCHED_MISSENSE_TRANSCRIPT": 1195,
+    "RECONCILED_MISSENSE": 73805
+  },
+  "unique_keys": 75000,
+  "vep_results_by_key": 75000
+}

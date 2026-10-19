@@ -1,0 +1,37 @@
+{
+  "completed_at_utc": "2026-10-18T15:54:24.539371+00:00",
+  "executing_script": {
+    "path": "<PROJECT_ROOT>/scripts/03_select_candidate_pool.py",
+    "sha256": "55e8e31ae5e9949cd038d7a83d492bf02e1ce98c3d1beda700553c3959544558",
+    "size_bytes": 3018
+  },
+  "inputs": [
+    {
+      "path": "<PROJECT_ROOT>/data/interim/02_clinvar_candidates.csv",
+      "sha256": "df2d6e2b94fe0f6897709eb4c3b1827809806e19fb96f413fd3347ebf26bebae",
+      "size_bytes": 58023305
+    }
+  ],
+  "notes": [],
+  "outputs": [
+    {
+      "path": "<PROJECT_ROOT>/data/interim/03_candidate_pool.csv",
+      "sha256": "54678b61f47938337806a22e364909e7cd26872710c7c182f3dbaa7ce8ea75c2",
+      "size_bytes": 20918375
+    },
+    {
+      "path": "<PROJECT_ROOT>/audits/03_candidate_pool_audit.json",
+      "sha256": "5b7af938c8e7dfa595eaa6feb1d84121366b5c240e2fd78a7771db08b12791fb",
+      "size_bytes": 487
+    }
+  ],
+  "parameters": {
+    "benign_target": 50000,
+    "pathogenic_target": 25000,
+    "seed": 20261018
+  },
+  "pipeline_version": "1.0.0",
+  "platform": "macOS-26.6.2-arm64-arm-64bit-Mach-O",
+  "python_version": "3.14.3",
+  "stage": "03_select_candidate_pool"
+}

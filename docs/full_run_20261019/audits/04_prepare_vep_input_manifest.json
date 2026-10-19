@@ -1,0 +1,32 @@
+{
+  "completed_at_utc": "2026-10-18T15:54:25.207798+00:00",
+  "executing_script": {
+    "path": "<PROJECT_ROOT>/scripts/04_prepare_vep_input.py",
+    "sha256": "daca5a5221549e38ed1c10b89ec4421300e9e73d3418e86061e94ed1bd72510b",
+    "size_bytes": 2527
+  },
+  "inputs": [
+    {
+      "path": "<PROJECT_ROOT>/data/interim/03_candidate_pool.csv",
+      "sha256": "54678b61f47938337806a22e364909e7cd26872710c7c182f3dbaa7ce8ea75c2",
+      "size_bytes": 20918375
+    }
+  ],
+  "notes": [],
+  "outputs": [
+    {
+      "path": "<PROJECT_ROOT>/data/raw/vep/04_candidates.vcf",
+      "sha256": "d37745b008ab745d5a169af2908736d4fa1ef0b71e214606afe25893448dd867",
+      "size_bytes": 5924771
+    }
+  ],
+  "parameters": {
+    "assembly": "GRCh38",
+    "format": "VCFv4.2",
+    "rows": 75000
+  },
+  "pipeline_version": "1.0.0",
+  "platform": "macOS-26.6.2-arm64-arm-64bit-Mach-O",
+  "python_version": "3.14.3",
+  "stage": "04_prepare_vep_input"
+}

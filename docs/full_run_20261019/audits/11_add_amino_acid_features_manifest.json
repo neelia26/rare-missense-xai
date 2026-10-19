@@ -1,0 +1,36 @@
+{
+  "completed_at_utc": "2026-10-19T08:43:56.262235+00:00",
+  "executing_script": {
+    "path": "<PROJECT_ROOT>/scripts/11_add_amino_acid_features.py",
+    "sha256": "72abeef849119d4969a56595d8d5412644fe7194a116d033c3c87fe586c887bd",
+    "size_bytes": 4801
+  },
+  "inputs": [
+    {
+      "path": "<PROJECT_ROOT>/data/interim/10_dbnsfp.csv",
+      "sha256": "8c58957f23e02a1416a4fefa0cd0149f335580b92ce5bcfb17b01daff95488bb",
+      "size_bytes": 135516878
+    }
+  ],
+  "notes": [],
+  "outputs": [
+    {
+      "path": "<PROJECT_ROOT>/data/interim/11_amino_acid_features.csv",
+      "sha256": "8b9ae847cf2d151af1cdbe497d5ed1c208c63985ebd4e88775f9d303a438429f",
+      "size_bytes": 139898499
+    },
+    {
+      "path": "<PROJECT_ROOT>/audits/11_amino_acid_features_audit.json",
+      "sha256": "5931d17bf4772b81fa67f321808f1468fa49677a0b0213283e6c4f02b34160b2",
+      "size_bytes": 542
+    }
+  ],
+  "parameters": {
+    "composition_polarity_volume_and_distance": "Grantham (1974)",
+    "hydropathy": "Kyte and Doolittle (1982)"
+  },
+  "pipeline_version": "1.0.0",
+  "platform": "macOS-26.6.2-arm64-arm-64bit-Mach-O",
+  "python_version": "3.14.3",
+  "stage": "11_add_amino_acid_features"
+}

@@ -1,0 +1,73 @@
+{
+  "completed_at_utc": "2026-10-18T11:44:38.676228+00:00",
+  "executing_script": {
+    "path": "<PROJECT_ROOT>/scripts/10_enrich_dbnsfp.py",
+    "sha256": "4d0fbed102ae34a2df7242d80bdedcbc37701532616974e87e16636cb8f50da1",
+    "size_bytes": 23910
+  },
+  "inputs": [
+    {
+      "path": "<PROJECT_ROOT>/data/interim/09_constraint.csv",
+      "sha256": "b265c93498dbbdfebb9b36c05402b4eb0bfba432f260a40e5de97afbd9ae4115",
+      "size_bytes": 356302
+    },
+    {
+      "path": "<PROJECT_ROOT>/data/raw/myvariant/dbnsfp/metadata_20250624.json",
+      "sha256": "ad14676b63cdafb1033a705a72a6b98ae766fd4300c6e58b8f8668090ea00b1e",
+      "size_bytes": 15255
+    },
+    {
+      "path": "<PROJECT_ROOT>/data/raw/myvariant/dbnsfp/batches/batch_6486fd9ef7e045b88b48.json",
+      "sha256": "54097c44237927751ea790138d464acabb22daf45bd66aadf667065a8c3fa400",
+      "size_bytes": 117884
+    }
+  ],
+  "notes": [
+    "The API response cache is content-addressed by query IDs, assembly, fields, dbNSFP release and MyVariant build.",
+    "MyVariant may expose an older dbNSFP release than the current dbNSFP website; the API metadata recorded here is authoritative for this stage."
+  ],
+  "outputs": [
+    {
+      "path": "<PROJECT_ROOT>/data/interim/smoke/10_dbnsfp_smoke.csv",
+      "sha256": "d316971b429538279a86290c7ce8e5011a8da02fd7ce8fd917af32b9205de30e",
+      "size_bytes": 32232
+    },
+    {
+      "path": "<PROJECT_ROOT>/data/interim/smoke/10_optional_predictor_scores_smoke.csv",
+      "sha256": "1476e8a6dec6e5328a82501c9fe40b1a81ae98a9c49d4bccd4e0f364b5d06138",
+      "size_bytes": 1143
+    },
+    {
+      "path": "<PROJECT_ROOT>/audits/10_dbnsfp_smoke_audit.json",
+      "sha256": "492f04f76586b1c2e030dd1f723bb5fe0a56f40c8aad9ca090c7daeb620eaaf6",
+      "size_bytes": 2176
+    }
+  ],
+  "parameters": {
+    "access_service": "MyVariant.info",
+    "api_endpoint": "https://myvariant.info/v1/variant",
+    "assembly": "hg38",
+    "batch_size": 100,
+    "conservation_fields": [
+      "GERP++_RS",
+      "phyloP100way_vertebrate",
+      "phastCons100way_vertebrate"
+    ],
+    "metadata_endpoint": "https://myvariant.info/v1/metadata",
+    "myvariant_build_version": "20250624",
+    "optional_predictor_fields": [
+      "SIFT_score",
+      "Polyphen2_HDIV_score",
+      "REVEL_score",
+      "CADD_phred",
+      "AlphaMissense_score"
+    ],
+    "request_fields": "dbnsfp",
+    "smoke_test": 10,
+    "source_release": "4.8a"
+  },
+  "pipeline_version": "1.0.0",
+  "platform": "macOS-26.6.2-arm64-arm-64bit-Mach-O",
+  "python_version": "3.14.3",
+  "stage": "10_enrich_dbnsfp_smoke"
+}

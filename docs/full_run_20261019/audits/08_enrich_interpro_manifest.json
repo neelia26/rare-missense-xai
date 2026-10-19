@@ -1,0 +1,36 @@
+{
+  "completed_at_utc": "2026-10-19T06:47:40.092946+00:00",
+  "executing_script": {
+    "path": "<PROJECT_ROOT>/scripts/08_enrich_interpro.py",
+    "sha256": "f3838f56cdaa1bc64ea75064981966d9376479b20b59774a944bff6335f57a47",
+    "size_bytes": 8552
+  },
+  "inputs": [
+    {
+      "path": "<PROJECT_ROOT>/data/interim/07_uniprot_validated.csv",
+      "sha256": "370f4fd317b6967faf210682ab34c8632f075eb0c971fd5b77c6ba6bf3c60620",
+      "size_bytes": 107161140
+    }
+  ],
+  "notes": [],
+  "outputs": [
+    {
+      "path": "<PROJECT_ROOT>/data/interim/08_interpro.csv",
+      "sha256": "d298469b6f07d990175be56aab0308197bc6189663f6b8085a0372153bd85c4b",
+      "size_bytes": 115759026
+    },
+    {
+      "path": "<PROJECT_ROOT>/audits/08_interpro_audit.json",
+      "sha256": "bf1811f84761c0a04d1d12ba8e319be0a8e687ef19712edea7966cb327f8bf9a",
+      "size_bytes": 416
+    }
+  ],
+  "parameters": {
+    "api": "InterPro protein entry endpoint",
+    "workers": 3
+  },
+  "pipeline_version": "1.0.0",
+  "platform": "macOS-26.6.2-arm64-arm-64bit-Mach-O",
+  "python_version": "3.14.3",
+  "stage": "08_enrich_interpro"
+}

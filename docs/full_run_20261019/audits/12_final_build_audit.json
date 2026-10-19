@@ -1,0 +1,58 @@
+{
+  "actual_per_class": 20000,
+  "blank_keys": 0,
+  "class_counts": {
+    "0": 20000,
+    "1": 20000
+  },
+  "columns": 104,
+  "core_model_features": [
+    "gnomad_global_af",
+    "gnomad_max_population_af",
+    "conservation_gerp_rs",
+    "conservation_phylop100way",
+    "conservation_phastcons100way",
+    "gnomad_missense_z",
+    "gnomad_loeuf",
+    "aa_grantham_score",
+    "aa_composition_delta",
+    "aa_polarity_delta",
+    "aa_volume_delta",
+    "aa_hydropathy_delta",
+    "aa_charge_delta",
+    "aa_charge_changed",
+    "aa_polarity_class_changed",
+    "aa_relative_protein_position",
+    "interpro_overlap_count",
+    "interpro_overlap_types",
+    "uniprot_overlapping_feature_types"
+  ],
+  "duplicate_key_rows": 0,
+  "eligibility_counts": {
+    "ELIGIBLE": 52995,
+    "NOT_RARE": 7734,
+    "TRANSCRIPT_NOT_STRICT_MISSENSE": 1195,
+    "UNIPROT_REFERENCE_NOT_VALIDATED": 13076
+  },
+  "eligible_before_balancing": {
+    "0": 30606,
+    "1": 22389
+  },
+  "input_rows": 75000,
+  "optional_predictor_condition_created": true,
+  "prohibited_as_model_inputs": [
+    "ClinVar label text/review/condition fields",
+    "variant and database identifiers",
+    "gene symbol and transcript identifiers (gene is retained only for grouped splitting)",
+    "source, join and lookup-status provenance fields unless a later audit explicitly justifies them"
+  ],
+  "random_seed": 20261018,
+  "rarity_policy": {
+    "include_not_reported_after_successful_lookup": true,
+    "not_reported_is_never_replaced_with_zero": true,
+    "reported_af_threshold": 0.01
+  },
+  "rows": 40000,
+  "target_per_class": 20000,
+  "unique_keys": 40000
+}

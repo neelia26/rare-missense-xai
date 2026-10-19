@@ -1,0 +1,226 @@
+{
+  "completed_at_utc": "2026-10-19T08:44:10.240721+00:00",
+  "completed_stages": {
+    "00": {
+      "command": [
+        "<PROJECT_ROOT>/.venv/bin/python",
+        "<PROJECT_ROOT>/scripts/00_check_environment.py",
+        "--config",
+        "<PROJECT_ROOT>/config/pipeline_config.json"
+      ],
+      "completed_at_utc": "2026-10-18T15:54:00.789275+00:00",
+      "output": {
+        "path": "<PROJECT_ROOT>/audits/00_environment_report.json",
+        "sha256": "24f46739065dddbf34b754128885b8d235fd23540937bc481773408960c2b064",
+        "size_bytes": 1279
+      }
+    },
+    "01": {
+      "completed_at_utc": "2026-10-18T15:54:00.790334+00:00",
+      "mode": "reused_frozen_source",
+      "output": {
+        "path": "<PROJECT_ROOT>/data/raw/clinvar_grch38.vcf.gz",
+        "sha256": "05d9481dd7217cc4df15803362d4a4c9eae5875b27b1750867d6bfd2643b3d10",
+        "size_bytes": 200437060
+      },
+      "provenance": {
+        "path": "<PROJECT_ROOT>/data/raw/clinvar_grch38.provenance.json",
+        "sha256": "4a806ffce3c8393871cace77fe8b0f1ce91d43497381ff106508d2f21f378aff",
+        "size_bytes": 741
+      },
+      "reused_frozen_source": true
+    },
+    "02": {
+      "command": [
+        "<PROJECT_ROOT>/.venv/bin/python",
+        "<PROJECT_ROOT>/scripts/02_extract_candidates.py",
+        "--config",
+        "<PROJECT_ROOT>/config/pipeline_config.json"
+      ],
+      "completed_at_utc": "2026-10-18T15:54:22.728170+00:00",
+      "output": {
+        "path": "<PROJECT_ROOT>/data/interim/02_clinvar_candidates.csv",
+        "sha256": "df2d6e2b94fe0f6897709eb4c3b1827809806e19fb96f413fd3347ebf26bebae",
+        "size_bytes": 58023305
+      }
+    },
+    "03": {
+      "command": [
+        "<PROJECT_ROOT>/.venv/bin/python",
+        "<PROJECT_ROOT>/scripts/03_select_candidate_pool.py",
+        "--config",
+        "<PROJECT_ROOT>/config/pipeline_config.json"
+      ],
+      "completed_at_utc": "2026-10-18T15:54:24.719809+00:00",
+      "output": {
+        "path": "<PROJECT_ROOT>/data/interim/03_candidate_pool.csv",
+        "sha256": "54678b61f47938337806a22e364909e7cd26872710c7c182f3dbaa7ce8ea75c2",
+        "size_bytes": 20918375
+      }
+    },
+    "04": {
+      "command": [
+        "<PROJECT_ROOT>/.venv/bin/python",
+        "<PROJECT_ROOT>/scripts/04_prepare_vep_input.py"
+      ],
+      "completed_at_utc": "2026-10-18T15:54:25.299183+00:00",
+      "output": {
+        "path": "<PROJECT_ROOT>/data/raw/vep/04_candidates.vcf",
+        "sha256": "d37745b008ab745d5a169af2908736d4fa1ef0b71e214606afe25893448dd867",
+        "size_bytes": 5924771
+      }
+    },
+    "05": {
+      "command": [
+        "<PROJECT_ROOT>/.venv/bin/python",
+        "<PROJECT_ROOT>/scripts/05_run_vep.py",
+        "--mode",
+        "rest",
+        "--config",
+        "<PROJECT_ROOT>/config/pipeline_config.json"
+      ],
+      "completed_at_utc": "2026-10-18T21:12:44.506218+00:00",
+      "output": {
+        "path": "<PROJECT_ROOT>/data/raw/vep/05_vep.jsonl",
+        "sha256": "09de0c87e63f216e765791063d57629b019bd7190f3811d92fd1b120241fbe4e",
+        "size_bytes": 1367811581
+      }
+    },
+    "06": {
+      "command": [
+        "<PROJECT_ROOT>/.venv/bin/python",
+        "<PROJECT_ROOT>/scripts/06_parse_vep.py",
+        "--config",
+        "<PROJECT_ROOT>/config/pipeline_config.json"
+      ],
+      "completed_at_utc": "2026-10-18T21:13:20.492083+00:00",
+      "output": {
+        "path": "<PROJECT_ROOT>/data/interim/06_vep_reconciled.csv",
+        "sha256": "a69bc822c5fb586a9ff08e9cc185b741ed4c96915cb8f9235611b9abb36fc923",
+        "size_bytes": 93223011
+      }
+    },
+    "07": {
+      "command": [
+        "<PROJECT_ROOT>/.venv/bin/python",
+        "<PROJECT_ROOT>/scripts/07_enrich_uniprot.py",
+        "--config",
+        "<PROJECT_ROOT>/config/pipeline_config.json"
+      ],
+      "completed_at_utc": "2026-10-19T05:14:25.187566+00:00",
+      "output": {
+        "path": "<PROJECT_ROOT>/data/interim/07_uniprot_validated.csv",
+        "sha256": "370f4fd317b6967faf210682ab34c8632f075eb0c971fd5b77c6ba6bf3c60620",
+        "size_bytes": 107161140
+      }
+    },
+    "08": {
+      "command": [
+        "<PROJECT_ROOT>/.venv/bin/python",
+        "<PROJECT_ROOT>/scripts/08_enrich_interpro.py",
+        "--config",
+        "<PROJECT_ROOT>/config/pipeline_config.json"
+      ],
+      "completed_at_utc": "2026-10-19T06:47:41.706715+00:00",
+      "output": {
+        "path": "<PROJECT_ROOT>/data/interim/08_interpro.csv",
+        "sha256": "d298469b6f07d990175be56aab0308197bc6189663f6b8085a0372153bd85c4b",
+        "size_bytes": 115759026
+      }
+    },
+    "09": {
+      "command": [
+        "<PROJECT_ROOT>/.venv/bin/python",
+        "<PROJECT_ROOT>/scripts/09_merge_gnomad_constraint.py",
+        "--input",
+        "<PROJECT_ROOT>/data/interim/08_interpro.csv",
+        "--constraint-file",
+        "<PROJECT_ROOT>/data/raw/gnomad/gnomad.v4.1.constraint_metrics.tsv",
+        "--source-release",
+        "gnomAD v4.1"
+      ],
+      "completed_at_utc": "2026-10-19T06:47:55.986143+00:00",
+      "output": {
+        "path": "<PROJECT_ROOT>/data/interim/09_constraint.csv",
+        "sha256": "dba50470f322dd3aaf892f8175eda4d7c975944002c9c672bd3d18426c6e719a",
+        "size_bytes": 121053640
+      }
+    },
+    "10": {
+      "command": [
+        "<PROJECT_ROOT>/.venv/bin/python",
+        "<PROJECT_ROOT>/scripts/10_enrich_dbnsfp.py",
+        "--config",
+        "<PROJECT_ROOT>/config/pipeline_config.json"
+      ],
+      "completed_at_utc": "2026-10-19T08:43:50.231149+00:00",
+      "output": {
+        "path": "<PROJECT_ROOT>/data/interim/10_dbnsfp.csv",
+        "sha256": "8c58957f23e02a1416a4fefa0cd0149f335580b92ce5bcfb17b01daff95488bb",
+        "size_bytes": 135516878
+      }
+    },
+    "11": {
+      "command": [
+        "<PROJECT_ROOT>/.venv/bin/python",
+        "<PROJECT_ROOT>/scripts/11_add_amino_acid_features.py"
+      ],
+      "completed_at_utc": "2026-10-19T08:43:56.920629+00:00",
+      "output": {
+        "path": "<PROJECT_ROOT>/data/interim/11_amino_acid_features.csv",
+        "sha256": "8b9ae847cf2d151af1cdbe497d5ed1c208c63985ebd4e88775f9d303a438429f",
+        "size_bytes": 139898499
+      }
+    },
+    "12": {
+      "command": [
+        "<PROJECT_ROOT>/.venv/bin/python",
+        "<PROJECT_ROOT>/scripts/12_build_final_dataset.py",
+        "--config",
+        "<PROJECT_ROOT>/config/pipeline_config.json"
+      ],
+      "completed_at_utc": "2026-10-19T08:44:02.609392+00:00",
+      "output": {
+        "path": "<PROJECT_ROOT>/data/processed/final_dataset_full.csv",
+        "sha256": "50d8ac02ededae696d6867c7e713351d33058d01bad4fab3633055157525494f",
+        "size_bytes": 79086449
+      }
+    },
+    "13": {
+      "command": [
+        "<PROJECT_ROOT>/.venv/bin/python",
+        "<PROJECT_ROOT>/scripts/13_split_by_gene.py",
+        "--config",
+        "<PROJECT_ROOT>/config/pipeline_config.json"
+      ],
+      "completed_at_utc": "2026-10-19T08:44:07.327212+00:00",
+      "output": {
+        "path": "<PROJECT_ROOT>/data/processed/split_gene_assignments.csv",
+        "sha256": "7e7a5eb7a2d85880f70c00cd1760299f5b3e269df5bfe11e150b8a47fdfa818c",
+        "size_bytes": 149055
+      }
+    },
+    "14": {
+      "command": [
+        "<PROJECT_ROOT>/.venv/bin/python",
+        "<PROJECT_ROOT>/scripts/14_audit_final_dataset.py"
+      ],
+      "completed_at_utc": "2026-10-19T08:44:10.238640+00:00",
+      "output": {
+        "path": "<PROJECT_ROOT>/audits/14_final_dataset_audit.json",
+        "sha256": "e3a5046185f665ebaf97a9ed9d4865fadec0898c7799d47528614d7ed9b2d5a3",
+        "size_bytes": 7245
+      }
+    }
+  },
+  "config": {
+    "path": "<PROJECT_ROOT>/config/pipeline_config.json",
+    "sha256": "25cfdef7c97ac7e2c2568235e9f33fa9ed7d57e363ebd4f80636cbb074fba5d7",
+    "size_bytes": 2857
+  },
+  "config_sha256": "25cfdef7c97ac7e2c2568235e9f33fa9ed7d57e363ebd4f80636cbb074fba5d7",
+  "created_at_utc": "2026-10-18T15:53:57.702828+00:00",
+  "schema_version": 1,
+  "status": "COMPLETE",
+  "updated_at_utc": "2026-10-19T08:44:10.240726+00:00"
+}

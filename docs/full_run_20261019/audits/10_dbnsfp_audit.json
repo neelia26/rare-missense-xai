@@ -1,0 +1,56 @@
+{
+  "access_service": "MyVariant.info",
+  "api_batches_requested": 750,
+  "api_endpoint": "https://myvariant.info/v1/variant",
+  "assembly_requested": "hg38",
+  "audit_status": "PASS",
+  "batch_size": 100,
+  "blank_keys": 0,
+  "cache_batches_reused": 0,
+  "cache_directory": "<PROJECT_ROOT>/data/raw/myvariant/dbnsfp",
+  "class_counts": {
+    "0": 50000,
+    "1": 25000
+  },
+  "columns": 94,
+  "conservation_nonmissing_counts": {
+    "conservation_gerp_rs": 74081,
+    "conservation_phastcons100way": 74297,
+    "conservation_phylop100way": 74297
+  },
+  "conservation_reduction": "Maximum valid numeric value only when MyVariant returns multiple values for the same coordinate-verified dbNSFP record.",
+  "coordinate_and_allele_verification": "Required before accepting any dbNSFP record.",
+  "dbnsfp_download_date": "2025-01-17T09:00:00.028000",
+  "dbnsfp_license_url": "https://sites.google.com/site/jpopgen/dbNSFP",
+  "dbnsfp_upload_date": {
+    "dbnsfp_hg19_v1": "2025-02-19T00:59:06.903000",
+    "dbnsfp_hg19_v2": "2025-02-19T00:59:11.114000",
+    "dbnsfp_hg38_v1": "2025-02-19T00:59:15.143000",
+    "dbnsfp_hg38_v2": "2025-02-19T00:59:22.903000"
+  },
+  "duplicate_key_rows": 0,
+  "expected_source_release": "4.8a",
+  "lookup_status_counts": {
+    "DBNSFP_NOT_REPORTED": 667,
+    "FOUND": 74298,
+    "NOT_FOUND": 35
+  },
+  "metadata_endpoint": "https://myvariant.info/v1/metadata",
+  "myvariant_build_date": "2025-06-24T16:27:25.889841-07:00",
+  "myvariant_build_version": "20250624",
+  "predictor_nonmissing_counts": {
+    "predictor_alphamissense_score": 72899,
+    "predictor_cadd_phred": 74297,
+    "predictor_polyphen2_hdiv_score": 67086,
+    "predictor_revel_score": 72035,
+    "predictor_sift_score": 71281
+  },
+  "predictor_policy": "Composite predictor scores are written to a separate optional file and are not included in the core evidence table.",
+  "predictor_reduction": "Maximum valid numeric value across values returned by MyVariant without assuming a selected-transcript alignment; these columns remain optional pending transcript-alignment and circularity audits.",
+  "request_fields": "dbnsfp",
+  "rows": 75000,
+  "smoke_test_rows": 0,
+  "source_release": "4.8a",
+  "total_batches": 750,
+  "unique_keys": 75000
+}

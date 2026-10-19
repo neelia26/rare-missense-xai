@@ -1,0 +1,77 @@
+{
+  "completed_at_utc": "2026-10-18T21:12:43.433729+00:00",
+  "executing_script": {
+    "path": "<PROJECT_ROOT>/scripts/05_run_vep.py",
+    "sha256": "c5fefbd7de879ca21995f0638245fd05029a1ad5f00d91480c8dd14d065d67c1",
+    "size_bytes": 18151
+  },
+  "inputs": [
+    {
+      "path": "<PROJECT_ROOT>/data/interim/03_candidate_pool.csv",
+      "sha256": "54678b61f47938337806a22e364909e7cd26872710c7c182f3dbaa7ce8ea75c2",
+      "size_bytes": 20918375
+    }
+  ],
+  "notes": [],
+  "outputs": [
+    {
+      "path": "<PROJECT_ROOT>/data/raw/vep/05_vep.jsonl",
+      "sha256": "09de0c87e63f216e765791063d57629b019bd7190f3811d92fd1b120241fbe4e",
+      "size_bytes": 1367811581
+    },
+    {
+      "path": "<PROJECT_ROOT>/audits/05_vep_execution_report.json",
+      "sha256": "5ce1d934bf6e51e17c5a6757bf71020fe0b9c29e1d98acaddfb8539f4e0bea0f",
+      "size_bytes": 1051
+    },
+    {
+      "path": "<PROJECT_ROOT>/data/raw/vep/rest_checkpoints/api_metadata_release_116.json",
+      "sha256": "856d90f0f2ee786e1c26d0a863709894f6bb8602e63350f23b5047b4835b9788",
+      "size_bytes": 319
+    }
+  ],
+  "parameters": {
+    "actual_release": "116",
+    "api_batches_requested": 375,
+    "assembly": "GRCh38",
+    "batch_count": 375,
+    "batch_size": 200,
+    "candidate_rows": 75000,
+    "checkpoint_batches_reused": 0,
+    "checkpoint_directory": "<PROJECT_ROOT>/data/raw/vep/rest_checkpoints",
+    "checkpoint_policy": "Each checkpoint name is content-addressed by variants, endpoint, options, assembly and verified Ensembl release.",
+    "endpoint": "https://rest.ensembl.org/vep/homo_sapiens/region",
+    "expected_release": "116",
+    "limited_run_rows": 0,
+    "metadata_endpoint": "https://rest.ensembl.org/info/software",
+    "mode": "rest",
+    "options": {
+      "af": 1,
+      "af_gnomade": 1,
+      "af_gnomadg": 1,
+      "canonical": 1,
+      "domains": 1,
+      "hgvs": 1,
+      "mane": 1,
+      "max_af": 1,
+      "numbers": 1,
+      "protein": 1,
+      "uniprot": 1,
+      "variant_class": 1
+    },
+    "release_verified_at_start_and_end": true,
+    "result_objects": 75000,
+    "retry_counts": {
+      "0": 336,
+      "1": 22,
+      "2": 5,
+      "3": 8,
+      "4": 3,
+      "5": 1
+    }
+  },
+  "pipeline_version": "1.0.0",
+  "platform": "macOS-26.6.2-arm64-arm-64bit-Mach-O",
+  "python_version": "3.14.3",
+  "stage": "05_run_vep"
+}

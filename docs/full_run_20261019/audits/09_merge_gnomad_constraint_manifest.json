@@ -1,0 +1,44 @@
+{
+  "completed_at_utc": "2026-10-19T06:47:54.842820+00:00",
+  "executing_script": {
+    "path": "<PROJECT_ROOT>/scripts/09_merge_gnomad_constraint.py",
+    "sha256": "82be60125854c19f6567ae0d86ab1efa84469bcce8cdfa8375558ee319778c25",
+    "size_bytes": 6087
+  },
+  "inputs": [
+    {
+      "path": "<PROJECT_ROOT>/data/interim/08_interpro.csv",
+      "sha256": "d298469b6f07d990175be56aab0308197bc6189663f6b8085a0372153bd85c4b",
+      "size_bytes": 115759026
+    },
+    {
+      "path": "<PROJECT_ROOT>/data/raw/gnomad/gnomad.v4.1.constraint_metrics.tsv",
+      "sha256": "68d8abdb7fc48f570869b02dfaa74b9fecaece7fcc5f301ddca40ec1ce12da00",
+      "size_bytes": 95546041
+    }
+  ],
+  "notes": [],
+  "outputs": [
+    {
+      "path": "<PROJECT_ROOT>/data/interim/09_constraint.csv",
+      "sha256": "dba50470f322dd3aaf892f8175eda4d7c975944002c9c672bd3d18426c6e719a",
+      "size_bytes": 121053640
+    },
+    {
+      "path": "<PROJECT_ROOT>/audits/09_constraint_audit.json",
+      "sha256": "b273c0534b3f359f9ca1064301aa0636367e11fc17e2a9c14d784b1885d180f6",
+      "size_bytes": 571
+    }
+  ],
+  "parameters": {
+    "gene": "gene",
+    "loeuf": "lof.oe_ci.upper",
+    "missense_z": "mis.z_score",
+    "source_release": "gnomAD v4.1",
+    "transcript": "transcript"
+  },
+  "pipeline_version": "1.0.0",
+  "platform": "macOS-26.6.2-arm64-arm-64bit-Mach-O",
+  "python_version": "3.14.3",
+  "stage": "09_merge_gnomad_constraint"
+}

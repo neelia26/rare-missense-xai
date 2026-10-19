@@ -1,0 +1,21 @@
+{
+  "blank_keys": 0,
+  "class_counts": {
+    "0": 50000,
+    "1": 25000
+  },
+  "columns": 104,
+  "duplicate_key_rows": 0,
+  "feature_status_counts": {
+    "COMPLETE": 64056,
+    "INVALID_OR_NONSTANDARD_AMINO_ACID": 1195,
+    "RELATIVE_POSITION_MISSING": 9749
+  },
+  "note": "These are deterministic physicochemical descriptors, not clinical evidence by themselves.",
+  "rows": 75000,
+  "sources": {
+    "composition_polarity_volume_and_distance": "Grantham (1974)",
+    "hydropathy": "Kyte and Doolittle (1982)"
+  },
+  "unique_keys": 75000
+}

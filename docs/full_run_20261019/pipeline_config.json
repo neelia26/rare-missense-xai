@@ -1,0 +1,95 @@
+{
+  "project": {
+    "name": "rare_missense_snv_evidence_dataset",
+    "genome_build": "GRCh38",
+    "random_seed": 20261018
+  },
+  "clinvar": {
+    "source_url": "https://ftp.ncbi.nlm.nih.gov/pub/clinvar/vcf_GRCh38/clinvar.vcf.gz",
+    "minimum_review_stars": 1,
+    "accepted_significance": {
+      "Benign": 0,
+      "Likely_benign": 0,
+      "Benign/Likely_benign": 0,
+      "Pathogenic": 1,
+      "Likely_pathogenic": 1,
+      "Pathogenic/Likely_pathogenic": 1
+    }
+  },
+  "sampling": {
+    "candidate_benign": 50000,
+    "candidate_pathogenic": 25000,
+    "final_per_class": 20000
+  },
+  "rarity": {
+    "maximum_global_af": 0.01,
+    "include_not_reported_after_successful_lookup": true,
+    "exclude_lookup_failures": true
+  },
+  "vep": {
+    "release": "116",
+    "assembly": "GRCh38",
+    "mode": "rest",
+    "rest_endpoint": "https://rest.ensembl.org/vep/homo_sapiens/region",
+    "rest_metadata_endpoint": "https://rest.ensembl.org/info/software",
+    "rest_checkpoint_dir": "data/raw/vep/rest_checkpoints",
+    "rest_batch_size": 200,
+    "rest_workers": 2,
+    "rest_max_retries": 6,
+    "user_agent": "rare-missense-evidence-pipeline/1.2",
+    "executable": "vep",
+    "cache_dir": "",
+    "forks": 4
+  },
+  "uniprot": {
+    "release": "record_the_release_returned_by_the_api",
+    "workers": 4,
+    "max_retries": 5,
+    "allow_trembl_fallback": false
+  },
+  "interpro": {
+    "release": "record_the_release_returned_by_the_api",
+    "workers": 3,
+    "max_retries": 5
+  },
+  "gnomad": {
+    "source_release": "gnomAD v4.1",
+    "direct_counts_enabled": false,
+    "exomes_vcf_template": "https://storage.googleapis.com/gcp-public-data--gnomad/release/4.1/vcf/exomes/gnomad.exomes.v4.1.sites.{chrom}.vcf.bgz",
+    "genomes_vcf_template": "https://storage.googleapis.com/gcp-public-data--gnomad/release/4.1/vcf/genomes/gnomad.genomes.v4.1.sites.{chrom}.vcf.bgz",
+    "constraint_file": "data/raw/gnomad/gnomad.v4.1.constraint_metrics.tsv"
+  },
+  "dbnsfp": {
+    "access_service": "MyVariant.info",
+    "api_endpoint": "https://myvariant.info/v1/variant",
+    "metadata_endpoint": "https://myvariant.info/v1/metadata",
+    "assembly": "hg38",
+    "expected_release": "4.8a",
+    "batch_size": 100,
+    "max_retries": 6,
+    "request_pause_seconds": 1.0,
+    "cache_dir": "data/raw/myvariant/dbnsfp",
+    "email": "",
+    "user_agent": "rare-missense-evidence-pipeline/1.2",
+    "conservation_fields": [
+      "GERP++_RS",
+      "phyloP100way_vertebrate",
+      "phastCons100way_vertebrate"
+    ],
+    "optional_predictor_fields": [
+      "SIFT_score",
+      "Polyphen2_HDIV_score",
+      "REVEL_score",
+      "CADD_phred",
+      "AlphaMissense_score"
+    ]
+  },
+  "splits": {
+    "train_fraction": 0.70,
+    "validation_fraction": 0.15,
+    "test_fraction": 0.15
+  },
+  "automation": {
+    "state_file": "logs/full_pipeline_state.json"
+  }
+}

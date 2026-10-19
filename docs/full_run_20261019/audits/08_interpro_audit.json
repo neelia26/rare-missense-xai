@@ -1,0 +1,20 @@
+{
+  "blank_keys": 0,
+  "cache_records_reused": 162,
+  "class_counts": {
+    "0": 50000,
+    "1": 25000
+  },
+  "columns": 74,
+  "duplicate_key_rows": 0,
+  "lookup_status_counts": {
+    "ERROR": 73,
+    "FOUND": 60656,
+    "SKIPPED_UNVALIDATED_PROTEIN": 14271
+  },
+  "records_requested": 9610,
+  "rows": 75000,
+  "unique_keys": 75000,
+  "unique_validated_accessions": 9772,
+  "variants_with_interpro_overlap": 50775
+}

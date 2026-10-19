@@ -1,0 +1,30 @@
+{
+  "completed_at_utc": "2026-10-18T06:50:21.491337+00:00",
+  "executing_script": {
+    "path": "<PROJECT_ROOT>/scripts/01_fetch_clinvar.py",
+    "sha256": "809c17951f8d821bcdbea4d97cf7dea92734283a4d7507030211a4659bb287fa",
+    "size_bytes": 3991
+  },
+  "inputs": [],
+  "notes": [],
+  "outputs": [
+    {
+      "path": "<PROJECT_ROOT>/data/raw/clinvar_grch38.vcf.gz",
+      "sha256": "05d9481dd7217cc4df15803362d4a4c9eae5875b27b1750867d6bfd2643b3d10",
+      "size_bytes": 200437060
+    },
+    {
+      "path": "<PROJECT_ROOT>/data/raw/clinvar_grch38.provenance.json",
+      "sha256": "4a806ffce3c8393871cace77fe8b0f1ce91d43497381ff106508d2f21f378aff",
+      "size_bytes": 741
+    }
+  ],
+  "parameters": {
+    "expected_sha256_supplied": false,
+    "source_url": "https://ftp.ncbi.nlm.nih.gov/pub/clinvar/vcf_GRCh38/clinvar.vcf.gz"
+  },
+  "pipeline_version": "1.0.0",
+  "platform": "macOS-26.6.2-arm64-arm-64bit-Mach-O",
+  "python_version": "3.14.3",
+  "stage": "01_fetch_clinvar"
+}

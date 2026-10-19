@@ -1,0 +1,32 @@
+{
+  "blank_keys": 0,
+  "class_counts": {
+    "0": 100,
+    "1": 100
+  },
+  "columns": 87,
+  "direct_rarity_status_counts": {
+    "LOOKUP_FAILED": 5,
+    "NOT_RARE": 13,
+    "NOT_REPORTED": 71,
+    "RARE": 111
+  },
+  "duplicate_key_rows": 0,
+  "exome_status_counts": {
+    "FOUND": 123,
+    "LOOKUP_FAILED": 5,
+    "NOT_REPORTED": 72
+  },
+  "exomes_vcf": "https://storage.googleapis.com/gcp-public-data--gnomad/release/4.1/vcf/exomes/gnomad.exomes.v4.1.sites.{chrom}.vcf.bgz",
+  "genome_status_counts": {
+    "FOUND": 86,
+    "NOT_REPORTED": 114
+  },
+  "genomes_vcf": "https://storage.googleapis.com/gcp-public-data--gnomad/release/4.1/vcf/genomes/gnomad.genomes.v4.1.sites.{chrom}.vcf.bgz",
+  "important_note": "NOT_REPORTED is not converted to AF=0. Coverage-aware interpretation requires an appropriate gnomAD coverage resource and remains separate from lookup failure.",
+  "open_errors": {},
+  "rarity_threshold": 0.01,
+  "rows": 200,
+  "source_release": "v4.1",
+  "unique_keys": 200
+}

@@ -1,0 +1,40 @@
+{
+  "actual_release": "116",
+  "api_batches_requested": 375,
+  "assembly": "GRCh38",
+  "batch_count": 375,
+  "batch_size": 200,
+  "candidate_rows": 75000,
+  "checkpoint_batches_reused": 0,
+  "checkpoint_directory": "<PROJECT_ROOT>/data/raw/vep/rest_checkpoints",
+  "checkpoint_policy": "Each checkpoint name is content-addressed by variants, endpoint, options, assembly and verified Ensembl release.",
+  "endpoint": "https://rest.ensembl.org/vep/homo_sapiens/region",
+  "expected_release": "116",
+  "limited_run_rows": 0,
+  "metadata_endpoint": "https://rest.ensembl.org/info/software",
+  "mode": "rest",
+  "options": {
+    "af": 1,
+    "af_gnomade": 1,
+    "af_gnomadg": 1,
+    "canonical": 1,
+    "domains": 1,
+    "hgvs": 1,
+    "mane": 1,
+    "max_af": 1,
+    "numbers": 1,
+    "protein": 1,
+    "uniprot": 1,
+    "variant_class": 1
+  },
+  "release_verified_at_start_and_end": true,
+  "result_objects": 75000,
+  "retry_counts": {
+    "0": 336,
+    "1": 22,
+    "2": 5,
+    "3": 8,
+    "4": 3,
+    "5": 1
+  }
+}

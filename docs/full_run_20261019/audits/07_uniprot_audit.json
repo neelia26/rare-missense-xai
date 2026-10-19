@@ -1,0 +1,29 @@
+{
+  "blank_keys": 0,
+  "cache_records_reused": 169,
+  "class_counts": {
+    "0": 50000,
+    "1": 25000
+  },
+  "columns": 67,
+  "duplicate_key_rows": 0,
+  "lookup_status_counts": {
+    "EMPTY_RECORD": 3,
+    "ERROR": 5571,
+    "FOUND": 64253,
+    "NO_ACCESSION": 5173
+  },
+  "records_requested": 11177,
+  "rows": 75000,
+  "rule": "Prefer VEP Swiss-Prot; validate the VEP reference amino acid against the selected UniProt sequence.",
+  "unique_accessions": 11346,
+  "unique_keys": 75000,
+  "validation_status_counts": {
+    "EMPTY_RECORD": 3,
+    "ERROR": 5571,
+    "MATCH": 60729,
+    "NO_ACCESSION": 5173,
+    "POSITION_OUT_OF_RANGE": 197,
+    "REFERENCE_AA_MISMATCH": 3327
+  }
+}

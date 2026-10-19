@@ -1,0 +1,38 @@
+{
+  "completed_at_utc": "2026-10-18T10:24:10.011497+00:00",
+  "executing_script": {
+    "path": "<PROJECT_ROOT>/scripts/08b_enrich_gnomad_counts.py",
+    "sha256": "28d5dea226b70ad01141b77cfe85731bdb7272909968db34d975978795a690c1",
+    "size_bytes": 10676
+  },
+  "inputs": [
+    {
+      "path": "<PROJECT_ROOT>/data/interim/08_interpro.csv",
+      "sha256": "7368969df160ce9e1988803e8ef5ad40bbef493c86843af25fcfe343ace2e8e4",
+      "size_bytes": 324952
+    }
+  ],
+  "notes": [],
+  "outputs": [
+    {
+      "path": "<PROJECT_ROOT>/data/interim/08b_gnomad_counts.csv",
+      "sha256": "2e4164442c48da3574806e6dd373ab95234796ab83c82a4a813b3d8cd2be1a60",
+      "size_bytes": 342350
+    },
+    {
+      "path": "<PROJECT_ROOT>/audits/08b_gnomad_counts_audit.json",
+      "sha256": "558931bee6c2725126edf1972d2b9ae4d9c12d9cc053dc299f60e432679440dd",
+      "size_bytes": 989
+    }
+  ],
+  "parameters": {
+    "exomes_vcf": "https://storage.googleapis.com/gcp-public-data--gnomad/release/4.1/vcf/exomes/gnomad.exomes.v4.1.sites.{chrom}.vcf.bgz",
+    "genomes_vcf": "https://storage.googleapis.com/gcp-public-data--gnomad/release/4.1/vcf/genomes/gnomad.genomes.v4.1.sites.{chrom}.vcf.bgz",
+    "rarity_threshold": 0.01,
+    "source_release": "v4.1"
+  },
+  "pipeline_version": "1.0.0",
+  "platform": "macOS-26.6.2-arm64-arm-64bit-Mach-O",
+  "python_version": "3.14.3",
+  "stage": "08b_enrich_gnomad_counts"
+}
