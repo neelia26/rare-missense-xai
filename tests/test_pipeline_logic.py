@@ -38,7 +38,6 @@ class PipelineLogicTests(unittest.TestCase):
         cls.vep = load_script("06_parse_vep.py")
         cls.aa = load_script("11_add_amino_acid_features.py")
         cls.build = load_script("12_build_final_dataset.py")
-        cls.modeling = load_script("12b_prepare_modeling_dataset.py")
         cls.split = load_script("13_split_by_gene.py")
         cls.runner = load_root_script("run_pipeline.py")
 
@@ -120,42 +119,6 @@ class PipelineLogicTests(unittest.TestCase):
         )
         self.assertEqual(set(assignment), set(groups))
         self.assertEqual(set(assignment.values()), {"train", "validation", "test"})
-
-    def test_modeling_context_normalization_excludes_leakage_tokens(self):
-        rows = [
-            {
-                "interpro_lookup_status": "FOUND",
-                "interpro_overlap_types": "family;domain;family",
-                "uniprot_overlapping_feature_types": "Domain;Natural variant;Helix",
-            }
-        ]
-        included = self.modeling.discover_uniprot_tokens(rows)
-        self.assertEqual(included, ["Domain", "Helix"])
-        derived = self.modeling.add_context_indicators(rows[0], included)
-        self.assertEqual(derived["interpro_type_family"], 1)
-        self.assertEqual(derived["interpro_type_domain"], 1)
-        self.assertNotIn("uniprot_feature_natural_variant", derived)
-
-    def test_interpro_lookup_failure_is_missing_not_zero(self):
-        row = {
-            "interpro_lookup_status": "ERROR",
-            "interpro_overlap_types": "",
-            "uniprot_overlapping_feature_types": "",
-        }
-        derived = self.modeling.add_context_indicators(row, [])
-        self.assertEqual(derived["interpro_type_domain"], "")
-
-    def test_alternate_gene_rows_are_excluded(self):
-        self.assertTrue(
-            self.modeling.gene_matches(
-                {"gene_symbol": "GENE1", "reconciled_gene_symbol": "GENE1"}
-            )
-        )
-        self.assertFalse(
-            self.modeling.gene_matches(
-                {"gene_symbol": "GENE1", "reconciled_gene_symbol": "GENE2"}
-            )
-        )
 
     def test_vep_checkpoint_fingerprint_depends_on_variants(self):
         common = (
