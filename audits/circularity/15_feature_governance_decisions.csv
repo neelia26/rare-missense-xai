@@ -1,0 +1,61 @@
+field,decision,evidence_group,required_control,decision_reason
+aa_charge_changed,APPROVED_PRIMARY,amino_acid_change,Evidence-group ablation,Deterministic sequence-change evidence does not use the clinical label.
+aa_charge_delta,APPROVED_PRIMARY,amino_acid_change,Evidence-group ablation,Deterministic sequence-change evidence does not use the clinical label.
+aa_composition_delta,APPROVED_PRIMARY,amino_acid_change,Evidence-group ablation,Deterministic sequence-change evidence does not use the clinical label.
+aa_grantham_score,APPROVED_PRIMARY,amino_acid_change,Evidence-group ablation,Deterministic sequence-change evidence does not use the clinical label.
+aa_hydropathy_delta,APPROVED_PRIMARY,amino_acid_change,Evidence-group ablation,Deterministic sequence-change evidence does not use the clinical label.
+aa_polarity_class_changed,APPROVED_PRIMARY,amino_acid_change,Evidence-group ablation,Deterministic sequence-change evidence does not use the clinical label.
+aa_polarity_delta,APPROVED_PRIMARY,amino_acid_change,Evidence-group ablation,Deterministic sequence-change evidence does not use the clinical label.
+aa_relative_protein_position,APPROVED_PRIMARY,protein_context,Evidence-group ablation and gene-separated evaluation,Relative position is approved after reference-residue validation.
+aa_volume_delta,APPROVED_PRIMARY,amino_acid_change,Evidence-group ablation,Deterministic sequence-change evidence does not use the clinical label.
+conservation_gerp_rs,APPROVED_PRIMARY,conservation,Group-wise ablation and correlation review,"Evolutionary evidence is approved, with correlated measures treated as one evidence group."
+conservation_phastcons100way,APPROVED_PRIMARY,conservation,Group-wise ablation and correlation review,"Evolutionary evidence is approved, with correlated measures treated as one evidence group."
+conservation_phylop100way,APPROVED_PRIMARY,conservation,Group-wise ablation and correlation review,"Evolutionary evidence is approved, with correlated measures treated as one evidence group."
+gnomad_global_af,SENSITIVITY_ONLY,population,Use no-population table as primary baseline; population-inclusive sensitivity only; neutral train-only preprocessing required,Population evidence is biologically relevant but missingness is strongly class-associated.
+gnomad_loeuf,APPROVED_PRIMARY,gene_constraint,Ablation without gene-constraint evidence and gene-separated evaluation,Constraint is approved context but may proxy gene identity or disease-gene knowledge.
+gnomad_max_population_af,SENSITIVITY_ONLY,population,Use no-population table as primary baseline; population-inclusive sensitivity only; neutral train-only preprocessing required,Population evidence is biologically relevant but missingness is strongly class-associated.
+gnomad_missense_z,APPROVED_PRIMARY,gene_constraint,Ablation without gene-constraint evidence and gene-separated evaluation,Constraint is approved context but may proxy gene identity or disease-gene knowledge.
+interpro_type_active_site,APPROVED_PRIMARY,protein_context,InterPro-versus-UniProt context ablation,Structural/context token is approved; lookup failure remains missing rather than zero.
+interpro_type_binding_site,APPROVED_PRIMARY,protein_context,InterPro-versus-UniProt context ablation,Structural/context token is approved; lookup failure remains missing rather than zero.
+interpro_type_conserved_site,APPROVED_PRIMARY,protein_context,InterPro-versus-UniProt context ablation,Structural/context token is approved; lookup failure remains missing rather than zero.
+interpro_type_domain,APPROVED_PRIMARY,protein_context,InterPro-versus-UniProt context ablation,Structural/context token is approved; lookup failure remains missing rather than zero.
+interpro_type_family,APPROVED_PRIMARY,protein_context,InterPro-versus-UniProt context ablation,Structural/context token is approved; lookup failure remains missing rather than zero.
+interpro_type_homologous_superfamily,APPROVED_PRIMARY,protein_context,InterPro-versus-UniProt context ablation,Structural/context token is approved; lookup failure remains missing rather than zero.
+interpro_type_ptm,APPROVED_PRIMARY,protein_context,InterPro-versus-UniProt context ablation,Structural/context token is approved; lookup failure remains missing rather than zero.
+interpro_type_repeat,APPROVED_PRIMARY,protein_context,InterPro-versus-UniProt context ablation,Structural/context token is approved; lookup failure remains missing rather than zero.
+predictor_alphamissense_score,SENSITIVITY_ONLY,optional_computational_predictor,Literature and circularity review before sensitivity modelling; never primary,Composite predictor was deliberately separated pending provenance and overlap review.
+predictor_cadd_phred,SENSITIVITY_ONLY,optional_computational_predictor,Literature and circularity review before sensitivity modelling; never primary,Composite predictor was deliberately separated pending provenance and overlap review.
+predictor_polyphen2_hdiv_score,SENSITIVITY_ONLY,optional_computational_predictor,Literature and circularity review before sensitivity modelling; never primary,Composite predictor was deliberately separated pending provenance and overlap review.
+predictor_revel_score,SENSITIVITY_ONLY,optional_computational_predictor,Literature and circularity review before sensitivity modelling; never primary,Composite predictor was deliberately separated pending provenance and overlap review.
+predictor_sift_score,SENSITIVITY_ONLY,optional_computational_predictor,Literature and circularity review before sensitivity modelling; never primary,Composite predictor was deliberately separated pending provenance and overlap review.
+uniprot_feature_active_site,APPROVED_PRIMARY,protein_context,Exclude curated-variant tokens; perform protein-context group ablation,Non-prohibited structural/context token is approved under curated-knowledge controls.
+uniprot_feature_alternative_sequence,PROHIBITED,protein_context,Exclude from every primary and sensitivity model,Curated variant/experimental sequence knowledge risks direct circularity.
+uniprot_feature_beta_strand,APPROVED_PRIMARY,protein_context,Exclude curated-variant tokens; perform protein-context group ablation,Non-prohibited structural/context token is approved under curated-knowledge controls.
+uniprot_feature_binding_site,APPROVED_PRIMARY,protein_context,Exclude curated-variant tokens; perform protein-context group ablation,Non-prohibited structural/context token is approved under curated-knowledge controls.
+uniprot_feature_chain,APPROVED_PRIMARY,protein_context,Exclude curated-variant tokens; perform protein-context group ablation,Non-prohibited structural/context token is approved under curated-knowledge controls.
+uniprot_feature_coiled_coil,APPROVED_PRIMARY,protein_context,Exclude curated-variant tokens; perform protein-context group ablation,Non-prohibited structural/context token is approved under curated-knowledge controls.
+uniprot_feature_compositional_bias,APPROVED_PRIMARY,protein_context,Exclude curated-variant tokens; perform protein-context group ablation,Non-prohibited structural/context token is approved under curated-knowledge controls.
+uniprot_feature_cross_link,APPROVED_PRIMARY,protein_context,Exclude curated-variant tokens; perform protein-context group ablation,Non-prohibited structural/context token is approved under curated-knowledge controls.
+uniprot_feature_disulfide_bond,APPROVED_PRIMARY,protein_context,Exclude curated-variant tokens; perform protein-context group ablation,Non-prohibited structural/context token is approved under curated-knowledge controls.
+uniprot_feature_dna_binding,APPROVED_PRIMARY,protein_context,Exclude curated-variant tokens; perform protein-context group ablation,Non-prohibited structural/context token is approved under curated-knowledge controls.
+uniprot_feature_domain,APPROVED_PRIMARY,protein_context,Exclude curated-variant tokens; perform protein-context group ablation,Non-prohibited structural/context token is approved under curated-knowledge controls.
+uniprot_feature_glycosylation,APPROVED_PRIMARY,protein_context,Exclude curated-variant tokens; perform protein-context group ablation,Non-prohibited structural/context token is approved under curated-knowledge controls.
+uniprot_feature_helix,APPROVED_PRIMARY,protein_context,Exclude curated-variant tokens; perform protein-context group ablation,Non-prohibited structural/context token is approved under curated-knowledge controls.
+uniprot_feature_intramembrane,APPROVED_PRIMARY,protein_context,Exclude curated-variant tokens; perform protein-context group ablation,Non-prohibited structural/context token is approved under curated-knowledge controls.
+uniprot_feature_lipidation,APPROVED_PRIMARY,protein_context,Exclude curated-variant tokens; perform protein-context group ablation,Non-prohibited structural/context token is approved under curated-knowledge controls.
+uniprot_feature_modified_residue,APPROVED_PRIMARY,protein_context,Exclude curated-variant tokens; perform protein-context group ablation,Non-prohibited structural/context token is approved under curated-knowledge controls.
+uniprot_feature_motif,APPROVED_PRIMARY,protein_context,Exclude curated-variant tokens; perform protein-context group ablation,Non-prohibited structural/context token is approved under curated-knowledge controls.
+uniprot_feature_mutagenesis,PROHIBITED,protein_context,Exclude from every primary and sensitivity model,Curated variant/experimental sequence knowledge risks direct circularity.
+uniprot_feature_natural_variant,PROHIBITED,protein_context,Exclude from every primary and sensitivity model,Curated variant/experimental sequence knowledge risks direct circularity.
+uniprot_feature_peptide,APPROVED_PRIMARY,protein_context,Exclude curated-variant tokens; perform protein-context group ablation,Non-prohibited structural/context token is approved under curated-knowledge controls.
+uniprot_feature_propeptide,APPROVED_PRIMARY,protein_context,Exclude curated-variant tokens; perform protein-context group ablation,Non-prohibited structural/context token is approved under curated-knowledge controls.
+uniprot_feature_region,APPROVED_PRIMARY,protein_context,Exclude curated-variant tokens; perform protein-context group ablation,Non-prohibited structural/context token is approved under curated-knowledge controls.
+uniprot_feature_repeat,APPROVED_PRIMARY,protein_context,Exclude curated-variant tokens; perform protein-context group ablation,Non-prohibited structural/context token is approved under curated-knowledge controls.
+uniprot_feature_sequence_conflict,PROHIBITED,protein_context,Exclude from every primary and sensitivity model,Curated variant/experimental sequence knowledge risks direct circularity.
+uniprot_feature_signal,APPROVED_PRIMARY,protein_context,Exclude curated-variant tokens; perform protein-context group ablation,Non-prohibited structural/context token is approved under curated-knowledge controls.
+uniprot_feature_site,APPROVED_PRIMARY,protein_context,Exclude curated-variant tokens; perform protein-context group ablation,Non-prohibited structural/context token is approved under curated-knowledge controls.
+uniprot_feature_topological_domain,APPROVED_PRIMARY,protein_context,Exclude curated-variant tokens; perform protein-context group ablation,Non-prohibited structural/context token is approved under curated-knowledge controls.
+uniprot_feature_transit_peptide,APPROVED_PRIMARY,protein_context,Exclude curated-variant tokens; perform protein-context group ablation,Non-prohibited structural/context token is approved under curated-knowledge controls.
+uniprot_feature_transmembrane,APPROVED_PRIMARY,protein_context,Exclude curated-variant tokens; perform protein-context group ablation,Non-prohibited structural/context token is approved under curated-knowledge controls.
+uniprot_feature_turn,APPROVED_PRIMARY,protein_context,Exclude curated-variant tokens; perform protein-context group ablation,Non-prohibited structural/context token is approved under curated-knowledge controls.
+uniprot_feature_zinc_finger,APPROVED_PRIMARY,protein_context,Exclude curated-variant tokens; perform protein-context group ablation,Non-prohibited structural/context token is approved under curated-knowledge controls.

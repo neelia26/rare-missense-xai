@@ -1,0 +1,135 @@
+{
+  "analysis_partition_for_label_dependent_results": "train",
+  "approved_primary_features": [
+    "aa_charge_changed",
+    "aa_charge_delta",
+    "aa_composition_delta",
+    "aa_grantham_score",
+    "aa_hydropathy_delta",
+    "aa_polarity_class_changed",
+    "aa_polarity_delta",
+    "aa_relative_protein_position",
+    "aa_volume_delta",
+    "conservation_gerp_rs",
+    "conservation_phastcons100way",
+    "conservation_phylop100way",
+    "gnomad_global_af",
+    "gnomad_loeuf",
+    "gnomad_max_population_af",
+    "gnomad_missense_z",
+    "interpro_type_active_site",
+    "interpro_type_binding_site",
+    "interpro_type_conserved_site",
+    "interpro_type_domain",
+    "interpro_type_family",
+    "interpro_type_homologous_superfamily",
+    "interpro_type_ptm",
+    "interpro_type_repeat",
+    "uniprot_feature_active_site",
+    "uniprot_feature_beta_strand",
+    "uniprot_feature_binding_site",
+    "uniprot_feature_chain",
+    "uniprot_feature_coiled_coil",
+    "uniprot_feature_compositional_bias",
+    "uniprot_feature_cross_link",
+    "uniprot_feature_disulfide_bond",
+    "uniprot_feature_dna_binding",
+    "uniprot_feature_domain",
+    "uniprot_feature_glycosylation",
+    "uniprot_feature_helix",
+    "uniprot_feature_intramembrane",
+    "uniprot_feature_lipidation",
+    "uniprot_feature_modified_residue",
+    "uniprot_feature_motif",
+    "uniprot_feature_peptide",
+    "uniprot_feature_propeptide",
+    "uniprot_feature_region",
+    "uniprot_feature_repeat",
+    "uniprot_feature_signal",
+    "uniprot_feature_site",
+    "uniprot_feature_topological_domain",
+    "uniprot_feature_transit_peptide",
+    "uniprot_feature_transmembrane",
+    "uniprot_feature_turn",
+    "uniprot_feature_zinc_finger"
+  ],
+  "class_associated_missingness_fields": [
+    "gnomad_global_af",
+    "gnomad_max_population_af"
+  ],
+  "cohort": {
+    "frozen_rows": 40000,
+    "modelling_rows": 39552
+  },
+  "critical_failures": [],
+  "frozen_source_sha256": "50d8ac02ededae696d6867c7e713351d33058d01bad4fab3633055157525494f",
+  "known_scientific_risks": [
+    "ClinVar classifications may incorporate population and computational evidence.",
+    "Optional computational predictors may have training-data or methodological overlap.",
+    "Gene-constraint values may act as gene-level proxies.",
+    "UniProt curated-variant tokens are prohibited from primary inputs.",
+    "Population missingness may act as a label shortcut.",
+    "Conservation measurements may repeat related evolutionary signals.",
+    "InterPro and UniProt context indicators may overlap."
+  ],
+  "locked_splits": {
+    "test": {
+      "genes": 1115,
+      "variants": 6035
+    },
+    "train": {
+      "genes": 5206,
+      "variants": 27727
+    },
+    "validation": {
+      "genes": 1115,
+      "variants": 5790
+    }
+  },
+  "partition_overlap": {
+    "train_test_genes": 0,
+    "train_test_variants": 0,
+    "train_validation_genes": 0,
+    "train_validation_variants": 0,
+    "validation_test_genes": 0,
+    "validation_test_variants": 0
+  },
+  "prohibited_features": [
+    "uniprot_feature_alternative_sequence",
+    "uniprot_feature_mutagenesis",
+    "uniprot_feature_natural_variant",
+    "uniprot_feature_sequence_conflict"
+  ],
+  "redundancy_candidate_count": 2,
+  "required_modelling_controls": [
+    "no-population versus population-inclusive",
+    "without gene-constraint evidence",
+    "evidence-group removal",
+    "missingness-only diagnostic model",
+    "optional computational predictors only after their circularity review"
+  ],
+  "scientific_clearance": "CONDITIONAL",
+  "sensitivity_only_features": [
+    "gnomad_global_af",
+    "gnomad_max_population_af",
+    "predictor_alphamissense_score",
+    "predictor_cadd_phred",
+    "predictor_polyphen2_hdiv_score",
+    "predictor_revel_score",
+    "predictor_sift_score"
+  ],
+  "structural_status": "PASS",
+  "test_partition_policy": "Structural integrity only; test labels were not read for association analyses",
+  "unresolved_items": [
+    "predictor_alphamissense_score",
+    "predictor_cadd_phred",
+    "predictor_polyphen2_hdiv_score",
+    "predictor_revel_score",
+    "predictor_sift_score"
+  ],
+  "warnings": [
+    "Training-only class-associated missingness was detected; flags require controls, not automatic feature removal",
+    "Strong within-training feature overlap was detected; candidates require grouped ablations, not automatic deletion",
+    "Optional predictor overlap remains unresolved pending literature review"
+  ]
+}

@@ -1,0 +1,14 @@
+record_type,stage,total,benign_class_0,pathogenic_class_1,excluded_from_previous,exclusion_reason,provenance
+cohort,ClinVar GRCh38 source VCF records scanned,4594764,,,,,docs/full_run_20261019/audits/02_clinvar_candidates_audit.json
+cohort,Eligible binary missense variants with at least one review star,209183,147254,61929,4385581,Combined allele consequence label and review-status rules,docs/full_run_20261019/audits/02_clinvar_candidates_audit.json
+cohort,Deterministic candidate pool,75000,50000,25000,134183,Not selected for the governed oversized candidate pool,docs/full_run_20261019/audits/03_candidate_pool_audit.json
+exclusion,Transcript not strictly missense,1195,,,1195,TRANSCRIPT_NOT_STRICT_MISSENSE,docs/full_run_20261019/audits/12_final_build_audit.json
+exclusion,UniProt reference residue not validated,13076,,,13076,UNIPROT_REFERENCE_NOT_VALIDATED,docs/full_run_20261019/audits/12_final_build_audit.json
+exclusion,Variant not rare,7734,,,7734,NOT_RARE,docs/full_run_20261019/audits/12_final_build_audit.json
+cohort,Eligible before final balancing,52995,30606,22389,22005,Passed transcript protein and rarity governance,docs/full_run_20261019/audits/12_final_build_audit.json
+cohort,Frozen balanced dataset,40000,20000,20000,12995,Deterministic balancing to 20000 per class,docs/full_run_20261019/audits/12_final_build_audit.json
+exclusion,Alternate-gene reconciliation exclusions,448,358,90,448,ClinVar gene differed from VEP-reconciled gene,docs/modeling_readiness_20261019/12b_modeling_preprocessing_audit.json
+cohort,Modelling-ready cohort,39552,19642,19910,448,Alternate-gene rows retained only in exclusion log,docs/modeling_readiness_20261019/14_modeling_readiness_audit.json
+partition,Training partition,27727,13741,13986,0,Gene-separated locked assignment,data/processed/modeling_split_gene_assignments.csv
+partition,Validation partition,5790,2895,2895,0,Gene-separated locked assignment,data/processed/modeling_split_gene_assignments.csv
+partition,Test partition,6035,3006,3029,0,Gene-separated locked assignment,data/processed/modeling_split_gene_assignments.csv
