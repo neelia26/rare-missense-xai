@@ -1,0 +1,140 @@
+column,observed_dtype,inferred_type,proposed_role,evidence_group,nonmissing_count,numeric_parse_fraction,infinite_count,malformed_nonmissing_count,numeric_min,numeric_max,unexpected_binary_count,unique_nonmissing
+variant_key,object,categorical/text,identifier,,39552,0.0,0,0,,,0,39552
+genome_build,object,categorical/text,metadata/provenance,,39552,0.0,0,0,,,0,1
+chromosome,object,categorical/text,metadata/provenance,,39552,0.91694478,0,0,1.0,22.0,0,25
+position,object,numeric,metadata/provenance,,39552,1.0,0,0,47304.0,248847770.0,0,38374
+reference_allele,object,categorical/text,metadata/provenance,,39552,0.0,0,0,,,0,4
+alternate_allele,object,categorical/text,metadata/provenance,,39552,0.0,0,0,,,0,4
+clinvar_variation_id,object,numeric,metadata/provenance,,39552,1.0,0,0,19.0,5016463.0,0,39552
+clinvar_allele_id,object,numeric,metadata/provenance,,39552,1.0,0,0,15058.0,5126744.0,0,39552
+dbsnp_id,object,categorical/text,metadata/provenance,,28438,0.0,0,0,,,0,27645
+gene_symbol,object,categorical/text,metadata/provenance,,39552,0.0,0,0,,,0,7436
+gene_id,object,numeric,metadata/provenance,,39552,1.0,0,0,2.0,105378952.0,0,7436
+all_gene_info,object,categorical/text,metadata/provenance,,39552,0.0,0,0,,,0,8152
+genomic_hgvs,object,categorical/text,metadata/provenance,,39551,0.0,0,0,,,0,39551
+molecular_consequence,object,categorical/text,metadata/provenance,,39552,0.0,0,0,,,0,49
+clinvar_significance,object,categorical/text,metadata/provenance,,39552,0.0,0,0,,,0,6
+binary_label,object,numeric,target,,39552,1.0,0,0,0.0,1.0,0,2
+review_status,object,categorical/text,metadata/provenance,,39552,0.0,0,0,,,0,4
+review_stars,object,numeric,metadata/provenance,,39552,1.0,0,0,1.0,4.0,0,4
+clinical_conditions,object,categorical/text,metadata/provenance,,39552,0.0,0,0,,,0,12171
+candidate_source_release,object,categorical/text,metadata/provenance,,39552,0.0,0,0,,,0,1
+vep_result_status,object,categorical/text,metadata/provenance,,39552,0.0,0,0,,,0,1
+transcript_reconciliation_status,object,categorical/text,metadata/provenance,,39552,0.0,0,0,,,0,1
+transcript_selection_basis,object,categorical/text,metadata/provenance,,39552,0.0,0,0,,,0,3
+reconciled_gene_symbol,object,categorical/text,group,,39552,0.0,0,0,,,0,7436
+reconciled_gene_id,object,categorical/text,metadata/provenance,,39552,0.0,0,0,,,0,7436
+reconciled_transcript_id,object,categorical/text,metadata/provenance,,39552,0.0,0,0,,,0,7487
+reconciled_mane_select,object,categorical/text,metadata/provenance,,39417,0.0,0,0,,,0,7384
+reconciled_canonical_flag,object,numeric,metadata/provenance,,39422,1.0,0,0,1.0,1.0,0,1
+reconciled_consequence_terms,object,categorical/text,metadata/provenance,,39552,0.0,0,0,,,0,3
+reconciled_hgvsc,object,categorical/text,metadata/provenance,,39552,0.0,0,0,,,0,39552
+reconciled_hgvsp,object,categorical/text,metadata/provenance,,39552,0.0,0,0,,,0,39397
+reconciled_cds_position,object,numeric,metadata/provenance,,39552,1.0,0,0,4.0,91573.0,0,6874
+reconciled_codon_position,object,numeric,metadata/provenance,,39552,1.0,0,0,1.0,3.0,0,3
+reconciled_codon_change,object,categorical/text,metadata/provenance,,39552,0.0,0,0,,,0,392
+reconciled_amino_acid_change,object,categorical/text,metadata/provenance,,39552,0.0,0,0,,,0,150
+reconciled_reference_amino_acid,object,categorical/text,metadata/provenance,,39552,0.0,0,0,,,0,20
+reconciled_alternate_amino_acid,object,categorical/text,metadata/provenance,,39552,0.0,0,0,,,0,20
+reconciled_protein_position,object,numeric,metadata/provenance,,39552,1.0,0,0,2.0,30525.0,0,3531
+ensembl_protein_id,object,categorical/text,metadata/provenance,,39552,0.0,0,0,,,0,7487
+uniprot_swissprot_accessions,object,categorical/text,metadata/provenance,,39552,0.0,0,0,,,0,7436
+uniprot_trembl_accessions,object,categorical/text,metadata/provenance,,6778,0.0,0,0,,,0,1100
+vep_domains,object,categorical/text,metadata/provenance,,39368,0.0,0,0,,,0,17391
+strict_missense_eligible,object,numeric,metadata/provenance,,39552,1.0,0,0,1.0,1.0,0,1
+gnomad_exome_af,object,numeric,metadata/provenance,,23216,1.0,0,0,0.0,0.008297,0,6723
+gnomad_genome_af,object,numeric,metadata/provenance,,16587,1.0,0,0,0.0,0.005999,0,3180
+gnomad_global_af,object,numeric,candidate evidence,population,23756,1.0,0,0,0.0,0.008297,0,6540
+gnomad_max_population_af,object,numeric,candidate evidence,population,23756,1.0,0,0,0.0,0.01,0,7772
+gnomad_frequency_fields,object,categorical/text,metadata/provenance,,23756,0.0,0,0,,,0,20015
+gnomad_rarity_threshold,object,numeric,metadata/provenance,,39552,1.0,0,0,0.01,0.01,0,1
+gnomad_rarity_status,object,categorical/text,metadata/provenance,,39552,0.0,0,0,,,0,2
+population_lookup_status,object,categorical/text,metadata/provenance,,39552,0.0,0,0,,,0,2
+population_lookup_reason,object,categorical/text,metadata/provenance,,15796,0.0,0,0,,,0,1
+uniprot_selected_accession,object,categorical/text,metadata/provenance,,39552,0.0,0,0,,,0,7436
+uniprot_accession_source,object,categorical/text,metadata/provenance,,39552,0.0,0,0,,,0,1
+uniprot_lookup_status,object,categorical/text,metadata/provenance,,39552,0.0,0,0,,,0,1
+uniprot_primary_accession,object,categorical/text,metadata/provenance,,39552,0.0,0,0,,,0,7436
+uniprot_reviewed,object,numeric,metadata/provenance,,39552,1.0,0,0,1.0,1.0,0,1
+uniprot_release,object,categorical/text,metadata/provenance,,39552,0.0,0,0,,,0,1
+uniprot_entry_version,object,numeric,metadata/provenance,,39552,1.0,0,0,24.0,320.0,0,233
+uniprot_sequence_version,object,numeric,metadata/provenance,,39552,1.0,0,0,1.0,8.0,0,8
+uniprot_protein_name,object,categorical/text,metadata/provenance,,39552,0.0,0,0,,,0,7436
+uniprot_gene_name,object,categorical/text,metadata/provenance,,39552,0.0,0,0,,,0,7431
+uniprot_protein_length,object,numeric,metadata/provenance,,39552,1.0,0,0,44.0,34350.0,0,1871
+uniprot_reference_residue,object,categorical/text,metadata/provenance,,39552,0.0,0,0,,,0,20
+uniprot_validation_status,object,categorical/text,metadata/provenance,,39552,0.0,0,0,,,0,1
+uniprot_overlapping_feature_types,object,categorical/text,metadata/provenance,,39521,0.0,0,0,,,0,1291
+uniprot_overlapping_feature_descriptions,object,categorical/text,metadata/provenance,,39263,0.0,0,0,,,0,22633
+interpro_lookup_status,object,categorical/text,metadata/provenance,,39552,0.0,0,0,,,0,2
+interpro_release,object,numeric,metadata/provenance,,39529,1.0,0,0,110.0,110.0,0,1
+interpro_entry_count,object,numeric,metadata/provenance,,39529,1.0,0,0,1.0,30.0,0,27
+interpro_overlap_count,object,numeric,metadata/provenance,,39529,1.0,0,0,0.0,8.0,0,9
+interpro_overlap_accessions,object,categorical/text,metadata/provenance,,33846,0.0,0,0,,,0,8657
+interpro_overlap_names,object,categorical/text,metadata/provenance,,33846,0.0,0,0,,,0,8657
+interpro_overlap_types,object,categorical/text,metadata/provenance,,33846,0.0,0,0,,,0,661
+gnomad_constraint_release,object,categorical/text,metadata/provenance,,39552,0.0,0,0,,,0,1
+gnomad_constraint_match_status,object,categorical/text,metadata/provenance,,39552,0.0,0,0,,,0,3
+gnomad_constraint_match_basis,object,categorical/text,metadata/provenance,,36152,0.0,0,0,,,0,2
+gnomad_constraint_gene,object,categorical/text,metadata/provenance,,36152,0.0,0,0,,,0,7062
+gnomad_constraint_transcript,object,categorical/text,metadata/provenance,,36152,0.0,0,0,,,0,7106
+gnomad_missense_z,object,numeric,candidate evidence,gene_constraint,36151,1.0,0,0,-15.697,16.078,0,6893
+gnomad_loeuf,object,numeric,candidate evidence,gene_constraint,36051,1.0,0,0,0.048,1.998,0,1759
+dbnsfp_release,object,categorical/text,metadata/provenance,,39552,0.0,0,0,,,0,1
+dbnsfp_access_service,object,categorical/text,metadata/provenance,,39552,0.0,0,0,,,0,1
+dbnsfp_source_url,object,categorical/text,metadata/provenance,,39552,0.0,0,0,,,0,1
+dbnsfp_metadata_url,object,categorical/text,metadata/provenance,,39552,0.0,0,0,,,0,1
+myvariant_build_version,object,numeric,metadata/provenance,,39552,1.0,0,0,20250624.0,20250624.0,0,1
+myvariant_build_date,object,categorical/text,metadata/provenance,,39552,0.0,0,0,,,0,1
+dbnsfp_query_id,object,categorical/text,metadata/provenance,,39552,0.0,0,0,,,0,39552
+dbnsfp_record_id,object,categorical/text,metadata/provenance,,39551,0.0,0,0,,,0,39551
+dbnsfp_coordinate_verified,object,numeric,metadata/provenance,,39552,1.0,0,0,0.0,1.0,0,2
+dbnsfp_lookup_status,object,categorical/text,metadata/provenance,,39552,0.0,0,0,,,0,3
+conservation_gerp_rs,object,numeric,candidate evidence,conservation,39487,1.0,0,0,-12.3,6.17,0,3009
+conservation_phylop100way,object,numeric,candidate evidence,conservation,39550,1.0,0,0,-20.0,10.003,0,11176
+conservation_phastcons100way,object,numeric,candidate evidence,conservation,39550,1.0,0,0,0.0,1.0,0,951
+aa_feature_status,object,categorical/text,metadata/provenance,,39552,0.0,0,0,,,0,1
+aa_grantham_score,object,numeric,candidate evidence,amino_acid_change,39552,1.0,0,0,4.855121,214.362373,0,75
+aa_composition_delta,object,numeric,candidate evidence,amino_acid_change,39552,1.0,0,0,-2.75,2.75,0,97
+aa_polarity_delta,object,numeric,candidate evidence,amino_acid_change,39552,1.0,0,0,-7.1,7.1,0,91
+aa_volume_delta,object,numeric,candidate evidence,amino_acid_change,39552,1.0,0,0,-167.0,167.0,0,111
+aa_hydropathy_delta,object,numeric,candidate evidence,amino_acid_change,39552,1.0,0,0,-9.0,9.0,0,89
+aa_charge_delta,object,numeric,candidate evidence,amino_acid_change,39552,1.0,0,0,-2.0,2.0,0,11
+aa_charge_changed,object,numeric,candidate evidence,amino_acid_change,39552,1.0,0,0,0.0,1.0,0,2
+aa_polarity_class_changed,object,numeric,candidate evidence,amino_acid_change,39552,1.0,0,0,0.0,1.0,0,2
+aa_relative_protein_position,object,numeric,candidate evidence,protein_context,39552,1.0,0,0,0.00020378,1.0,0,33569
+interpro_type_active_site,object,numeric,candidate evidence,protein_context,39529,1.0,0,0,0.0,1.0,0,2
+interpro_type_binding_site,object,numeric,candidate evidence,protein_context,39529,1.0,0,0,0.0,1.0,0,2
+interpro_type_conserved_site,object,numeric,candidate evidence,protein_context,39529,1.0,0,0,0.0,1.0,0,2
+interpro_type_domain,object,numeric,candidate evidence,protein_context,39529,1.0,0,0,0.0,1.0,0,2
+interpro_type_family,object,numeric,candidate evidence,protein_context,39529,1.0,0,0,0.0,1.0,0,2
+interpro_type_homologous_superfamily,object,numeric,candidate evidence,protein_context,39529,1.0,0,0,0.0,1.0,0,2
+interpro_type_ptm,object,numeric,candidate evidence,protein_context,39529,1.0,0,0,0.0,1.0,0,2
+interpro_type_repeat,object,numeric,candidate evidence,protein_context,39529,1.0,0,0,0.0,1.0,0,2
+uniprot_feature_active_site,object,numeric,candidate evidence,protein_context,39552,1.0,0,0,0.0,1.0,0,2
+uniprot_feature_beta_strand,object,numeric,candidate evidence,protein_context,39552,1.0,0,0,0.0,1.0,0,2
+uniprot_feature_binding_site,object,numeric,candidate evidence,protein_context,39552,1.0,0,0,0.0,1.0,0,2
+uniprot_feature_chain,object,numeric,candidate evidence,protein_context,39552,1.0,0,0,0.0,1.0,0,2
+uniprot_feature_coiled_coil,object,numeric,candidate evidence,protein_context,39552,1.0,0,0,0.0,1.0,0,2
+uniprot_feature_compositional_bias,object,numeric,candidate evidence,protein_context,39552,1.0,0,0,0.0,1.0,0,2
+uniprot_feature_cross_link,object,numeric,candidate evidence,protein_context,39552,1.0,0,0,0.0,1.0,0,2
+uniprot_feature_dna_binding,object,numeric,candidate evidence,protein_context,39552,1.0,0,0,0.0,1.0,0,2
+uniprot_feature_disulfide_bond,object,numeric,candidate evidence,protein_context,39552,1.0,0,0,0.0,1.0,0,2
+uniprot_feature_domain,object,numeric,candidate evidence,protein_context,39552,1.0,0,0,0.0,1.0,0,2
+uniprot_feature_glycosylation,object,numeric,candidate evidence,protein_context,39552,1.0,0,0,0.0,1.0,0,2
+uniprot_feature_helix,object,numeric,candidate evidence,protein_context,39552,1.0,0,0,0.0,1.0,0,2
+uniprot_feature_intramembrane,object,numeric,candidate evidence,protein_context,39552,1.0,0,0,0.0,1.0,0,2
+uniprot_feature_lipidation,object,numeric,candidate evidence,protein_context,39552,1.0,0,0,0.0,1.0,0,2
+uniprot_feature_modified_residue,object,numeric,candidate evidence,protein_context,39552,1.0,0,0,0.0,1.0,0,2
+uniprot_feature_motif,object,numeric,candidate evidence,protein_context,39552,1.0,0,0,0.0,1.0,0,2
+uniprot_feature_peptide,object,numeric,candidate evidence,protein_context,39552,1.0,0,0,0.0,1.0,0,2
+uniprot_feature_propeptide,object,numeric,candidate evidence,protein_context,39552,1.0,0,0,0.0,1.0,0,2
+uniprot_feature_region,object,numeric,candidate evidence,protein_context,39552,1.0,0,0,0.0,1.0,0,2
+uniprot_feature_repeat,object,numeric,candidate evidence,protein_context,39552,1.0,0,0,0.0,1.0,0,2
+uniprot_feature_signal,object,numeric,candidate evidence,protein_context,39552,1.0,0,0,0.0,1.0,0,2
+uniprot_feature_site,object,numeric,candidate evidence,protein_context,39552,1.0,0,0,0.0,1.0,0,2
+uniprot_feature_topological_domain,object,numeric,candidate evidence,protein_context,39552,1.0,0,0,0.0,1.0,0,2
+uniprot_feature_transit_peptide,object,numeric,candidate evidence,protein_context,39552,1.0,0,0,0.0,1.0,0,2
+uniprot_feature_transmembrane,object,numeric,candidate evidence,protein_context,39552,1.0,0,0,0.0,1.0,0,2
+uniprot_feature_turn,object,numeric,candidate evidence,protein_context,39552,1.0,0,0,0.0,1.0,0,2
+uniprot_feature_zinc_finger,object,numeric,candidate evidence,protein_context,39552,1.0,0,0,0.0,1.0,0,2

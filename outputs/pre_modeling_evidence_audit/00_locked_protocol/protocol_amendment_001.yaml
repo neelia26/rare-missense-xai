@@ -1,0 +1,33 @@
+{
+  "amendment": 1,
+  "post_run": true,
+  "changes_original_protocol": false,
+  "resampling_unit": "reconciled_gene_symbol",
+  "bootstrap_samples": 5000,
+  "seed": 20261018,
+  "paired": true,
+  "metrics": [
+    "MCC",
+    "average_precision_PR_AUC",
+    "Brier"
+  ],
+  "comparisons": [
+    [
+      "conservation_gerp_rs__phylop100way__phastcons100way",
+      "conservation_phylop100way__phastcons100way"
+    ],
+    [
+      "conservation_gerp_rs__phylop100way__phastcons100way",
+      "conservation_gerp_rs__phylop100way"
+    ],
+    [
+      "conservation_gerp_rs__phylop100way__phastcons100way",
+      "conservation_phylop100way"
+    ],
+    [
+      "conservation_phylop100way__phastcons100way",
+      "conservation_phylop100way"
+    ]
+  ],
+  "data": "saved training-only OOF predictions"
+}

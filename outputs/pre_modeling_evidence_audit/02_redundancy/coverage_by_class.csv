@@ -1,0 +1,17 @@
+column,target_class,nonmissing_count,class_rows,coverage
+conservation_gerp_rs,0,13707,13741,0.99752565
+conservation_gerp_rs,1,13980,13986,0.999571
+conservation_phylop100way,0,13740,13741,0.99992723
+conservation_phylop100way,1,13986,13986,1.0
+conservation_phastcons100way,0,13740,13741,0.99992723
+conservation_phastcons100way,1,13986,13986,1.0
+predictor_sift_score,0,13362,13741,0.97241831
+predictor_sift_score,1,13528,13986,0.96725297
+predictor_polyphen2_hdiv_score,0,12724,13741,0.92598792
+predictor_polyphen2_hdiv_score,1,12851,13986,0.91884742
+predictor_revel_score,0,13453,13741,0.97904083
+predictor_revel_score,1,13796,13986,0.98641499
+predictor_cadd_phred,0,13740,13741,0.99992723
+predictor_cadd_phred,1,13986,13986,1.0
+predictor_alphamissense_score,0,13624,13741,0.99148534
+predictor_alphamissense_score,1,13929,13986,0.9959245

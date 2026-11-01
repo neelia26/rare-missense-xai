@@ -1,0 +1,9 @@
+column,vif,flag_vif_ge_10,preprocessing
+conservation_gerp_rs,3.52413424,0,training-only median imputation; original data unchanged
+conservation_phylop100way,4.02188184,0,training-only median imputation; original data unchanged
+conservation_phastcons100way,3.32133832,0,training-only median imputation; original data unchanged
+predictor_sift_score,2.24435651,0,training-only median imputation; original data unchanged
+predictor_polyphen2_hdiv_score,2.83587054,0,training-only median imputation; original data unchanged
+predictor_revel_score,4.61958475,0,training-only median imputation; original data unchanged
+predictor_cadd_phred,8.03278152,0,training-only median imputation; original data unchanged
+predictor_alphamissense_score,4.235973,0,training-only median imputation; original data unchanged

@@ -148,7 +148,7 @@ def registry_rows(
                 "field": feature,
                 "evidence_group": group,
                 "data_type": data_type,
-                "primary_model_feature": 1,
+                "primary_model_feature": int(feature not in POPULATION_FEATURES),
                 "no_population_ablation_feature": int(feature in no_population_features),
                 "interpretation": interpretation,
             }

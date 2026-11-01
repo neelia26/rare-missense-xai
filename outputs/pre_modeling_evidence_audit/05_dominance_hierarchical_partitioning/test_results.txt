@@ -1,0 +1,9 @@
+Complete repository test suite
+Command: python -m unittest discover -s tests -v
+Passed: 69
+Failed: 0
+Skipped: 0
+Result: OK
+Runtime: 12.550 seconds
+
+Syntax checks also passed for src/pre_modeling_audit/*.py and tests/*.py.

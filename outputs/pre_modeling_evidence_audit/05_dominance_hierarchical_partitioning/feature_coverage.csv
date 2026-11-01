@@ -1,0 +1,15 @@
+block,feature,nonmissing_count,missing_count,coverage,missing_values_converted_to_zero
+primary_conservation,conservation_gerp_rs,27687,40,0.9985573629,False
+primary_conservation,conservation_phylop100way,27726,1,0.9999639341,False
+primary_conservation,conservation_phastcons100way,27726,1,0.9999639341,False
+primary_amino_acid,aa_hydropathy_delta,27727,0,1.0,False
+primary_amino_acid,aa_polarity_delta,27727,0,1.0,False
+primary_gene_constraint,gnomad_missense_z,25492,2235,0.9193926498,False
+primary_gene_constraint,gnomad_loeuf,25434,2293,0.9173008259,False
+population_inclusive_sensitivity,gnomad_global_af,16567,11160,0.5975042377,False
+population_inclusive_sensitivity,gnomad_max_population_af,16567,11160,0.5975042377,False
+computational_predictor_sensitivity,predictor_sift_score,26890,837,0.9698128178,False
+computational_predictor_sensitivity,predictor_polyphen2_hdiv_score,25575,2152,0.9223861218,False
+computational_predictor_sensitivity,predictor_revel_score,27249,478,0.9827604862,False
+computational_predictor_sensitivity,predictor_cadd_phred,27726,1,0.9999639341,False
+computational_predictor_sensitivity,predictor_alphamissense_score,27553,174,0.9937245284,False

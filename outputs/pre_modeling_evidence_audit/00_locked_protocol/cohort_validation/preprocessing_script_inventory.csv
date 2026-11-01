@@ -1,0 +1,13 @@
+preprocessing_operation,script_or_notebook,input_file,output_file,configuration,already_applied,deterministic,reproducible,verification_evidence,remaining_issue
+Filter ClinVar and binary labels,scripts/02_extract_candidates.py,ClinVar GRCh38 VCF,02_clinvar_candidates.csv,pipeline_config.json,yes,yes,yes,existing manifest/audit plus this cohort validation,none
+Deterministic candidate sampling,scripts/03_select_candidate_pool.py,02_clinvar_candidates.csv,03_candidate_pool.csv,seed 20261018,yes,yes,yes,existing manifest/audit plus this cohort validation,none
+VEP missense and transcript reconciliation,scripts/06_parse_vep.py,05_vep.jsonl,06_vep_reconciled.csv,pipeline_config.json,yes,yes,yes,existing manifest/audit plus this cohort validation,none
+UniProt mapping verification,scripts/07_enrich_uniprot.py,06_vep_reconciled.csv,07_uniprot_validated.csv,pipeline_config.json,yes,yes,yes,existing manifest/audit plus this cohort validation,none
+InterPro/protein context,scripts/08_enrich_interpro.py,07_uniprot_validated.csv,08_interpro.csv,pipeline_config.json,yes,yes,yes,existing manifest/audit plus this cohort validation,none
+Gene constraint,scripts/09_merge_gnomad_constraint.py,08_interpro.csv,09_constraint.csv,gnomAD v4.1,yes,yes,yes,existing manifest/audit plus this cohort validation,none
+Conservation/optional predictors,scripts/10_enrich_dbnsfp.py,09_constraint.csv,10_dbnsfp.csv + optional table,dbNSFP 4.8a,yes,yes,yes,existing manifest/audit plus this cohort validation,predictor provenance reviewed separately
+Amino-acid descriptors,scripts/11_add_amino_acid_features.py,10_dbnsfp.csv,11_amino_acid_features.csv,deterministic constants,yes,yes,yes,existing manifest/audit plus this cohort validation,none
+"Final 40,000 build",scripts/12_build_final_dataset.py,11_amino_acid_features.csv,final_dataset_full.csv,pipeline_config.json,yes,yes,yes,existing manifest/audit plus this cohort validation,none
+Exclude gene disagreements/context indicators,scripts/12b_prepare_modeling_dataset.py,final_dataset_full.csv,modeling_ready_*.csv + exclusions,frozen SHA-256,yes,yes,yes,existing manifest/audit plus this cohort validation,none
+Gene-separated split,scripts/13_split_by_gene.py,modeling_ready_*.csv,modeling_splits + assignments,seed 20261018,yes,yes,yes,existing manifest/audit plus this cohort validation,none
+Readiness verification,scripts/14_audit_modeling_readiness.py,derived cohort/splits,audit JSON,locked tolerances,yes,yes,yes,existing manifest/audit plus this cohort validation,none

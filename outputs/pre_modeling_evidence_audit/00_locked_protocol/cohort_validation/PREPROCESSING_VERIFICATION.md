@@ -1,0 +1,3 @@
+# Preprocessing verification
+
+The authoritative preprocessing scripts and audit manifests were inventoried and the frozen outputs were checked without regeneration. All imputers, encoders, scalers, selectors and models must be fitted inside each training fold. Validation and test transformations must use training-learned parameters only. Missing biological evidence must remain missing until fold-local imputation and must never be silently converted to zero. Scaling is used only for the fixed logistic audit instrument. Biological outliers are retained unless a prospective domain rule is approved. Reconciled genes are grouping variables, never predictors. The existing gene-separated split is reused unchanged.

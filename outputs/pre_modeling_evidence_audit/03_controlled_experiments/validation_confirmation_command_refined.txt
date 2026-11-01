@@ -1,0 +1,3 @@
+# Run from the modelling repository root with its virtual environment activated.
+# This evaluates only the preselected configuration; it does not rerun search or access test.
+python -m src.pre_modeling_audit.run_pre_modeling_audit --validation-confirmation outputs/pre_modeling_evidence_audit/03_controlled_experiments/recommended_training_only_configuration_refined.json

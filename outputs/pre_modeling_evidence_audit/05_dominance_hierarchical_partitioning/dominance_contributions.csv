@@ -1,0 +1,15 @@
+block,feature,raw_dominance_contribution,normalised_share,full_minus_empty_mcc,efficiency_residual,normalisation_defined,governance
+primary_conservation,conservation_gerp_rs,0.0416750888,0.2442744932,0.1706076153,0.0,True,primary biological evidence
+primary_conservation,conservation_phylop100way,0.0867022143,0.5081966249,0.1706076153,0.0,True,primary biological evidence
+primary_conservation,conservation_phastcons100way,0.0422303123,0.2475288818,0.1706076153,0.0,True,primary biological evidence
+primary_amino_acid,aa_hydropathy_delta,0.0018944062,0.6304131025,0.0030050236,0.0,True,primary related-feature analysis
+primary_amino_acid,aa_polarity_delta,0.0011106173,0.3695868975,0.0030050236,0.0,True,primary related-feature analysis
+primary_gene_constraint,gnomad_missense_z,0.0047430389,0.4988101043,0.0095087066,0.0,True,controlled related-feature analysis
+primary_gene_constraint,gnomad_loeuf,0.0047656677,0.5011898957,0.0095087066,0.0,True,controlled related-feature analysis
+population_inclusive_sensitivity,gnomad_global_af,0.0201930901,0.3826015078,0.0527783861,0.0,True,sensitivity only; class-associated missingness warning
+population_inclusive_sensitivity,gnomad_max_population_af,0.032585296,0.6173984922,0.0527783861,0.0,True,sensitivity only; class-associated missingness warning
+computational_predictor_sensitivity,predictor_sift_score,0.0124799297,0.0809667426,0.1541364929,0.0,True,external comparator/optional sensitivity only
+computational_predictor_sensitivity,predictor_polyphen2_hdiv_score,0.01132894,0.0734994014,0.1541364929,0.0,True,external comparator/optional sensitivity only
+computational_predictor_sensitivity,predictor_revel_score,0.0556684282,0.3611631945,0.1541364929,0.0,True,external comparator/optional sensitivity only
+computational_predictor_sensitivity,predictor_cadd_phred,0.0240150003,0.1558034693,0.1541364929,0.0,True,external comparator/optional sensitivity only
+computational_predictor_sensitivity,predictor_alphamissense_score,0.0506441947,0.3285671922,0.1541364929,0.0,True,external comparator/optional sensitivity only

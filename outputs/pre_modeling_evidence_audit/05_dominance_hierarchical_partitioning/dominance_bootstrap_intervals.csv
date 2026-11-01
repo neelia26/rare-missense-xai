@@ -1,0 +1,15 @@
+block,feature,bootstrap_samples,seed,resampling_unit,bootstrap_median,ci_2_5,ci_97_5,probability_contribution_gt_zero
+primary_conservation,conservation_gerp_rs,5000,20261018,reconciled_gene_symbol,0.0416339203,0.0342245778,0.0496091652,1.0
+primary_conservation,conservation_phylop100way,5000,20261018,reconciled_gene_symbol,0.08630054,0.070330692,0.1054327702,1.0
+primary_conservation,conservation_phastcons100way,5000,20261018,reconciled_gene_symbol,0.042226694,0.0355523694,0.0492728897,1.0
+primary_amino_acid,aa_hydropathy_delta,5000,20261018,reconciled_gene_symbol,0.0018911151,-0.0004117178,0.0041491665,0.9454
+primary_amino_acid,aa_polarity_delta,5000,20261018,reconciled_gene_symbol,0.0011151609,-0.0006279491,0.0028560071,0.896
+primary_gene_constraint,gnomad_missense_z,5000,20261018,reconciled_gene_symbol,0.0044444787,-0.0020856217,0.012619289,0.9016
+primary_gene_constraint,gnomad_loeuf,5000,20261018,reconciled_gene_symbol,0.0048051425,-0.0009473408,0.0103075883,0.9508
+population_inclusive_sensitivity,gnomad_global_af,5000,20261018,reconciled_gene_symbol,0.0202216392,0.0170217824,0.0234231341,1.0
+population_inclusive_sensitivity,gnomad_max_population_af,5000,20261018,reconciled_gene_symbol,0.0326487228,0.0270326386,0.0383117685,1.0
+computational_predictor_sensitivity,predictor_sift_score,5000,20261018,reconciled_gene_symbol,0.0124791087,0.0104320189,0.0144867758,1.0
+computational_predictor_sensitivity,predictor_polyphen2_hdiv_score,5000,20261018,reconciled_gene_symbol,0.0113197052,0.0089262529,0.0136356958,1.0
+computational_predictor_sensitivity,predictor_revel_score,5000,20261018,reconciled_gene_symbol,0.0558823112,0.047020161,0.0645403125,1.0
+computational_predictor_sensitivity,predictor_cadd_phred,5000,20261018,reconciled_gene_symbol,0.0240122728,0.0187580567,0.0288344659,1.0
+computational_predictor_sensitivity,predictor_alphamissense_score,5000,20261018,reconciled_gene_symbol,0.0506258429,0.0438643429,0.0574943709,1.0

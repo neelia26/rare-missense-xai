@@ -1,0 +1,3 @@
+# Protocol amendment 001 — paired conservation uncertainty
+
+This post-run amendment was created after reviewing the initial training-only results. It does not alter or overwrite the locked protocol retrospectively. Its sole purpose is to test whether the extra complexity of the highest-observed conservation subset is supported by a stable paired improvement. The analysis uses 5,000 deterministic paired gene-cluster bootstrap samples, seed 20261018, preserves all variants belonging to each sampled gene, and compares MCC, average precision (reported as PR-AUC), and Brier score from saved training OOF predictions. Validation and test outcomes are not accessed.

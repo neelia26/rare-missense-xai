@@ -1,0 +1,43 @@
+{
+  "analysis_specification_sha256": "a2c1f134fd0aac55aff87fc630afb32b67d4ada0040a2208314be4ef883a139d",
+  "authoritative_configuration_modified": false,
+  "bootstrap_samples": 5000,
+  "decision_synthesis_refreshed_from_outputs": true,
+  "fold_assignment_sha256": "54f66387b0df11a23eb27a0ca7ebac776ab6262d4268a4ce07e57abf5fab8046",
+  "inner_folds": 4,
+  "input_hashes": {
+    "assignments": "3dd0160f873075c8729d13271d6eca1121c17a4c7fa21c7e209cb3c7830f77a0",
+    "cohort": "797fcb5958e697a21d8752463b66680cf699cd1ebea971f4e35224c647346799",
+    "excluded": "3693003cf0bbd2c9d500808ee4ef70e58b5c69a6e7cf7d326800b1112c55d919",
+    "frozen": "50d8ac02ededae696d6867c7e713351d33058d01bad4fab3633055157525494f",
+    "train_optional": "658143d571f752af1ca6b97d006963de8a5994b33e3bb789d40162460c923559",
+    "train_population": "7aff3e0de30edc24c876aa6052ee237481067f02afe79c9c9cd34c1064d797a3",
+    "train_primary": "5c7b2cd3acb286cd84c94b7711ba908fcb700fa7d4f909b03206963518b27944"
+  },
+  "outer_folds": 5,
+  "overall_provisional_configuration": "retain complete current primary biological feature set pending supervisor decision on conservation and amino-acid blocks",
+  "runtime_seconds": 429.086,
+  "seed": 20261018,
+  "software": {
+    "joblib": "1.6.0",
+    "matplotlib": "3.11.2",
+    "numpy": "2.5.4",
+    "pandas": "2.3.3",
+    "platform": "macOS-26.6.2-arm64-arm-64bit-Mach-O",
+    "python": "3.14.3",
+    "scikit_learn": "1.9.1"
+  },
+  "test_accessed": false,
+  "test_suite": {
+    "command": "python -m unittest discover -s tests -v",
+    "failed": 0,
+    "log": "test_results.txt",
+    "passed": 82,
+    "result": "PASS",
+    "skipped": 0
+  },
+  "training_genes": 5206,
+  "training_rows": 27727,
+  "validation_accessed": false,
+  "validation_command_modified": false
+}

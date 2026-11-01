@@ -1,0 +1,9 @@
+column,nonmissing_count,row_count,coverage
+conservation_gerp_rs,27687,27727,0.99855736
+conservation_phylop100way,27726,27727,0.99996393
+conservation_phastcons100way,27726,27727,0.99996393
+predictor_sift_score,26890,27727,0.96981282
+predictor_polyphen2_hdiv_score,25575,27727,0.92238612
+predictor_revel_score,27249,27727,0.98276049
+predictor_cadd_phred,27726,27727,0.99996393
+predictor_alphamissense_score,27553,27727,0.99372453

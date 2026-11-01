@@ -1,0 +1,1 @@
+../rare_missense_dataset_pipeline/.venv/bin/python -m src.pre_modeling_audit.run_pre_modeling_audit --validation-confirmation outputs/pre_modeling_evidence_audit/03_controlled_experiments/recommended_training_only_configuration.json

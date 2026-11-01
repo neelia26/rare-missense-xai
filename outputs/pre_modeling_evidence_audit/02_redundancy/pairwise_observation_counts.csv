@@ -1,0 +1,9 @@
+,conservation_gerp_rs,conservation_phylop100way,conservation_phastcons100way,predictor_sift_score,predictor_polyphen2_hdiv_score,predictor_revel_score,predictor_cadd_phred,predictor_alphamissense_score
+conservation_gerp_rs,27687,27687,27687,26863,25560,27233,27687,27514
+conservation_phylop100way,27687,27726,27726,26890,25575,27249,27726,27553
+conservation_phastcons100way,27687,27726,27726,26890,25575,27249,27726,27553
+predictor_sift_score,26863,26890,26890,26890,24968,26837,26890,26752
+predictor_polyphen2_hdiv_score,25560,25575,25575,24968,25575,25301,25575,25469
+predictor_revel_score,27233,27249,27249,26837,25301,27249,27249,27105
+predictor_cadd_phred,27687,27726,27726,26890,25575,27249,27726,27553
+predictor_alphamissense_score,27514,27553,27553,26752,25469,27105,27553,27553

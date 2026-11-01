@@ -1,0 +1,6 @@
+field_a,field_b,spearman,pearson,paired_observations,threshold,interpretation
+conservation_phylop100way,conservation_phastcons100way,0.82695123,0.75034451,27726,0.8,investigate shared information; not automatic deletion
+conservation_phylop100way,predictor_cadd_phred,0.81785318,0.82447463,27726,0.8,investigate shared information; not automatic deletion
+predictor_sift_score,predictor_alphamissense_score,-0.80126751,-0.63083282,26752,0.8,investigate shared information; not automatic deletion
+predictor_revel_score,predictor_alphamissense_score,0.81856428,0.86094049,27105,0.8,investigate shared information; not automatic deletion
+predictor_cadd_phred,predictor_alphamissense_score,0.80311788,0.74654825,27553,0.8,investigate shared information; not automatic deletion

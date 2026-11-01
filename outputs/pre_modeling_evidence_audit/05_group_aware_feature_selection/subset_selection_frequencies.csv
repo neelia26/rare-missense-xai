@@ -1,0 +1,30 @@
+block,frequency_type,subset_key,subset_label,count,denominator,frequency
+conservation,outer_fold_selected,conservation_gerp_rs__conservation_phastcons100way__conservation_phylop100way,GERP++ + phyloP + PhastCons,3,5,0.6
+conservation,outer_fold_selected,conservation_phastcons100way__conservation_phylop100way,phyloP + PhastCons,2,5,0.4
+conservation,bootstrap_preferred,conservation_gerp_rs__conservation_phastcons100way__conservation_phylop100way,GERP++ + phyloP + PhastCons,4369,5000,0.8738
+conservation,bootstrap_preferred,conservation_phastcons100way__conservation_phylop100way,phyloP + PhastCons,553,5000,0.1106
+conservation,bootstrap_preferred,conservation_gerp_rs__conservation_phylop100way,GERP++ + phyloP,75,5000,0.015
+conservation,bootstrap_preferred,conservation_phylop100way,phyloP,3,5000,0.0006
+amino_acid_properties,outer_fold_selected,aa_polarity_delta,Polarity delta,2,5,0.4
+amino_acid_properties,outer_fold_selected,empty,None,2,5,0.4
+amino_acid_properties,outer_fold_selected,aa_hydropathy_delta__aa_polarity_delta,Hydropathy delta + Polarity delta,1,5,0.2
+amino_acid_properties,bootstrap_preferred,aa_hydropathy_delta__aa_polarity_delta,Hydropathy delta + Polarity delta,2899,5000,0.5798
+amino_acid_properties,bootstrap_preferred,aa_hydropathy_delta,Hydropathy delta,1161,5000,0.2322
+amino_acid_properties,bootstrap_preferred,aa_polarity_delta,Polarity delta,803,5000,0.1606
+amino_acid_properties,bootstrap_preferred,empty,None,137,5000,0.0274
+gene_constraint,outer_fold_selected,gnomad_loeuf__gnomad_missense_z,Missense Z + LOEUF,5,5,1.0
+gene_constraint,bootstrap_preferred,gnomad_loeuf__gnomad_missense_z,Missense Z + LOEUF,4823,5000,0.9646
+gene_constraint,bootstrap_preferred,empty,None,98,5000,0.0196
+gene_constraint,bootstrap_preferred,gnomad_loeuf,LOEUF,69,5000,0.0138
+gene_constraint,bootstrap_preferred,gnomad_missense_z,Missense Z,10,5000,0.002
+population_frequency,outer_fold_selected,gnomad_max_population_af,Max-population AF,3,5,0.6
+population_frequency,outer_fold_selected,gnomad_global_af__gnomad_max_population_af,Global AF + Max-population AF,2,5,0.4
+population_frequency,bootstrap_preferred,gnomad_max_population_af,Max-population AF,2883,5000,0.5766
+population_frequency,bootstrap_preferred,gnomad_global_af__gnomad_max_population_af,Global AF + Max-population AF,2117,5000,0.4234
+computational_predictors,outer_fold_selected,predictor_alphamissense_score__predictor_cadd_phred__predictor_polyphen2_hdiv_score__predictor_revel_score__predictor_sift_score,SIFT + PolyPhen-2 + REVEL + CADD + AlphaMissense,2,5,0.4
+computational_predictors,outer_fold_selected,predictor_alphamissense_score__predictor_cadd_phred__predictor_polyphen2_hdiv_score__predictor_revel_score,PolyPhen-2 + REVEL + CADD + AlphaMissense,2,5,0.4
+computational_predictors,outer_fold_selected,predictor_alphamissense_score__predictor_cadd_phred__predictor_revel_score__predictor_sift_score,SIFT + REVEL + CADD + AlphaMissense,1,5,0.2
+computational_predictors,bootstrap_preferred,predictor_alphamissense_score__predictor_cadd_phred__predictor_polyphen2_hdiv_score__predictor_revel_score__predictor_sift_score,SIFT + PolyPhen-2 + REVEL + CADD + AlphaMissense,2098,5000,0.4196
+computational_predictors,bootstrap_preferred,predictor_alphamissense_score__predictor_cadd_phred__predictor_revel_score,REVEL + CADD + AlphaMissense,1362,5000,0.2724
+computational_predictors,bootstrap_preferred,predictor_alphamissense_score__predictor_cadd_phred__predictor_polyphen2_hdiv_score__predictor_revel_score,PolyPhen-2 + REVEL + CADD + AlphaMissense,1355,5000,0.271
+computational_predictors,bootstrap_preferred,predictor_alphamissense_score__predictor_cadd_phred__predictor_revel_score__predictor_sift_score,SIFT + REVEL + CADD + AlphaMissense,185,5000,0.037

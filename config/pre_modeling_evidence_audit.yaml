@@ -1,0 +1,21 @@
+schema_version: 1
+seed: 20261018
+correlation_threshold: 0.80
+vif_threshold: 10.0
+cv_folds: 5
+model:
+  family: logistic_regression
+  hyperparameters:
+    C: 1.0
+    max_iter: 2000
+    solver: liblinear
+  class_weight: balanced
+inputs:
+  frozen: data/processed/final_dataset_full.csv
+  cohort: data/processed/modeling_ready_full.csv
+  excluded: data/processed/excluded_alternate_gene_variants.csv
+  train_primary: data/processed/modeling_splits/train_core_no_population.csv
+  train_population: data/processed/modeling_splits/train_core.csv
+  train_optional: data/processed/modeling_splits/train_optional_predictors.csv
+  assignments: data/processed/modeling_split_gene_assignments.csv
+output_root: outputs/pre_modeling_evidence_audit

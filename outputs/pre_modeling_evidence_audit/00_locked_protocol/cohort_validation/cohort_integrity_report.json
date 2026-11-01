@@ -1,0 +1,27 @@
+{
+  "allowed_target_values": [
+    "0",
+    "1"
+  ],
+  "conflicting_label_keys": 0,
+  "critical_failures": [],
+  "duplicate_variant_keys": {
+    "cohort": 0,
+    "excluded": 0,
+    "frozen": 0
+  },
+  "exact_duplicate_rows": {
+    "cohort": 0,
+    "excluded": 0,
+    "frozen": 0
+  },
+  "frozen_sha256": "50d8ac02ededae696d6867c7e713351d33058d01bad4fab3633055157525494f",
+  "retained_excluded_overlap": 0,
+  "row_accounting_complete": true,
+  "row_counts": {
+    "cohort": 39552,
+    "excluded": 448,
+    "frozen": 40000
+  },
+  "status": "PASS"
+}

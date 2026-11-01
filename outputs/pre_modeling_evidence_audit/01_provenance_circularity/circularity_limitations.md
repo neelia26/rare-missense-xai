@@ -1,0 +1,3 @@
+# Circularity and overlap limitations
+
+No external training set was downloaded for exact overlap. PolyPhen-2 training data are public but require validated GRCh37/protein-level harmonisation; REVEL's HGMD-derived pathogenic training records are not fully public; the exact CADD release behind the dbNSFP field is not recorded locally; and score-source versions for SIFT require further confirmation. Therefore exact variant, gene and protein overlap remain `UNKNOWN/UNVERIFIABLE` where appropriate. AlphaMissense was not directly trained on ClinVar labels, but it uses evolutionary/protein context and population-based weak supervision. Correlation is evidence of shared signal, not a test for circularity.

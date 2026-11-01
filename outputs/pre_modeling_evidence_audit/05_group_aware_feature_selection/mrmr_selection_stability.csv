@@ -1,0 +1,15 @@
+block,feature,mean_rank,sd_rank,rank_1_frequency,wrapper_inclusion_frequency
+amino_acid_properties,aa_hydropathy_delta,1.0,0.0,1.0,0.2
+amino_acid_properties,aa_polarity_delta,2.0,0.0,0.0,0.6
+computational_predictors,predictor_alphamissense_score,2.0,0.0,0.0,1.0
+computational_predictors,predictor_cadd_phred,3.8,0.4472135954999579,0.0,1.0
+computational_predictors,predictor_polyphen2_hdiv_score,3.4,0.8944271909999159,0.0,0.8
+computational_predictors,predictor_revel_score,1.0,0.0,1.0,1.0
+computational_predictors,predictor_sift_score,4.8,0.4472135954999579,0.0,0.6
+conservation,conservation_gerp_rs,3.0,0.0,0.0,0.6
+conservation,conservation_phastcons100way,2.0,0.0,0.0,1.0
+conservation,conservation_phylop100way,1.0,0.0,1.0,1.0
+gene_constraint,gnomad_loeuf,2.0,0.0,0.0,1.0
+gene_constraint,gnomad_missense_z,1.0,0.0,1.0,1.0
+population_frequency,gnomad_global_af,2.0,0.0,0.0,0.4
+population_frequency,gnomad_max_population_af,1.0,0.0,1.0,1.0

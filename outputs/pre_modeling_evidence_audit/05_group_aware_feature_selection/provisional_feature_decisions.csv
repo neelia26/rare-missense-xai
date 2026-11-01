@@ -1,0 +1,6 @@
+block,provisional_decision,provisional_subset,rationale,authoritative_configuration_changed
+conservation,inconclusive—requires supervisor decision,all three vs phyloP + PhastCons unresolved,"Pair improves on phyloP, but strict-margin non-inferiority probability=0.8656 and pair outer-selection frequency=0.40; methods disagree.",False
+amino_acid_properties,inconclusive—requires supervisor decision,hydropathy/polarity/full alternatives unstable,"mRMR ranks hydropathy first, but nested selections and gene-bootstrap preferences do not identify a stable single-feature replacement.",False
+gene_constraint,retain as grouped representation,Missense Z + LOEUF,Both full-versus-single intervals support joint value; all five nested folds selected the pair. They are correlated but biologically complementary.,False
+population_frequency,sensitivity-only,maximum-population AF sensitivity,Max-population AF is strictly non-inferior to both and global AF adds no stable value; class-associated missingness prevents primary promotion.,False
+computational_predictors,sensitivity-only,REVEL + CADD + AlphaMissense non-inferior diagnostic subset,"The trio is non-inferior at the strict margin, but nested subset identity is unstable; provenance and circularity governance prevents primary promotion.",False

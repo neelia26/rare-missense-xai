@@ -1,0 +1,9 @@
+score,exact_variant_overlap,gene_overlap,protein_overlap,reason,partition_outcomes_examined
+GERP++ RS,NOT_TESTED,NOT_TESTED,NOT_TESTED,exact alignment release requires dbNSFP field documentation,no
+phyloP 100-way,NOT_TESTED,NOT_TESTED,NOT_TESTED,exact underlying track build in dbNSFP requires documentation,no
+phastCons 100-way,NOT_TESTED,NOT_TESTED,NOT_TESTED,exact underlying track build in dbNSFP requires documentation,no
+SIFT,NOT_TESTED,NOT_TESTED,NOT_TESTED,exact SIFT database/version and historical benchmark reuse,no
+PolyPhen-2 HDIV,NOT_TESTED,NOT_TESTED,NOT_TESTED,safe GRCh37/protein harmonisation not implemented,no
+REVEL,NOT_TESTED,NOT_TESTED,NOT_TESTED,exact pathogenic training variants unavailable due HGMD licensing,no
+CADD PHRED,NOT_TESTED,NOT_TESTED,NOT_TESTED,exact CADD model release behind dbNSFP field,no
+AlphaMissense,NOT_TESTED,NOT_TESTED,NOT_TESTED,exact overlap cannot be concluded from score correlations,no

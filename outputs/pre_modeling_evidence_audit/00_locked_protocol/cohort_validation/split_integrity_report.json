@@ -1,0 +1,37 @@
+{
+  "class_count_access_policy": "Aggregate validation/test counts were read only from the pre-existing assignment summary for integrity verification; validation/test outcome rows were not analysed.",
+  "critical_failures": [],
+  "gene_overlap": {
+    "train_test": 0,
+    "train_validation": 0,
+    "validation_test": 0
+  },
+  "missing_gene_assignments": 0,
+  "split_counts_from_locked_assignment_summary": {
+    "test": {
+      "class_0": 3006,
+      "class_1": 3029,
+      "genes": 1115,
+      "variants": 6035
+    },
+    "train": {
+      "class_0": 13741,
+      "class_1": 13986,
+      "genes": 5206,
+      "variants": 27727
+    },
+    "validation": {
+      "class_0": 2895,
+      "class_1": 2895,
+      "genes": 1115,
+      "variants": 5790
+    }
+  },
+  "split_union_equals_cohort": true,
+  "status": "PASS",
+  "variant_overlap": {
+    "train_test": 0,
+    "train_validation": 0,
+    "validation_test": 0
+  }
+}

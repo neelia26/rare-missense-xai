@@ -1,0 +1,156 @@
+{
+  "approved_base_biological_features": [
+    "aa_charge_changed",
+    "aa_charge_delta",
+    "aa_composition_delta",
+    "aa_grantham_score",
+    "aa_hydropathy_delta",
+    "aa_polarity_class_changed",
+    "aa_polarity_delta",
+    "aa_relative_protein_position",
+    "aa_volume_delta",
+    "gnomad_loeuf",
+    "gnomad_missense_z",
+    "interpro_type_active_site",
+    "interpro_type_binding_site",
+    "interpro_type_conserved_site",
+    "interpro_type_domain",
+    "interpro_type_family",
+    "interpro_type_homologous_superfamily",
+    "interpro_type_ptm",
+    "interpro_type_repeat",
+    "uniprot_feature_active_site",
+    "uniprot_feature_beta_strand",
+    "uniprot_feature_binding_site",
+    "uniprot_feature_chain",
+    "uniprot_feature_coiled_coil",
+    "uniprot_feature_compositional_bias",
+    "uniprot_feature_cross_link",
+    "uniprot_feature_disulfide_bond",
+    "uniprot_feature_dna_binding",
+    "uniprot_feature_domain",
+    "uniprot_feature_glycosylation",
+    "uniprot_feature_helix",
+    "uniprot_feature_intramembrane",
+    "uniprot_feature_lipidation",
+    "uniprot_feature_modified_residue",
+    "uniprot_feature_motif",
+    "uniprot_feature_peptide",
+    "uniprot_feature_propeptide",
+    "uniprot_feature_region",
+    "uniprot_feature_repeat",
+    "uniprot_feature_signal",
+    "uniprot_feature_site",
+    "uniprot_feature_topological_domain",
+    "uniprot_feature_transit_peptide",
+    "uniprot_feature_transmembrane",
+    "uniprot_feature_turn",
+    "uniprot_feature_zinc_finger"
+  ],
+  "available_computational_predictors": [
+    "predictor_sift_score",
+    "predictor_polyphen2_hdiv_score",
+    "predictor_revel_score",
+    "predictor_cadd_phred",
+    "predictor_alphamissense_score"
+  ],
+  "available_conservation_variables": [
+    "conservation_gerp_rs",
+    "conservation_phylop100way",
+    "conservation_phastcons100way"
+  ],
+  "conditions": "all 8 conservation subsets; predictor alone and one-at-a-time addition; population sensitivity",
+  "correlation_threshold": "absolute Spearman >= 0.80",
+  "cross_validation": "5-fold StratifiedGroupKFold by reconciled gene; fixed assignments saved",
+  "encoding_and_scaling": "numeric/binary tables; fold-local StandardScaler for fixed logistic reference model",
+  "gene_group_column": "reconciled_gene_symbol",
+  "inputs": {
+    "assignments": {
+      "path": "data/processed/modeling_split_gene_assignments.csv",
+      "sha256": "3dd0160f873075c8729d13271d6eca1121c17a4c7fa21c7e209cb3c7830f77a0"
+    },
+    "cohort": {
+      "path": "data/processed/modeling_ready_full.csv",
+      "sha256": "797fcb5958e697a21d8752463b66680cf699cd1ebea971f4e35224c647346799"
+    },
+    "excluded": {
+      "path": "data/processed/excluded_alternate_gene_variants.csv",
+      "sha256": "3693003cf0bbd2c9d500808ee4ef70e58b5c69a6e7cf7d326800b1112c55d919"
+    },
+    "frozen": {
+      "path": "data/processed/final_dataset_full.csv",
+      "sha256": "50d8ac02ededae696d6867c7e713351d33058d01bad4fab3633055157525494f"
+    },
+    "train_optional": {
+      "path": "data/processed/modeling_splits/train_optional_predictors.csv",
+      "sha256": "658143d571f752af1ca6b97d006963de8a5994b33e3bb789d40162460c923559"
+    },
+    "train_population": {
+      "path": "data/processed/modeling_splits/train_core.csv",
+      "sha256": "7aff3e0de30edc24c876aa6052ee237481067f02afe79c9c9cd34c1064d797a3"
+    },
+    "train_primary": {
+      "path": "data/processed/modeling_splits/train_core_no_population.csv",
+      "sha256": "5c7b2cd3acb286cd84c94b7711ba908fcb700fa7d4f909b03206963518b27944"
+    }
+  },
+  "locked_at_utc": "2026-10-22T11:53:36.782488+00:00",
+  "metrics": {
+    "primary": "MCC higher is better",
+    "secondary": [
+      "PR-AUC higher",
+      "ROC-AUC higher",
+      "Brier lower",
+      "calibration slope near 1/intercept near 0"
+    ]
+  },
+  "missing_value_handling": "fold-local median imputation; missing biological values never converted to zero",
+  "model": "LogisticRegression(C=1,solver=liblinear,max_iter=2000,class_weight=balanced)",
+  "prohibited_variables": [
+    "binary_label",
+    "reconciled_gene_symbol",
+    "uniprot_feature_alternative_sequence",
+    "uniprot_feature_mutagenesis",
+    "uniprot_feature_natural_variant",
+    "uniprot_feature_sequence_conflict",
+    "variant_key"
+  ],
+  "random_seed": 20261018,
+  "row_counts": {
+    "cohort": 39552,
+    "excluded": 448,
+    "frozen": 40000
+  },
+  "schema_version": 1,
+  "software": {
+    "matplotlib": "3.11.2",
+    "numpy": "2.5.4",
+    "pandas": "2.3.3",
+    "platform": "macOS-26.6.2-arm64-arm-64bit-Mach-O",
+    "python": "3.14.3",
+    "scikit_learn": "1.9.1"
+  },
+  "split_counts": {
+    "test": {
+      "class_0": 3006,
+      "class_1": 3029,
+      "genes": 1115,
+      "variants": 6035
+    },
+    "train": {
+      "class_0": 13741,
+      "class_1": 13986,
+      "genes": 5206,
+      "variants": 27727
+    },
+    "validation": {
+      "class_0": 2895,
+      "class_1": 2895,
+      "genes": 1115,
+      "variants": 5790
+    }
+  },
+  "target_column": "binary_label",
+  "variant_key_definition": "genome_build:chromosome:position:reference:alternate",
+  "vif_threshold": ">= 10 supplementary"
+}
