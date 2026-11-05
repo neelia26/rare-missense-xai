@@ -97,17 +97,16 @@ class GroupAwareFeatureSelectionTests(unittest.TestCase):
         self.assertFalse(metadata["test_accessed"])
         self.assertEqual(metadata["training_rows"], 27727)
 
-    def test_completed_figures_exist_in_png_and_svg(self):
+    def test_completed_figures_exist_as_png(self):
         names = [
             "mrmr_selection_frequency", "subset_performance_confidence_intervals",
             "subset_selection_stability", "performance_vs_subset_complexity",
             "block_level_decision_summary",
         ]
         for name in names:
-            for suffix in (".png", ".svg"):
-                path = selection.STAGE / "figures" / f"{name}{suffix}"
-                self.assertTrue(path.is_file(), path)
-                self.assertGreater(path.stat().st_size, 1000, path)
+            path = selection.STAGE / "figures" / f"{name}.png"
+            self.assertTrue(path.is_file(), path)
+            self.assertGreater(path.stat().st_size, 1000, path)
 
     def test_analysis_specification_checksum_is_locked(self):
         self.assertEqual(selection.verify_specification(), selection.SPEC_HASH.read_text().split()[0])

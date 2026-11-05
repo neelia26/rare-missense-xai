@@ -218,7 +218,7 @@ def choose_subset(scores: dict[frozenset[str], float]) -> frozenset[str]:
 
 def savefig(fig: plt.Figure, name: str) -> None:
     path = STAGE / "figures" / name; path.parent.mkdir(parents=True, exist_ok=True)
-    fig.savefig(path, dpi=320, bbox_inches="tight", facecolor="white"); fig.savefig(path.with_suffix(".svg"), bbox_inches="tight", facecolor="white"); plt.close(fig)
+    fig.savefig(path, dpi=320, bbox_inches="tight", facecolor="white"); plt.close(fig)
 
 
 def figures(rankings: pd.DataFrame, performance: pd.DataFrame, frequencies: pd.DataFrame, decisions: pd.DataFrame) -> None:
