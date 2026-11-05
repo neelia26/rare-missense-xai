@@ -1,4 +1,4 @@
-# Governed Rare-Missense-SNV Dataset Rebuild
+# Governed Rare-Missense-SNV Dataset build
 
 This package reconstructs the research dataset as a sequence of small, inspectable stages. It does **not** depend on the earlier 40,000-row master file. That file should be retained only as a historical checkpoint and schema reference.
 
