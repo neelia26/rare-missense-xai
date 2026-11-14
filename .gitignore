@@ -1,5 +1,6 @@
 .venv/
 .venv-model/
+outputs/grouped_additive_model/03_evidence_reports/training_oof_evidence_reports.csv
 __pycache__/
 *.pyc
 data/raw/*

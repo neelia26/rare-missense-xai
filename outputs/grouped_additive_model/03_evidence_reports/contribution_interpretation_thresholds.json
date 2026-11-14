@@ -1,0 +1,18 @@
+{
+  "amino_acid_properties": {
+    "strong_boundary": 1.351177155971527,
+    "weak_boundary": 0.5567055642604828
+  },
+  "conservation": {
+    "strong_boundary": 2.575188398361206,
+    "weak_boundary": 0.8827653229236603
+  },
+  "gene_constraint": {
+    "strong_boundary": 0.7769006490707397,
+    "weak_boundary": 0.3095351457595825
+  },
+  "protein_context": {
+    "strong_boundary": 1.324682593345642,
+    "weak_boundary": 0.3907998502254486
+  }
+}

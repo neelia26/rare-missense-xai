@@ -1,0 +1,9 @@
+{
+  "caution": "model contribution is not causality or independent clinical evidence",
+  "deterministic_template": true,
+  "llm_used_for_generation": false,
+  "reports": 27727,
+  "status": "training_only_complete",
+  "test_loaded": false,
+  "validation_loaded": false
+}

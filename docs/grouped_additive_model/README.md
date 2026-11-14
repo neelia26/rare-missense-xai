@@ -39,3 +39,7 @@ The compact grouped-additive search selected one hidden layer with eight tanh un
 [Open the executed grouped-additive explanation notebook in Google Colab](https://colab.research.google.com/github/neelia26/rare-missense-xai/blob/feature/grouped-additive-model/notebooks/grouped_additive_model.ipynb)
 
 These are training-only development results. They do not select a final project architecture and do not contain validation or test outcomes.
+
+## Evidence-reporting layer
+
+`scripts/generate_evidence_reports.py` converts each faithful four-group contribution into a deterministic report containing the observed biological annotations, the direction and relative strength of each model contribution, missing evidence and agreement or conflict between groups. The text explicitly separates model behaviour from causality or independent clinical evidence. An LLM is not used to generate these reports.
