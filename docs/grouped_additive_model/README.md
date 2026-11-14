@@ -31,3 +31,11 @@ Any later change requires a numbered protocol amendment written before the affec
 The registered population sensitivity uses maximum-population AF, an availability-only diagnostic and a same-covered-variants comparison. This is intended to distinguish genuine frequency information from the strong class-associated database-coverage pattern.
 
 The first training-only baseline and its saved outputs are documented in `notebooks/grouped_additive_baseline.ipynb` and `outputs/grouped_additive_model/01_logistic_baseline/`.
+
+## First grouped-additive training-only result
+
+The compact grouped-additive search selected one hidden layer with eight tanh units per evidence group. Its pooled training OOF MCC was 0.7452, compared with 0.7221 for the fixed logistic baseline. The model saves one signed contribution for each of the four evidence groups for every OOF variant. The largest observed difference between a saved logit and the intercept-plus-contributions reconstruction was below 0.000001.
+
+[Open the executed grouped-additive explanation notebook in Google Colab](https://colab.research.google.com/github/neelia26/rare-missense-xai/blob/feature/grouped-additive-model/notebooks/grouped_additive_model.ipynb)
+
+These are training-only development results. They do not select a final project architecture and do not contain validation or test outcomes.
