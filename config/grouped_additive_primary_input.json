@@ -1,0 +1,97 @@
+{
+  "schema_version": 1,
+  "status": "frozen_before_grouped_additive_implementation",
+  "frozen_on": "2026-11-14",
+  "decision_scope": "primary grouped-additive modelling condition",
+  "source_decision": "outputs/pre_modeling_evidence_audit/03_controlled_experiments/recommended_training_only_configuration_refined.json",
+  "dataset": {
+    "cohort_path": "data/processed/modeling_ready_core_no_population.csv",
+    "cohort_sha256": "733f38b3b0bf35c4f104e38b4612d33c7d50ec172731c673f810465b6463c849",
+    "cohort_rows": 39552,
+    "training_path": "data/processed/modeling_splits/train_core_no_population.csv",
+    "training_sha256": "5c7b2cd3acb286cd84c94b7711ba908fcb700fa7d4f909b03206963518b27944",
+    "training_rows": 27727,
+    "validation_path": "data/processed/modeling_splits/validation_core_no_population.csv",
+    "validation_sha256": "49b16b1d2c05c73066bdc4f0069112443cee66686ef8eb420dc0a31137b693f7",
+    "validation_rows": 5790,
+    "test_path": "data/processed/modeling_splits/test_core_no_population.csv",
+    "test_sha256": "b6b02176dc0e5fff7951828178e60e10cb0251963460881af886ab223c155634",
+    "test_rows": 6035,
+    "split_assignments_path": "data/processed/modeling_split_gene_assignments.csv",
+    "split_assignments_sha256": "3dd0160f873075c8729d13271d6eca1121c17a4c7fa21c7e209cb3c7830f77a0"
+  },
+  "columns": {
+    "variant_key": "variant_key",
+    "gene": "reconciled_gene_symbol",
+    "label": "binary_label"
+  },
+  "evidence_groups": {
+    "conservation": [
+      "conservation_phylop100way",
+      "conservation_phastcons100way"
+    ],
+    "gene_constraint": [
+      "gnomad_missense_z",
+      "gnomad_loeuf"
+    ],
+    "amino_acid_properties": [
+      "aa_grantham_score",
+      "aa_composition_delta",
+      "aa_polarity_delta",
+      "aa_volume_delta",
+      "aa_hydropathy_delta",
+      "aa_charge_delta",
+      "aa_charge_changed",
+      "aa_polarity_class_changed",
+      "aa_relative_protein_position"
+    ],
+    "protein_context": [
+      "interpro_type_active_site",
+      "interpro_type_binding_site",
+      "interpro_type_conserved_site",
+      "interpro_type_domain",
+      "interpro_type_family",
+      "interpro_type_homologous_superfamily",
+      "interpro_type_ptm",
+      "interpro_type_repeat",
+      "uniprot_feature_active_site",
+      "uniprot_feature_beta_strand",
+      "uniprot_feature_binding_site",
+      "uniprot_feature_chain",
+      "uniprot_feature_coiled_coil",
+      "uniprot_feature_compositional_bias",
+      "uniprot_feature_cross_link",
+      "uniprot_feature_dna_binding",
+      "uniprot_feature_disulfide_bond",
+      "uniprot_feature_domain",
+      "uniprot_feature_glycosylation",
+      "uniprot_feature_helix",
+      "uniprot_feature_intramembrane",
+      "uniprot_feature_lipidation",
+      "uniprot_feature_modified_residue",
+      "uniprot_feature_motif",
+      "uniprot_feature_peptide",
+      "uniprot_feature_propeptide",
+      "uniprot_feature_region",
+      "uniprot_feature_repeat",
+      "uniprot_feature_signal",
+      "uniprot_feature_site",
+      "uniprot_feature_topological_domain",
+      "uniprot_feature_transit_peptide",
+      "uniprot_feature_transmembrane",
+      "uniprot_feature_turn",
+      "uniprot_feature_zinc_finger"
+    ]
+  },
+  "feature_count": 48,
+  "explicitly_excluded_from_primary": {
+    "conservation_gerp_rs": "excluded by the frozen parsimonious conservation decision",
+    "population_frequency": "sensitivity-only evidence",
+    "composite_computational_predictors": "external comparators or sensitivity-only evidence",
+    "missingness_indicators": "excluded to avoid learning database-coverage patterns",
+    "identifiers_and_provenance": "not predictors"
+  },
+  "future_amino_acid_extension": "not part of this frozen primary condition; any contextual extension requires a separately registered training-only sensitivity protocol",
+  "validation_labels_used_to_define_features": false,
+  "test_labels_used_to_define_features": false
+}

@@ -1,0 +1,138 @@
+{
+  "schema_version": 1,
+  "status": "frozen_before_grouped_additive_implementation",
+  "frozen_on": "2026-11-14",
+  "primary_input_config": "config/grouped_additive_primary_input.json",
+  "objective": "develop a grouped additive pathogenicity model whose logit is the intercept plus one inspectable scalar contribution from each biological evidence group",
+  "random_seed": 20261018,
+  "development_data_policy": {
+    "training_only": true,
+    "validation_access": "prohibited during implementation, debugging, hyperparameter selection and methodological decisions",
+    "test_access": "prohibited until one final architecture has been selected after validation",
+    "validation_and_test_files_may_be_used_before_authorised_evaluation_only_for": [
+      "path existence",
+      "recorded checksum comparison"
+    ]
+  },
+  "cross_validation": {
+    "strategy": "fixed five-fold gene-grouped cross-validation",
+    "fold_assignment_path": "outputs/pre_modeling_evidence_audit/03_controlled_experiments/fixed_cv_fold_assignments.csv",
+    "fold_assignment_sha256": "54f66387b0df11a23eb27a0ca7ebac776ab6262d4268a4ce07e57abf5fab8046",
+    "folds": 5,
+    "require_zero_gene_overlap": true,
+    "require_zero_variant_overlap": true,
+    "reuse_identical_folds_for_all_models": true
+  },
+  "preprocessing": {
+    "fit_scope": "within each fold using fold-training rows only",
+    "continuous_missing_values": "median imputation",
+    "continuous_scaling": "standard scaling",
+    "binary_features": "retain governed zero, one and missing meanings; impute missing values fold-locally only when required by the implementation",
+    "missing_value_to_zero": false,
+    "missingness_indicators": false,
+    "synthetic_oversampling": false,
+    "smote": false
+  },
+  "fixed_baseline_first": {
+    "model": "logistic regression",
+    "purpose": "verify the shared data, preprocessing, fold, prediction and metric pipeline before grouped-additive training",
+    "must_use_same_48_features": true,
+    "must_use_same_folds": true
+  },
+  "grouped_additive_definition": {
+    "equation": "logit(p_i) = beta_0 + F_conservation(x_i) + F_gene_constraint(x_i) + F_amino_acid(x_i) + F_protein_context(x_i)",
+    "group_output": "one scalar logit contribution per evidence group",
+    "prediction_link": "sigmoid",
+    "cross_group_interactions_in_primary_model": false,
+    "post_hoc_attribution_as_primary_explanation": false,
+    "required_faithfulness_identity": "intercept plus saved group contributions must reconstruct the saved pre-sigmoid logit within numerical tolerance"
+  },
+  "implementation_search_boundary": {
+    "model_family": "compact neural grouped additive model",
+    "per_group_subnetwork": "feed-forward network ending in one scalar output",
+    "activation_candidates": [
+      "relu",
+      "tanh"
+    ],
+    "hidden_width_candidates": [
+      4,
+      8,
+      16
+    ],
+    "hidden_layer_count_candidates": [
+      1,
+      2
+    ],
+    "learning_rate_candidates": [
+      0.001,
+      0.0003
+    ],
+    "weight_decay_candidates": [
+      0.0,
+      0.0001,
+      0.001
+    ],
+    "dropout_candidates": [
+      0.0,
+      0.1
+    ],
+    "batch_size_candidates": [
+      256,
+      512
+    ],
+    "maximum_epochs": 200,
+    "early_stopping_patience": 20,
+    "search_rule": "use a documented compact search selected by training-only gene-grouped cross-validation; do not expand the search after validation is accessed"
+  },
+  "training_and_threshold_policy": {
+    "loss": "binary cross entropy with logits",
+    "class_weighting": "none in the balanced primary training cohort unless a fold-level safeguard is triggered and documented",
+    "hyperparameter_selection_metric": "mean fold MCC at threshold 0.5",
+    "final_threshold": "select once from pooled training out-of-fold predictions after hyperparameters are chosen; freeze before validation",
+    "final_training_epochs": "use the median best epoch from the five selected cross-validation fits",
+    "calibration": "evaluate raw probabilities; no post-hoc calibration in the primary candidate unless a separate training-only amendment is registered"
+  },
+  "reported_metrics": {
+    "primary": "Matthews correlation coefficient",
+    "secondary": [
+      "ROC-AUC",
+      "PR-AUC",
+      "Brier score",
+      "accuracy",
+      "sensitivity",
+      "specificity",
+      "precision",
+      "F1 score",
+      "calibration intercept",
+      "calibration slope"
+    ],
+    "uncertainty": "paired gene-level bootstrap where formal model differences are reported"
+  },
+  "required_outputs": [
+    "resolved configuration and hashes",
+    "fold-level and pooled out-of-fold metrics",
+    "variant-level out-of-fold probabilities and predictions",
+    "variant-level group contributions",
+    "reconstructed logit check",
+    "selected threshold",
+    "selected hyperparameters and best epochs",
+    "training histories",
+    "calibration outputs",
+    "software versions and runtime",
+    "complete test results"
+  ],
+  "required_automated_checks": [
+    "input hashes match the frozen configuration",
+    "the primary feature list contains exactly 48 unique predictors",
+    "each predictor belongs to exactly one evidence group",
+    "GERP++, population fields, composite predictors, identifiers and labels are rejected as predictors",
+    "blank or duplicate variant keys fail",
+    "blank genes fail",
+    "fold train and holdout genes do not overlap",
+    "preprocessing is fitted on fold-training rows only",
+    "saved group contributions reconstruct each saved logit",
+    "identical seeds reproduce predictions within documented numerical tolerance",
+    "dataset and split checksums remain unchanged"
+  ],
+  "amendment_rule": "any change after this freeze must be documented in a numbered protocol amendment created before the affected validation or test outcomes are accessed"
+}
