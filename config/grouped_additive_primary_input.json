@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "status": "frozen_before_grouped_additive_implementation",
+  "status": "frozen_before_baseline_and_grouped_additive_implementation",
   "frozen_on": "2026-11-14",
   "decision_scope": "primary grouped-additive modelling condition",
   "source_decision": "outputs/pre_modeling_evidence_audit/03_controlled_experiments/recommended_training_only_configuration_refined.json",
@@ -37,7 +37,6 @@
     "amino_acid_properties": [
       "aa_grantham_score",
       "aa_composition_delta",
-      "aa_polarity_delta",
       "aa_volume_delta",
       "aa_hydropathy_delta",
       "aa_charge_delta",
@@ -83,15 +82,28 @@
       "uniprot_feature_zinc_finger"
     ]
   },
-  "feature_count": 48,
+  "feature_count": 47,
   "explicitly_excluded_from_primary": {
     "conservation_gerp_rs": "excluded by the frozen parsimonious conservation decision",
+    "aa_polarity_delta": "excluded by the frozen parsimonious amino-acid decision; hydropathy delta is retained and polarity-class change remains a distinct categorical descriptor",
     "population_frequency": "sensitivity-only evidence",
     "composite_computational_predictors": "external comparators or sensitivity-only evidence",
     "missingness_indicators": "excluded to avoid learning database-coverage patterns",
     "identifiers_and_provenance": "not predictors"
   },
   "future_amino_acid_extension": "not part of this frozen primary condition; any contextual extension requires a separately registered training-only sensitivity protocol",
+  "population_sensitivity": {
+    "status": "registered training-only sensitivity analysis; not a primary predictor",
+    "selected_numeric_feature": "gnomad_max_population_af",
+    "excluded_redundant_feature": "gnomad_global_af",
+    "diagnostic_conditions": [
+      "primary features only",
+      "primary features plus gnomad_max_population_af",
+      "primary features plus population-frequency availability only",
+      "primary versus primary-plus-max-population-AF on the identical frequency-observed subset"
+    ],
+    "purpose": "separate numerical population-frequency signal from class-associated database-coverage signal"
+  },
   "validation_labels_used_to_define_features": false,
   "test_labels_used_to_define_features": false
 }

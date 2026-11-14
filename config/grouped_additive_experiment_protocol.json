@@ -36,7 +36,7 @@
   "fixed_baseline_first": {
     "model": "logistic regression",
     "purpose": "verify the shared data, preprocessing, fold, prediction and metric pipeline before grouped-additive training",
-    "must_use_same_48_features": true,
+    "must_use_same_47_features": true,
     "must_use_same_folds": true
   },
   "grouped_additive_definition": {
@@ -46,6 +46,14 @@
     "cross_group_interactions_in_primary_model": false,
     "post_hoc_attribution_as_primary_explanation": false,
     "required_faithfulness_identity": "intercept plus saved group contributions must reconstruct the saved pre-sigmoid logit within numerical tolerance"
+  },
+  "registered_population_sensitivity": {
+    "run_only_after_primary_training_pipeline_is_verified": true,
+    "numeric_feature": "gnomad_max_population_af",
+    "global_frequency_feature": "excluded because it added no stable value after maximum-population AF",
+    "coverage_control": "frequency-observed versus unavailable indicator used only as a diagnostic",
+    "common_coverage_comparison": true,
+    "may_promote_to_primary_without_protocol_amendment": false
   },
   "implementation_search_boundary": {
     "model_family": "compact neural grouped additive model",
@@ -123,7 +131,7 @@
   ],
   "required_automated_checks": [
     "input hashes match the frozen configuration",
-    "the primary feature list contains exactly 48 unique predictors",
+    "the primary feature list contains exactly 47 unique predictors",
     "each predictor belongs to exactly one evidence group",
     "GERP++, population fields, composite predictors, identifiers and labels are rejected as predictors",
     "blank or duplicate variant keys fail",
