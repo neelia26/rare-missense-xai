@@ -116,7 +116,12 @@ class DominanceHierarchicalPartitioningTests(unittest.TestCase):
             "computational_predictor_subset_performance",
         }
         for name in dominance_names:
-            path = dominance.STAGE / "figures" / f"{name}.png"
+            path = (
+                dominance.STAGE
+                / "figures"
+                / "Individual Contibution With Shapley Intervals"
+                / f"{name}.png"
+            )
             self.assertTrue(path.is_file() and path.stat().st_size > 0, str(path))
         for name in subset_names:
             path = dominance.STAGE / "figures" / "subset_combinations" / f"{name}.png"
